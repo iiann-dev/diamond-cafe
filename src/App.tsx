@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Outlet } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import Lenis from 'lenis';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -29,17 +29,14 @@ function Layout() {
       <ScrollToTop />
       <main className="flex-1 pt-20 pb-section-padding px-margin-mobile md:px-gutter">
         <div className="max-w-container-max mx-auto">
-          <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
               <Outlet />
             </motion.div>
-          </AnimatePresence>
         </div>
       </main>
       <Footer />
