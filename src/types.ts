@@ -1,27 +1,25 @@
-export type TabType = 'home' | 'menu' | 'story' | 'gallery' | 'contact';
+export type TabType = 'home' | 'menu' | 'gallery' | 'about' | 'contact';
 
 export interface NavItem {
   label: string;
-  tab: TabType;
+  path: string;
 }
 
 export interface MenuItem {
   id: string;
   name: string;
-  price: number;
+  category: string;
   description: string;
-  category: 'coffee' | 'food' | 'pastry';
-  image: string;
   popular?: boolean;
-}
-
-export interface DayHours {
-  day: string;
-  hours: string;
 }
 
 export interface GalleryImage {
   src: string;
   alt: string;
-  span?: boolean;
+  span?: 'wide' | 'tall' | 'big';
+}
+
+export interface DayHours {
+  day: string;
+  hours: string;
 }

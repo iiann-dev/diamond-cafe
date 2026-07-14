@@ -1,76 +1,92 @@
 import type { MenuItem, GalleryImage, DayHours } from './types';
 
 export const NAV_ITEMS = [
-  { label: 'Home', tab: 'home' },
-  { label: 'Menu', tab: 'menu' },
-  { label: 'Our Story', tab: 'story' },
-  { label: 'Gallery', tab: 'gallery' },
-  { label: 'Contact', tab: 'contact' },
+  { label: 'Home', path: '/' },
+  { label: 'Menu', path: '/menu' },
+  { label: 'Gallery', path: '/gallery' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/contact' },
+] as const;
+
+export const MENU_CATEGORIES = [
+  'crepes',
+  'breakfast',
+  'bagels',
+  'sandwiches',
+  'scramblers',
+  'eggs',
+  'salads',
 ] as const;
 
 export const MENU_ITEMS: MenuItem[] = [
-  // ─── Coffee ───
-  { id: 'c1', name: 'Big Mike Blend', price: 3.75, description: 'Our signature house-roasted coffee blend — bold, smooth, and full of character. A Diamond Cafe original.', category: 'coffee', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop&q=80', popular: true },
-  { id: 'c2', name: 'Cappuccino', price: 4.50, description: 'Espresso with steamed milk foam, finished with delicate latte art. A classic done right.', category: 'coffee', image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=400&fit=crop&q=80' },
-  { id: 'c3', name: 'Iced Matcha Latte', price: 5.25, description: 'Creamy matcha green tea over ice with your choice of milk. Refreshingly vibrant.', category: 'coffee', image: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=400&h=400&fit=crop&q=80', popular: true },
-  { id: 'c4', name: 'Iced Latte', price: 4.25, description: 'Chilled espresso poured over milk and ice — the perfect pick-me-up any time of day.', category: 'coffee', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop&q=80' },
-  { id: 'c5', name: 'Cold Brew', price: 4.75, description: 'Slow-steeped for 20 hours — silky, strong, and never bitter. Our summer staple.', category: 'coffee', image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400&h=400&fit=crop&q=80' },
-  { id: 'c6', name: 'Flat White', price: 4.50, description: 'Double ristretto poured over micro-foam. Velvety, bold, and beautifully balanced.', category: 'coffee', image: 'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&h=400&fit=crop&q=80' },
-  // ─── Food ───
-  { id: 'f1', name: 'Berry French Toast', price: 7.50, description: 'Thick-cut brioche, berry compote, whipped cream, and a maple drizzle. Brunch perfection.', category: 'food', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=400&h=400&fit=crop&q=80', popular: true },
-  { id: 'f2', name: 'Breakfast Sandwich', price: 6.75, description: 'Egg, cheddar, and your choice of bacon or sausage on a toasted brioche bun.', category: 'food', image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400&h=400&fit=crop&q=80' },
-  { id: 'f3', name: 'Avocado Toast', price: 7.25, description: 'Smashed avocado, chili flake, lime, cherry tomato on artisan sourdough.', category: 'food', image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=400&h=400&fit=crop&q=80' },
-  { id: 'f4', name: 'Turkey & Havarti Panini', price: 8.50, description: 'Oven-roasted turkey, havarti, arugula, sun-dried tomato pesto on pressed ciabatta.', category: 'food', image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=400&fit=crop&q=80' },
-  { id: 'f5', name: 'Garden Salad', price: 6.25, description: 'Mixed greens, cherry tomato, cucumber, red onion, with house vinaigrette.', category: 'food', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop&q=80' },
-  // ─── Pastry ───
-  { id: 'p1', name: 'Choco Chip Cookie', price: 2.75, description: 'Warm, chewy, loaded with dark chocolate chunks — a daily favorite since day one.', category: 'pastry', image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=400&fit=crop&q=80', popular: true },
-  { id: 'p2', name: 'Butter Croissant', price: 3.50, description: 'Golden, flaky, French-style — plain or with ham & melted gruyère.', category: 'pastry', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038029a?w=400&h=400&fit=crop&q=80' },
-  { id: 'p3', name: 'Banana Bread', price: 3.25, description: 'House-baked, moist, walnut-studded with a honey glaze. Tastes like Sunday morning.', category: 'pastry', image: 'https://images.unsplash.com/photo-1569760541092-b24e1c0d9def?w=400&h=400&fit=crop&q=80' },
-  { id: 'p4', name: 'Blueberry Muffin', price: 3.50, description: 'Fresh-baked with wild blueberries and a crunchy streusel top.', category: 'pastry', image: 'https://images.unsplash.com/photo-1559304822-4f8dd0300e9f?w=400&h=400&fit=crop&q=80' },
-  { id: 'p5', name: 'Cinnamon Roll', price: 4.25, description: 'Soft, swirled, cream-cheese iced. The smell alone is worth the visit.', category: 'pastry', image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400&h=400&fit=crop&q=80', popular: true },
+  { id: 'cr1', name: 'Basic Crepe', description: 'Cheddar cheese, grilled onions.', category: 'crepes', popular: true },
+  { id: 'cr2', name: 'Salsa Crepe', description: 'Cheddar cheese, onions, black olives, tomatoes, avocado. Topped with salsa + sour cream.', category: 'crepes' },
+  { id: 'cr3', name: 'Florentine Crepe', description: 'Cheddar cheese, onions, spinach, cottage cheese.', category: 'crepes' },
+  { id: 'cr4', name: 'Marinara Crepe', description: 'Cheddar cheese, onions, spinach, mushrooms, cottage cheese. Topped with marinara.', category: 'crepes' },
+  { id: 'cr5', name: 'Denver Crepe', description: 'Cheddar cheese, onions, eggs, ham, bell peppers.', category: 'crepes' },
+  { id: 'cr6', name: 'Chicken Pesto Crepe', description: 'Cheddar cheese, onions, chicken breast, pesto, mushrooms.', category: 'crepes', popular: true },
+  { id: 'cr7', name: 'Hawaiian Crepe', description: 'Cheddar cheese, onions, ham, pineapple, sweet & sour sauce.', category: 'crepes' },
+  { id: 'cr8', name: 'Nutella Chocolate Crepe', description: 'Rich Nutella, warm chocolate sauce.', category: 'crepes', popular: true },
+  { id: 'cr9', name: 'Strawberry Nutella Banana', description: 'Nutella, fresh strawberries, bananas, cinnamon, brown sugar.', category: 'crepes', popular: true },
+  { id: 'cr10', name: 'Fruity Nutella', description: 'Strawberries, bananas, Nutella — pure bliss.', category: 'crepes' },
+  { id: 'br1', name: 'Crunch Granola', description: 'Low-fat yogurt or milk. Add fruit for extra.', category: 'breakfast' },
+  { id: 'br2', name: 'Oatmeal', description: 'Low-fat yogurt or milk. Add fruit for extra.', category: 'breakfast' },
+  { id: 'br3', name: 'Croissant Sandwich', description: '2 scrambled eggs, ham, cheddar, onions. Served with house potatoes, fruit or salad.', category: 'breakfast', popular: true },
+  { id: 'br4', name: 'Huevos Rancheros', description: '2 over-easy eggs, corn tortilla w/ cheese, black beans, rice, ranchero sauce, sour cream.', category: 'breakfast' },
+  { id: 'br5', name: 'Breakfast Burrito', description: '2 scrambled eggs, green onions, bacon, cheddar, sour cream, black beans. Topped w/ ranchero.', category: 'breakfast', popular: true },
+  { id: 'bg1', name: 'Bagel #1', description: 'Cream cheese.', category: 'bagels' },
+  { id: 'bg2', name: 'Bagel #2', description: 'Cream cheese, lox, tomatoes, red onions.', category: 'bagels' },
+  { id: 'bg3', name: 'Bagel #3', description: 'Cream cheese, lox, tomatoes, red onions, capers.', category: 'bagels', popular: true },
+  { id: 'bg4', name: 'Bagel #4', description: 'Cream cheese, tomatoes, red onions.', category: 'bagels' },
+  { id: 'bg5', name: 'Bagel #5', description: 'Hummus, tomatoes, cucumbers, red onions, capers.', category: 'bagels' },
+  { id: 'bg6', name: 'Bagel #6', description: 'Scrambled egg, cheese, bacon or ham.', category: 'bagels' },
+  { id: 'sw1', name: 'Turkey Sandwich', description: 'Turkey, Swiss, mayo, mustard, lettuce, tomatoes on whole wheat or sourdough.', category: 'sandwiches', popular: true },
+  { id: 'sw2', name: 'Tuna Salad Sandwich', description: 'Homemade tuna salad, mayo, mustard, lettuce, tomatoes on whole wheat or sourdough.', category: 'sandwiches' },
+  { id: 'sw3', name: 'Ham Sandwich', description: 'Ham, Swiss, mayo, mustard, lettuce, tomatoes on whole wheat or sourdough.', category: 'sandwiches' },
+  { id: 'sw4', name: 'Grilled Chicken Breast', description: 'Chicken, mozzarella, pesto, lettuce, tomatoes on focaccia.', category: 'sandwiches' },
+  { id: 'sc1', name: 'Smoked Salmon Scrambler', description: 'Scrambled eggs, green onions, cream cheese, tomatoes, lox.', category: 'scramblers', popular: true },
+  { id: 'sc2', name: 'Denver Scrambler', description: 'Scrambled eggs, ham, onions, bell peppers, cheese.', category: 'scramblers' },
+  { id: 'sc3', name: 'Veggie Scramble', description: 'Scrambled eggs, spinach, mushrooms, cheese.', category: 'scramblers' },
+  { id: 'eg1', name: 'Morning Bird', description: '2 eggs any style, toast, choice of potatoes/fruit/salad. Add bacon/ham/sausage extra.', category: 'eggs' },
+  { id: 'eg2', name: 'Triple Diamond', description: '2 eggs any style, 2 pancakes, bacon.', category: 'eggs', popular: true },
+  { id: 'sa1', name: 'Garden Salad', description: 'Mixed greens, cucumbers, tomatoes, carrots. Sun-dried tomato vinaigrette. Small or large.', category: 'salads' },
+  { id: 'sa2', name: 'Caesar Salad', description: 'Romaine, croutons, parmesan, Caesar dressing. Small or large. Add chicken/tuna extra.', category: 'salads', popular: true },
+  { id: 'sa3', name: 'Oriental Chicken Salad', description: 'Romaine, carrots, peanuts, green beans, red cabbage, grilled chicken, Oriental dressing.', category: 'salads' },
+  { id: 'sa4', name: 'Mexican Salad', description: 'Romaine, black beans, corn, tomatoes, red onions, shredded cheese, tortilla strips. Cilantro-lime.', category: 'salads' },
+  { id: 'sa5', name: 'Greek Salad', description: 'Romaine, cucumbers, tomatoes, kalamata olives, feta, red onions, oregano. Lemon-olive oil.', category: 'salads' },
 ];
 
 export const IMAGES = {
-  hero: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&h=1500&fit=crop&q=80',
+  hero: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&h=1600&fit=crop&q=80',
   interior: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=1000&fit=crop&q=80',
-  storyWide: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=800&fit=crop&q=80',
-  latteArt: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=700&fit=crop&q=80',
-  community: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=1000&fit=crop&q=80',
-  team: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=700&fit=crop&q=80',
-  coffeePour: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=700&fit=crop&q=80',
-  beans: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=700&fit=crop&q=80',
+  food: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&h=800&fit=crop&q=80',
+  team: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=800&fit=crop&q=80',
+  coffee: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=800&fit=crop&q=80',
+  neighborhood: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=600&fit=crop&q=80',
   gallery: [
     { src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop&q=80', alt: 'Coffee pour over bar' },
-    { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=600&fit=crop&q=80', alt: 'Cozy cafe corner' },
-    { src: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&h=600&fit=crop&q=80', alt: 'Coffee beans and brew' },
+    { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=800&fit=crop&q=80', alt: 'Cozy cafe corner', span: 'tall' as const },
+    { src: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=600&fit=crop&q=80', alt: 'Coffee beans and brew', span: 'wide' as const },
     { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=600&fit=crop&q=80', alt: 'Cafe interior with warm light' },
-    { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=600&fit=crop&q=80', alt: 'Latte art heart' },
+    { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&h=800&fit=crop&q=80', alt: 'Latte art heart', span: 'big' as const },
     { src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=600&fit=crop&q=80', alt: 'Happy customers' },
     { src: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop&q=80', alt: 'Iced coffee on counter' },
     { src: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=600&fit=crop&q=80', alt: 'Pour over coffee' },
   ] as GalleryImage[],
-  avatars: [
-    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&q=80',
-  ],
 };
 
 export const SITE = {
   name: 'Diamond Cafe',
-  tagline: 'your neighborhood coffee + happiness spot',
-  description: 'Diamond Cafe is a small, family-owned cafe located in the Noe Valley neighborhood of San Francisco and serving the surrounding area. We are dedicated to providing our customers with a warm and welcoming atmosphere where they can enjoy delicious food and beverages.',
-  fullStory: 'Diamond Cafe has been a beloved fixture of Noe Valley since 2010. What started as a dream between two siblings — a barista and a baker — has grown into the neighborhood gathering spot it is today. Every morning at 6 AM, the lights flicker on, the espresso machine hums to life, and the aroma of freshly roasted Big Mike Blend fills the block. We take pride in sourcing our beans from small, ethical farms and baking everything from scratch each morning. But what truly makes Diamond Cafe sparkle is our community — the regulars who wave from the door, the writers who claim "their corner table," the families who stop in after school drop-off. We are more than a cafe. We are a living room for Noe Valley.',
+  tagline: 'where every day sparkles',
+  description: 'Diamond Cafe is a small, family-owned cafe in Noe Valley, San Francisco. Freshly brewed coffees, homemade pastries, and warm smiles every day.',
+  fullStory: 'Diamond Cafe has been a beloved fixture of Noe Valley since 2010. What started as a dream between two siblings — a barista and a baker — has grown into the neighborhood gathering spot it is today. Every morning at 7 AM, the espresso machine hums to life and the aroma of freshly brewed coffee fills the block. We take pride in using quality ingredients, making everything from scratch, and treating every customer like family.',
   hours: '7:00 am — 3:00 pm',
   days: 'Open Daily',
   address: '751 Diamond St, San Francisco, CA 94114',
   neighborhood: 'Noe Valley, San Francisco',
   email: 'diamondcafelunches@gmail.com',
-  phone: '(415) 555-0183',
-  heroTitle: 'Good Coffee,',
-  heroTitleAlt: 'Happy People.',
-  heroTag: 'Noe Valley since 2010',
-  heroDesc: 'Your cozy neighborhood cafe serving great coffee, homemade pastries, and warm smiles every day.',
+  phone: '(415) 655-3674',
+  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.5!2d-122.434!3d37.759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7f7f5f5f5f5f%3A0x5f5f5f5f5f5f5f5f!2s751+Diamond+St%2C+San+Francisco%2C+CA+94114!5e0!3m2!1sen!2sus!4v1',
   founded: 2010,
 };
 
@@ -80,43 +96,9 @@ export const HOURS: DayHours[] = [
   { day: 'Sunday', hours: '7:00 am — 3:00 pm' },
 ];
 
-export const TESTIMONIALS = [
-  {
-    name: 'Maya R.',
-    text: 'The Big Mike Blend is my reason to get out of bed. A true neighborhood treasure.',
-    image: IMAGES.avatars[0],
-  },
-  {
-    name: 'James K.',
-    text: 'Best avocado toast in the city. The vibe is unmatched — feels like a warm hug.',
-    image: IMAGES.avatars[1],
-  },
-  {
-    name: 'Sarah L.',
-    text: 'We come here every Saturday morning. The staff remembers your name AND your order.',
-    image: IMAGES.avatars[2],
-  },
-];
-
 export const FEATURES = [
-  {
-    title: 'House-Roasted Beans',
-    desc: 'Our Big Mike Blend is roasted in small batches for peak flavor.',
-    icon: 'coffee',
-  },
-  {
-    title: 'Baked Fresh Daily',
-    desc: 'Everything from our pastry case is made from scratch each morning.',
-    icon: 'cookie',
-  },
-  {
-    title: 'Family-Run',
-    desc: 'We treat every customer like part of the Diamond family.',
-    icon: 'heart',
-  },
-  {
-    title: 'Noe Valley Soul',
-    desc: 'Proud to be your neighborhood spot since 2010.',
-    icon: 'star',
-  },
+  { title: 'House-Roasted Coffee', desc: 'Our Big Mike Blend — bold, smooth, full of character.', icon: '☕' },
+  { title: 'Made Fresh Daily', desc: 'Everything from our pastry case is scratch-made each morning.', icon: '🥐' },
+  { title: 'Family-Run Since 2010', desc: 'We treat every customer like part of the Diamond family.', icon: '💎' },
+  { title: 'Noe Valley Soul', desc: 'Proud to be your neighborhood living room.', icon: '❤️' },
 ];
