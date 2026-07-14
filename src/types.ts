@@ -1,4 +1,4 @@
-export type TabType = 'home' | 'menu' | 'story' | 'gallery' | 'events' | 'contact';
+export type TabType = 'home' | 'menu' | 'story' | 'gallery' | 'contact';
 
 export interface NavItem {
   label: string;
@@ -15,9 +15,13 @@ export interface MenuItem {
   popular?: boolean;
 }
 
-export interface Testimonial {
-  name: string;
-  text: string;
-  rating: number;
-  image: string;
+export interface DayHours {
+  day: string;
+  hours: string;
+}
+
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  span?: boolean;
 }

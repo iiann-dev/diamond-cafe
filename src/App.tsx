@@ -1,27 +1,57 @@
-import { useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useEffect, useRef, Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'motion/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import Nav from './components/Nav';
-import Hero from './components/Hero';
-import Story from './components/Story';
-import MenuSection from './components/Menu';
-import Gallery from './components/Gallery';
-import Community from './components/Community';
 import Footer from './components/Footer';
-import type { TabType } from './types';
+
+const HomeView = lazy(() => import('./components/HomeView'));
+const MenuView = lazy(() => import('./components/MenuView'));
+const StoryView = lazy(() => import('./components/StoryView'));
+const GalleryView = lazy(() => import('./components/GalleryView'));
+const ContactView = lazy(() => import('./components/ContactView'));
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function App() {
-  const activeTabRef = useRef<TabType>('home');
-  const scrollTargetRef = useRef<{ tab: TabType; el: HTMLElement | null }>({ tab: 'home', el: null });
+const pageTransition = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+  transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
+};
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <svg
+          className="animate-float text-terracotta/40"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        >
+          <path d="M12 2C7.58 2 4 5.58 4 10c0 4.42 3.58 11 8 11s8-6.58 8-11c0-4.42-3.58-8-8-8z" />
+          <path d="M12 6c-2.21 0-4 1.79-4 4" />
+        </svg>
+        <span className="font-script text-terracotta/60 text-lg">loading...</span>
+      </div>
+    </div>
+  );
+}
+
+function AnimatedPages() {
+  const location = useLocation();
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     // Lenis init
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
@@ -44,52 +74,55 @@ export default function App() {
 
     ScrollTrigger.refresh();
 
-    // RAF loop
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    // IntersectionObserver for active section
-    const sections = document.querySelectorAll('section[id]');
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id') as TabType;
-            if (id) activeTabRef.current = id;
-          }
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    sections.forEach(s => observer.observe(s));
+    lenisRef.current = lenis;
 
     return () => {
       lenis.destroy();
-      observer.disconnect();
     };
   }, []);
 
-  const handleNavigate = (tab: TabType) => {
-    const el = document.getElementById(tab === 'our story' ? 'story' : tab);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  // Scroll to top on route change
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-cream">
-      <Nav activeTab={activeTabRef.current} onNavigate={handleNavigate} />
+    <AnimatePresence mode="wait">
+      <motion.div key={location.pathname} {...pageTransition}>
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes location={location}>
+            <Route path="/" element={<HomeView />} />
+            <Route path="/menu" element={<MenuView />} />
+            <Route path="/story" element={<StoryView />} />
+            <Route path="/gallery" element={<GalleryView />} />
+            <Route path="/contact" element={<ContactView />} />
+          </Routes>
+        </Suspense>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
-      <main>
-        <Hero onNavigate={handleNavigate} />
-        <Story />
-        <MenuSection />
-        <Community />
-        <Gallery />
-      </main>
-
-      <Footer />
-    </div>
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-cream">
+        <Nav />
+        <main className="pt-[72px]">
+          <AnimatedPages />
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
