@@ -10,6 +10,7 @@ export interface MenuItem {
 
 export interface GalleryImage {
   src: string;
+  thumb: string;
   alt: string;
   span?: 'wide' | 'tall' | 'big';
 }

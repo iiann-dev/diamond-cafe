@@ -60,14 +60,14 @@ export const IMAGES = {
   coffee: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=800&fit=crop&q=80',
   neighborhood: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=600&fit=crop&q=80',
   gallery: [
-    { src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop&q=80', alt: 'Coffee pour over bar' },
-    { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=800&fit=crop&q=80', alt: 'Cozy cafe corner', span: 'tall' as const },
-    { src: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=600&fit=crop&q=80', alt: 'Coffee beans and brew', span: 'wide' as const },
-    { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=600&fit=crop&q=80', alt: 'Cafe interior with warm light' },
-    { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&h=800&fit=crop&q=80', alt: 'Latte art heart', span: 'big' as const },
-    { src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=600&fit=crop&q=80', alt: 'Happy customers' },
-    { src: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop&q=80', alt: 'Iced coffee on counter' },
-    { src: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=600&fit=crop&q=80', alt: 'Pour over coffee' },
+    { src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop&q=60', alt: 'Coffee pour over bar' },
+    { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=800&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=267&fit=crop&q=60', alt: 'Cozy cafe corner', span: 'tall' as const },
+    { src: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=267&h=200&fit=crop&q=60', alt: 'Coffee beans and brew', span: 'wide' as const },
+    { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&h=200&fit=crop&q=60', alt: 'Cafe interior with warm light' },
+    { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&h=800&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=267&h=267&fit=crop&q=60', alt: 'Latte art heart', span: 'big' as const },
+    { src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=200&h=200&fit=crop&q=60', alt: 'Happy customers' },
+    { src: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&h=200&fit=crop&q=60', alt: 'Iced coffee on counter' },
+    { src: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=200&h=200&fit=crop&q=60', alt: 'Pour over coffee' },
   ] as GalleryImage[],
 };
 

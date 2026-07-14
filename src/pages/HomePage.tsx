@@ -10,7 +10,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden rounded-container mb-12">
         <div className="absolute inset-0">
-          <img src={IMAGES.hero} alt="" className="w-full h-full object-cover" />
+          <img src={IMAGES.hero} alt="" className="w-full h-full object-cover" fetchPriority="high" loading="eager" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </div>
         <div className="relative z-10 text-center max-w-3xl mx-auto px-4 py-24">
@@ -113,7 +113,7 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="container-frame overflow-hidden"
           >
-            <img src={IMAGES.interior} alt="Diamond Cafe interior" className="w-full h-full object-cover min-h-[400px]" />
+            <img src={IMAGES.interior} alt="Diamond Cafe interior" className="w-full h-full object-cover min-h-[400px]" decoding="async" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 24 }}
@@ -151,7 +151,7 @@ export default function HomePage() {
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className="container-frame overflow-hidden"
             >
-              <img src={img.src} alt={img.alt} className="w-full h-48 object-cover" loading="lazy" />
+              <img src={img.src} alt={img.alt} className="w-full h-48 object-cover" loading="lazy" decoding="async" />
             </motion.div>
           ))}
         </div>

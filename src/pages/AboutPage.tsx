@@ -18,7 +18,7 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
           className="container-frame overflow-hidden"
         >
-          <img src={IMAGES.team} alt="Diamond Cafe team" className="w-full h-full object-cover min-h-[400px]" />
+          <img src={IMAGES.team} alt="Diamond Cafe team" className="w-full h-full object-cover min-h-[400px]" decoding="async" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 24 }}
@@ -88,7 +88,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="container-frame overflow-hidden"
           >
-            <img src={IMAGES.coffee} alt="Pour over coffee" className="w-full h-full object-cover min-h-[350px]" />
+            <img src={IMAGES.coffee} alt="Pour over coffee" className="w-full h-full object-cover min-h-[350px]" decoding="async" />
           </motion.div>
         </div>
       </section>

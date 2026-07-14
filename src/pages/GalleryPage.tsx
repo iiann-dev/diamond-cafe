@@ -30,7 +30,7 @@ export default function GalleryPage() {
               img.span === 'big' ? 'col-span-2 row-span-2' : ''
             }`}
           >
-            <img src={img.src} alt={img.alt} className="w-full h-full object-cover min-h-[200px]" loading="lazy" />
+            <img src={img.thumb} srcSet={`${img.thumb} 200w, ${img.src} 600w`} sizes="(max-width: 768px) 50vw, 33vw" alt={img.alt} className="w-full h-full object-cover min-h-[200px]" loading="lazy" decoding="async" />
           </motion.button>
         ))}
       </div>
@@ -62,6 +62,7 @@ export default function GalleryPage() {
               alt={IMAGES.gallery[lightbox].alt}
               className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
+              decoding="async"
             />
             <div className="absolute bottom-8 flex gap-3">
               <button
