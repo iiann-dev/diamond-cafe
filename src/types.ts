@@ -1,10 +1,5 @@
 export type TabType = 'home' | 'menu' | 'gallery' | 'about' | 'contact';
 
-export interface NavItem {
-  label: string;
-  path: string;
-}
-
 export interface MenuItem {
   id: string;
   name: string;

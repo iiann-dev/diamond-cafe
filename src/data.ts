@@ -1,21 +1,17 @@
 import type { MenuItem, GalleryImage, DayHours } from './types';
 
-export const NAV_ITEMS = [
-  { label: 'Home', path: '/' },
-  { label: 'Menu', path: '/menu' },
-  { label: 'Gallery', path: '/gallery' },
-  { label: 'About', path: '/about' },
-  { label: 'Contact', path: '/contact' },
-] as const;
+export type TabType = 'home' | 'menu' | 'gallery' | 'about' | 'contact';
+
+export const NAV_ITEMS: { label: string; tab: TabType }[] = [
+  { label: 'Home', tab: 'home' },
+  { label: 'Menu', tab: 'menu' },
+  { label: 'Gallery', tab: 'gallery' },
+  { label: 'About', tab: 'about' },
+  { label: 'Contact', tab: 'contact' },
+];
 
 export const MENU_CATEGORIES = [
-  'crepes',
-  'breakfast',
-  'bagels',
-  'sandwiches',
-  'scramblers',
-  'eggs',
-  'salads',
+  'crepes', 'breakfast', 'bagels', 'sandwiches', 'scramblers', 'eggs', 'salads',
 ] as const;
 
 export const MENU_ITEMS: MenuItem[] = [
@@ -28,7 +24,7 @@ export const MENU_ITEMS: MenuItem[] = [
   { id: 'cr7', name: 'Hawaiian Crepe', description: 'Cheddar cheese, onions, ham, pineapple, sweet & sour sauce.', category: 'crepes' },
   { id: 'cr8', name: 'Nutella Chocolate Crepe', description: 'Rich Nutella, warm chocolate sauce.', category: 'crepes', popular: true },
   { id: 'cr9', name: 'Strawberry Nutella Banana', description: 'Nutella, fresh strawberries, bananas, cinnamon, brown sugar.', category: 'crepes', popular: true },
-  { id: 'cr10', name: 'Fruity Nutella', description: 'Strawberries, bananas, Nutella — pure bliss.', category: 'crepes' },
+  { id: 'cr10', name: 'Fruity Nutella', description: 'Strawberries, bananas, Nutella.', category: 'crepes' },
   { id: 'br1', name: 'Crunch Granola', description: 'Low-fat yogurt or milk. Add fruit for extra.', category: 'breakfast' },
   { id: 'br2', name: 'Oatmeal', description: 'Low-fat yogurt or milk. Add fruit for extra.', category: 'breakfast' },
   { id: 'br3', name: 'Croissant Sandwich', description: '2 scrambled eggs, ham, cheddar, onions. Served with house potatoes, fruit or salad.', category: 'breakfast', popular: true },
@@ -77,9 +73,9 @@ export const IMAGES = {
 
 export const SITE = {
   name: 'Diamond Cafe',
-  tagline: 'where every day sparkles',
+  tagline: 'Noe Valley since 2010',
   description: 'Diamond Cafe is a small, family-owned cafe in Noe Valley, San Francisco. Freshly brewed coffees, homemade pastries, and warm smiles every day.',
-  fullStory: 'Diamond Cafe has been a beloved fixture of Noe Valley since 2010. What started as a dream between two siblings — a barista and a baker — has grown into the neighborhood gathering spot it is today. Every morning at 7 AM, the espresso machine hums to life and the aroma of freshly brewed coffee fills the block. We take pride in using quality ingredients, making everything from scratch, and treating every customer like family.',
+  fullStory: 'Diamond Cafe has been a beloved fixture of Noe Valley since 2010. What started as a dream between two siblings has grown into the neighborhood gathering spot it is today. Every morning at 7 AM, the espresso machine hums to life and the aroma of freshly brewed coffee fills the block. We take pride in using quality ingredients, making everything from scratch, and treating every customer like family.',
   hours: '7:00 am — 3:00 pm',
   days: 'Open Daily',
   address: '751 Diamond St, San Francisco, CA 94114',
@@ -97,8 +93,24 @@ export const HOURS: DayHours[] = [
 ];
 
 export const FEATURES = [
-  { title: 'House-Roasted Coffee', desc: 'Our Big Mike Blend — bold, smooth, full of character.', icon: '☕' },
-  { title: 'Made Fresh Daily', desc: 'Everything from our pastry case is scratch-made each morning.', icon: '🥐' },
-  { title: 'Family-Run Since 2010', desc: 'We treat every customer like part of the Diamond family.', icon: '💎' },
-  { title: 'Noe Valley Soul', desc: 'Proud to be your neighborhood living room.', icon: '❤️' },
+  {
+    title: 'House-Roasted Coffee',
+    desc: 'Our Big Mike Blend is roasted in small batches for bold, smooth flavor in every cup.',
+    icon: 'coffee',
+  },
+  {
+    title: 'Made Fresh Daily',
+    desc: 'Everything from our pastry case is scratch-made each morning. Always fresh, always good.',
+    icon: 'pastry',
+  },
+  {
+    title: 'Family-Run Since 2010',
+    desc: 'We treat every customer like part of the Diamond family.',
+    icon: 'heart',
+  },
+  {
+    title: 'Noe Valley Soul',
+    desc: 'Proud to be your neighborhood living room for over a decade.',
+    icon: 'map',
+  },
 ];

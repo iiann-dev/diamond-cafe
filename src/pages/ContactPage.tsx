@@ -1,118 +1,122 @@
+import { motion } from 'motion/react';
 import { SITE, HOURS } from '../data';
 
 export default function ContactPage() {
   return (
-    <div className="pt-[64px]">
-      {/* ─── Hero bento ─── */}
-      <section className="container-diamond pt-16 md:pt-24 pb-16 md:pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <div className="md:col-span-7 bento-card p-8 md:p-12 flex flex-col justify-center">
-            <span className="section-eyebrow">Get in Touch</span>
-            <h1 className="font-display text-4xl md:text-6xl text-white mb-4">
-              We'd Love to{' '}
-              <span className="text-gradient">Hear From You</span>
-            </h1>
-            <p className="text-white/50 text-lg max-w-md mb-8">
-              Questions, catering inquiries, or just want to say hi? Drop us a line or stop by.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-amethyst-400 shrink-0">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                </div>
-                <div>
-                  <p className="text-white/30 text-xs uppercase tracking-wider">Phone</p>
-                  <a href={`tel:${SITE.phone}`} className="text-white hover:text-amethyst-300 transition-colors">{SITE.phone}</a>
-                </div>
+    <div>
+      {/* Hero */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 pt-8">
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="container-frame p-8 md:p-12 flex flex-col justify-center"
+        >
+          <p className="font-label-caps text-primary uppercase tracking-[0.12em] mb-2">Contact</p>
+          <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-text-warm-white mb-6">
+            Find <span className="text-primary">Us</span>
+          </h1>
+
+          <div className="space-y-4 mb-6">
+            <div className="flex items-start gap-3">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8634C" strokeWidth="1.5" strokeLinecap="round" className="mt-0.5 shrink-0">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
+              </svg>
+              <div>
+                <p className="text-text-warm-white text-sm font-medium">Address</p>
+                <p className="text-muted-stone text-sm">{SITE.address}</p>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-coral-400 shrink-0">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </div>
-                <div>
-                  <p className="text-white/30 text-xs uppercase tracking-wider">Email</p>
-                  <a href={`mailto:${SITE.email}`} className="text-white hover:text-coral-300 transition-colors">{SITE.email}</a>
-                </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8634C" strokeWidth="1.5" strokeLinecap="round" className="mt-0.5 shrink-0">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z" />
+              </svg>
+              <div>
+                <p className="text-text-warm-white text-sm font-medium">Phone</p>
+                <p className="text-muted-stone text-sm">{SITE.phone}</p>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gold-400 shrink-0">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <div>
-                  <p className="text-white/30 text-xs uppercase tracking-wider">Address</p>
-                  <p className="text-white/70">{SITE.address}</p>
-                </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8634C" strokeWidth="1.5" strokeLinecap="round" className="mt-0.5 shrink-0">
+                <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <div>
+                <p className="text-text-warm-white text-sm font-medium">Email</p>
+                <p className="text-muted-stone text-sm">{SITE.email}</p>
               </div>
             </div>
           </div>
-          <div className="md:col-span-5 bento-card p-8 md:p-10">
-            <h2 className="font-display text-2xl text-white mb-6">Send a Message</h2>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-2 gap-3">
-                <input
-                  type="text"
-                  placeholder="First Name*"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-amethyst-500/50 transition-colors"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name*"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-amethyst-500/50 transition-colors"
-                />
-              </div>
-              <input
-                type="email"
-                placeholder="Email*"
-                required
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-amethyst-500/50 transition-colors"
-              />
-              <textarea
-                placeholder="Your message..."
-                rows={4}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-amethyst-500/50 transition-colors resize-none"
-              />
-              <button type="submit" className="btn-primary w-full justify-center">
-                Send Message
-                <span className="text-xs opacity-70">→</span>
-              </button>
-            </form>
-          </div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="container-frame overflow-hidden"
+        >
+          <iframe
+            src={SITE.mapEmbed}
+            width="100%"
+            height="100%"
+            className="min-h-[400px]"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Diamond Cafe location"
+          />
+        </motion.div>
       </section>
 
-      {/* ─── Hours + Map bento ─── */}
-      <section className="container-diamond pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <div className="md:col-span-4 bento-card p-8">
-            <h2 className="font-display text-2xl text-white mb-6">Hours</h2>
-            <div className="space-y-4">
-              {HOURS.map((d) => (
-                <div key={d.day} className="flex justify-between items-center pb-3 border-b border-white/5 last:border-0">
-                  <span className="text-white/60 text-sm">{d.day}</span>
-                  <span className="text-white font-medium text-sm">{d.hours}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 pt-6 border-t border-white/5">
-              <p className="text-white/30 text-xs uppercase tracking-wider mb-1">Neighborhood</p>
-              <p className="text-white/70 text-sm">{SITE.neighborhood}</p>
-            </div>
+      {/* Hours + Contact Form */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="container-frame p-8"
+        >
+          <h2 className="font-display-lg text-headline-md text-text-warm-white mb-6">Hours</h2>
+          <div className="space-y-3">
+            {HOURS.map((h) => (
+              <div key={h.day} className="flex justify-between items-center py-2 border-b border-border-subtle/40 last:border-0">
+                <span className="text-muted-stone text-sm">{h.day}</span>
+                <span className="text-text-warm-white text-sm font-medium">{h.hours}</span>
+              </div>
+            ))}
           </div>
-          <div className="md:col-span-8 bento-card overflow-hidden min-h-[350px]">
-            <iframe
-              src={SITE.mapEmbed}
-              width="100%"
-              height="100%"
-              style={{ minHeight: '350px' }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Diamond Cafe Location"
-              className="border-0"
-            />
+          <div className="mt-6 p-4 bg-primary/10 rounded-lg">
+            <p className="text-primary font-label-caps uppercase text-xs tracking-widest mb-1">Neighborhood</p>
+            <p className="text-text-warm-white text-sm">{SITE.neighborhood}</p>
           </div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="container-frame p-8"
+        >
+          <h2 className="font-display-lg text-headline-md text-text-warm-white mb-6">Send a Message</h2>
+          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <label className="block text-muted-stone text-xs font-label-caps uppercase tracking-widest mb-2">Name</label>
+              <input type="text" className="w-full bg-surface-container-high border border-border-subtle rounded-lg px-4 py-3 text-text-warm-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your name" />
+            </div>
+            <div>
+              <label className="block text-muted-stone text-xs font-label-caps uppercase tracking-widest mb-2">Email</label>
+              <input type="email" className="w-full bg-surface-container-high border border-border-subtle rounded-lg px-4 py-3 text-text-warm-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="your@email.com" />
+            </div>
+            <div>
+              <label className="block text-muted-stone text-xs font-label-caps uppercase tracking-widest mb-2">Message</label>
+              <textarea rows={4} className="w-full bg-surface-container-high border border-border-subtle rounded-lg px-4 py-3 text-text-warm-white text-sm focus:outline-none focus:border-primary transition-colors resize-none" placeholder="How can we help?" />
+            </div>
+            <button type="submit" className="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-caps uppercase tracking-wider hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer text-sm w-full md:w-auto">
+              Send Message
+            </button>
+          </form>
+        </motion.div>
       </section>
     </div>
   );

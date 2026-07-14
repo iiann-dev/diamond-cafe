@@ -1,111 +1,95 @@
+import { motion } from 'motion/react';
 import { SITE, IMAGES } from '../data';
+
+const VALUES = [
+  { title: 'Quality Ingredients', desc: 'We source locally and make everything from scratch. No shortcuts, no compromises.' },
+  { title: 'Community First', desc: 'Diamond Cafe is your living room away from home. A place to gather, connect, and feel welcome.' },
+  { title: 'Crafted with Care', desc: 'From the espresso pull to the pastry finish, every detail matters. We take pride in the small things.' },
+];
 
 export default function AboutPage() {
   return (
-    <div className="pt-[64px]">
-      {/* ─── Hero bento ─── */}
-      <section className="container-diamond pt-16 md:pt-24 pb-16 md:pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <div className="md:col-span-7 bento-card p-8 md:p-12 flex flex-col justify-center">
-            <span className="section-eyebrow">Since {SITE.founded}</span>
-            <h1 className="font-display text-4xl md:text-6xl text-white mb-4">
-              Your Neighborhood
-              <br />
-              <span className="text-gradient">Living Room</span>
-            </h1>
-            <p className="text-white/50 text-lg leading-relaxed max-w-lg">
-              {SITE.description}
+    <div>
+      {/* Hero */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 pt-8">
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="container-frame overflow-hidden"
+        >
+          <img src={IMAGES.team} alt="Diamond Cafe team" className="w-full h-full object-cover min-h-[400px]" />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="container-frame p-8 md:p-12 flex flex-col justify-center"
+        >
+          <p className="font-label-caps text-primary uppercase tracking-[0.12em] mb-2">About</p>
+          <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-text-warm-white mb-4">
+            Our <span className="text-primary">Story</span>
+          </h1>
+          <p className="text-muted-stone text-sm leading-relaxed">{SITE.fullStory}</p>
+        </motion.div>
+      </section>
+
+      {/* Values Bento */}
+      <section className="mb-12">
+        <div className="text-center mb-8">
+          <h2 className="font-display-lg text-headline-md text-text-warm-white">What We Stand For</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {VALUES.map((v, i) => (
+            <motion.div
+              key={v.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="container-frame p-8"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/15 flex items-center justify-center mb-4">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8634C" strokeWidth="1.5" strokeLinecap="round">
+                  {i === 0 && <path d="M12 2L2 7l10 5 10-5-10-5Z M2 17l10 5 10-5 M2 12l10 5 10-5" />}
+                  {i === 1 && <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>}
+                  {i === 2 && <><path d="M12 2L2 7l10 5 10-5-10-5Z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></>}
+                </svg>
+              </div>
+              <h3 className="font-display-lg text-[18px] text-text-warm-white mb-2">{v.title}</h3>
+              <p className="text-muted-stone text-sm leading-relaxed">{v.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="container-frame p-8 md:p-12 flex flex-col justify-center"
+          >
+            <h2 className="font-display-lg text-headline-md text-text-warm-white mb-4">Family-Run Since 2010</h2>
+            <p className="text-muted-stone text-sm leading-relaxed mb-4">
+              What started as a dream between two siblings has grown into the neighborhood gathering spot it is today.
             </p>
-          </div>
-          <div className="md:col-span-5 bento-card overflow-hidden min-h-[300px] relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-amethyst-500/20 to-transparent z-10" />
-            <img src={IMAGES.interior} alt="Cafe interior" className="absolute inset-0 w-full h-full object-cover" />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Story + Values bento ─── */}
-      <section className="container-diamond pb-16 md:pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <div className="md:col-span-4 bento-card overflow-hidden min-h-[400px] relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent z-10" />
-            <img src={IMAGES.coffee} alt="Coffee pour" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute bottom-4 left-4 z-20">
-              <span className="text-white/80 font-display text-lg">Est. 2010</span>
-            </div>
-          </div>
-          <div className="md:col-span-8 bento-card p-8 md:p-12">
-            <span className="section-eyebrow">Our Story</span>
-            <h2 className="font-display text-3xl text-white mb-6">
-              Born in Noe Valley,
-              <br />
-              <span className="text-gradient">Brewed with Heart</span>
-            </h2>
-            <div className="space-y-4 text-white/50 leading-relaxed max-w-2xl">
-              <p>{SITE.fullStory}</p>
-              <p>
-                Every morning at 7 AM, the espresso machine hums to life, and the aroma of freshly brewed Big Mike Blend fills the block. Our beans are sourced from small, ethical farms and roasted in small batches for peak flavor.
-              </p>
-              <p>
-                But what truly makes Diamond Cafe sparkle is our community — the regulars who wave from the door, the writers who claim "their corner table," the families who stop in after school drop-off. We're more than a cafe. We're a living room for Noe Valley.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Team / Neighborhood bento ─── */}
-      <section className="container-diamond pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <div className="md:col-span-8 bento-card p-8 md:p-12">
-            <span className="section-eyebrow">Our Promise</span>
-            <h2 className="font-display text-3xl text-white mb-6">
-              Quality, Community,
-              <br />
-              <span className="text-gradient">Kindness</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {[
-                { title: 'House-Roasted', desc: 'Our Big Mike Blend is roasted in small batches for bold, smooth flavor every cup.' },
-                { title: 'Baked Fresh', desc: 'Everything from our pastry case is made from scratch each morning. No shortcuts.' },
-                { title: 'Family-Run', desc: 'We treat every customer like part of the Diamond family. Your name, your order, your story.' },
-              ].map((item) => (
-                <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/5">
-                  <h3 className="text-white font-display text-lg mb-2">{item.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="md:col-span-4 bento-card overflow-hidden min-h-[400px] relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent z-10" />
-            <img src={IMAGES.team} alt="Team at work" className="absolute inset-0 w-full h-full object-cover" />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── CTA ─── */}
-      <section className="container-diamond pb-24">
-        <div className="bento-card p-8 md:p-16 text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-coral-400/10 via-transparent to-amethyst-500/10" />
-          <div className="relative z-10">
-            <h2 className="font-display text-3xl md:text-5xl text-white mb-4">
-              Come Experience{' '}
-              <span className="text-gradient">Diamond</span>
-            </h2>
-            <p className="text-white/50 max-w-md mx-auto mb-8">
-              Stop by for a cup of Big Mike Blend or one of our delicious breakfast meals. We're saving a seat for you.
+            <p className="text-muted-stone text-sm leading-relaxed">
+              Every morning at 7 AM, the espresso machine hums to life and the aroma of freshly brewed coffee fills the block.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href={`https://maps.google.com/?q=${encodeURIComponent(SITE.address)}`} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                Find Us
-                <span className="text-xs opacity-70">↗</span>
-              </a>
-              <a href={`tel:${SITE.phone}`} className="btn-secondary">
-                {SITE.phone}
-              </a>
-            </div>
-          </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="container-frame overflow-hidden"
+          >
+            <img src={IMAGES.coffee} alt="Pour over coffee" className="w-full h-full object-cover min-h-[350px]" />
+          </motion.div>
         </div>
       </section>
     </div>
