@@ -52,21 +52,33 @@ export const MENU_ITEMS: MenuItem[] = [
   { id: 'sa5', name: 'Greek Salad', description: 'Romaine, cucumbers, tomatoes, kalamata olives, feta, red onions, oregano. Lemon-olive oil.', category: 'salads' },
 ];
 
+// ─── REAL ASSETS FROM DIAMONDCAFESF.COM ───
+export const LOGOS = {
+  square: 'https://diamondcafesf.com/hs-fs/hubfs/Diamond%20Cafe%20Logo%202024.png?width=135&height=135&name=Diamond%20Cafe%20Logo%202024.png',
+  wide: 'https://diamondcafesf.com/hs-fs/hubfs/Diamond%20Wide%20Logo.png?width=2377&height=269&name=Diamond%20Wide%20Logo.png',
+} as const;
+
+export const SOCIALS = {
+  facebook: 'https://www.facebook.com/diamondand24/',
+  instagram: 'https://www.instagram.com/diamond_cafe_on_noe/',
+} as const;
+
+export const ORDER_URL = 'https://www.toasttab.com/diamondcafe';
+
 export const IMAGES = {
   hero: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&h=1600&fit=crop&q=80',
-  interior: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=1000&fit=crop&q=80',
+  interior: 'https://diamondcafesf.com/hs-fs/hubfs/IMG_1523.jpg?width=2000&height=1500&name=IMG_1523.jpg',
   food: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&h=800&fit=crop&q=80',
   team: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=800&fit=crop&q=80',
   coffee: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=800&fit=crop&q=80',
-  neighborhood: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=600&fit=crop&q=80',
   gallery: [
-    { src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop&q=60', alt: 'Coffee pour over bar' },
-    { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=800&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=267&fit=crop&q=60', alt: 'Cozy cafe corner', span: 'tall' as const },
-    { src: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=267&h=200&fit=crop&q=60', alt: 'Coffee beans and brew', span: 'wide' as const },
-    { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&h=200&fit=crop&q=60', alt: 'Cafe interior with warm light' },
-    { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&h=800&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=267&h=267&fit=crop&q=60', alt: 'Latte art heart', span: 'big' as const },
-    { src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=200&h=200&fit=crop&q=60', alt: 'Happy customers' },
-    { src: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&h=200&fit=crop&q=60', alt: 'Iced coffee on counter' },
+    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1545.jpg?width=1200&length=1200&name=IMG_1545.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1545.jpg?width=400&length=400&name=IMG_1545.jpg', alt: 'Diamond Cafe interior' },
+    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1489.jpg?width=1200&length=1200&name=IMG_1489.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1489.jpg?width=400&length=400&name=IMG_1489.jpg', alt: 'Cafe counter', span: 'tall' as const },
+    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1578.jpg?width=1200&length=1200&name=IMG_1578.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1578.jpg?width=400&length=400&name=IMG_1578.jpg', alt: 'Coffee and pastries', span: 'wide' as const },
+    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1589.jpg?width=1200&length=1200&name=IMG_1589.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1589.jpg?width=400&length=400&name=IMG_1589.jpg', alt: 'Cafe ambiance' },
+    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1607.jpg?width=1200&length=1200&name=IMG_1607.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1607.jpg?width=400&length=400&name=IMG_1607.jpg', alt: 'Food plating', span: 'big' as const },
+    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1521.jpg?width=1200&length=1200&name=IMG_1521.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1521.jpg?width=400&length=400&name=IMG_1521.jpg', alt: 'Happy customers' },
+    { src: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&h=200&fit=crop&q=60', alt: 'Iced coffee' },
     { src: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=200&h=200&fit=crop&q=60', alt: 'Pour over coffee' },
   ] as GalleryImage[],
 };
@@ -74,11 +86,10 @@ export const IMAGES = {
 export const SITE = {
   name: 'Diamond Cafe',
   tagline: 'Noe Valley since 2010',
-  description: 'Diamond Cafe is a small, family-owned cafe in Noe Valley, San Francisco. Freshly brewed coffees, homemade pastries, and warm smiles every day.',
-  fullStory: 'Diamond Cafe has been a beloved fixture of Noe Valley since 2010. What started as a dream between two siblings has grown into the neighborhood gathering spot it is today. Every morning at 7 AM, the espresso machine hums to life and the aroma of freshly brewed coffee fills the block. We take pride in using quality ingredients, making everything from scratch, and treating every customer like family.',
+  description: "Diamond Cafe is a small, family-owned cafe located in the Noe Valley neighborhood and serving the surrounding area. We are dedicated to providing our customers with a warm and welcoming atmosphere where they can enjoy delicious food and beverages. Our menu features a variety of freshly brewed coffees, teas, and specialty drinks, as well as a selection of homemade pastries and sandwiches. Whether you're looking for a quick pick-me-up or a relaxing place to meet with friends, Diamond Cafe is the perfect spot. We take pride in using high-quality ingredients and providing exceptional customer service. Come visit us and experience the cozy charm of our cafe.",
   hours: '7:00 am — 3:00 pm',
   days: 'Open Daily',
-  address: '751 Diamond St, San Francisco, CA 94114',
+  address: '751 Diamond Street, San Francisco, CA 94114',
   neighborhood: 'Noe Valley, San Francisco',
   email: 'diamondcafelunches@gmail.com',
   phone: '(415) 655-3674',
