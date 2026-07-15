@@ -97,6 +97,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Skip rendering off-screen sections on mobile */
+section { content-visibility: auto; contain-intrinsic-size: 400px; }
+
 .container-frame {
   border: 1px solid rgba(45, 43, 58, 0.08);
   border-radius: 16px;

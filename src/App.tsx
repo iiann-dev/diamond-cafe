@@ -1,14 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Outlet } from 'react-router-dom';
 import { motion } from 'motion/react';
 import Lenis from 'lenis';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import MenuPage from './pages/MenuPage';
-import GalleryPage from './pages/GalleryPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const MenuPage = lazy(() => import('./pages/MenuPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,7 +36,9 @@ function Layout() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Outlet />
+              <Suspense fallback={<div className="h-screen" />}>
+                <Outlet />
+              </Suspense>
             </motion.div>
         </div>
       </main>
