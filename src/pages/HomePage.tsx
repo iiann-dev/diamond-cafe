@@ -1,86 +1,175 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { SITE, FEATURES, IMAGES, ORDER_URL } from '../data';
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const imageParallax = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
+  const fadeOut = useTransform(scrollYProgress, [0, 0.6], [1, 0.4]);
 
   return (
     <div>
-      {/* ─── HERO: organic split ─── */}
-      <section className="relative min-h-[85vh] grid grid-cols-1 md:grid-cols-2 mb-10 overflow-hidden">
-        {/* LEFT — Text */}
+      {/* ═══════════════════════════════════════════════════
+          HERO — Desktop: cinematic split w/ organic blend
+          Tablet: image-dominant split
+          Mobile: image-first vertical stack
+          ═══════════════════════════════════════════════════ */}
+      <section
+        ref={heroRef}
+        className="relative min-h-[100dvh] md:min-h-[90vh] grid grid-cols-1 md:grid-cols-2 mb-16 md:mb-20 overflow-hidden"
+      >
+        {/* ─── Ambient background glow ─── */}
+        <div className="absolute -top-1/2 -left-1/4 w-[120%] h-[100%] pointer-events-none z-0">
+          <div className="absolute top-[20%] left-[15%] w-[60%] h-[50%] rounded-full bg-diamond-blue/4 blur-[120px]" />
+          <div className="absolute top-[40%] right-[10%] w-[40%] h-[60%] rounded-full bg-soft-champagne/30 blur-[100px]" />
+        </div>
+
+        {/* ─── LEFT: Content ─── */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 md:py-0"
+          style={{ opacity: fadeOut }}
+          className="relative z-10 flex flex-col justify-center px-6 md:px-12 lg:px-16 xl:px-20 py-20 md:py-0"
         >
-          <p className="font-label text-caption text-diamond-blue mb-3">
-            {SITE.neighborhood} — {SITE.tagline}
-          </p>
-          <h1 className="font-display text-display-mobile md:text-display text-rich-charcoal mb-4 leading-[1.1]">
+          {/* Eyebrow */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="font-label text-caption text-diamond-blue mb-4 tracking-[0.15em]"
+          >
+            {SITE.neighborhood}
+          </motion.p>
+
+          {/* Heading — editorial, refined emphasis */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-display-mobile md:text-display lg:text-[64px] xl:text-[72px] text-rich-charcoal leading-[1.05] mb-6 max-w-xl"
+          >
             Diamond{' '}
-            <span className="text-diamond-blue italic">Cafe</span>
-          </h1>
-          <p className="text-muted-charcoal text-body-lg max-w-lg mb-8 leading-relaxed">
+            <span className="relative inline-block">
+              <span className="text-diamond-blue italic">Cafe</span>
+              <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-diamond-blue/60 via-diamond-blue/30 to-transparent rounded-full" />
+            </span>
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-muted-charcoal text-body-lg leading-relaxed max-w-lg mb-10"
+          >
             Fresh coffee, homemade food, and the warmest welcome in Noe Valley.
-          </p>
-          <div className="flex flex-wrap gap-4">
+          </motion.p>
+
+          {/* CTA Group */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap gap-4"
+          >
             <a
               href={ORDER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="btn-hero-primary"
             >
-              Order Online
+              <span className="relative z-10">Order Online</span>
             </a>
             <button
               onClick={() => navigate('/menu')}
-              className="btn-outline"
+              className="btn-hero-secondary"
             >
               View Menu
             </button>
-          </div>
+          </motion.div>
+
+          {/* Subtle ambient detail — crystal reflection */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0.8 }}
+            className="absolute bottom-8 left-6 md:left-12 lg:left-16 xl:left-20 hidden md:block"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-px h-8 bg-gradient-to-b from-diamond-blue/20 to-transparent" />
+              <span className="text-[10px] font-label text-faint-charcoal tracking-[0.12em] uppercase">
+                Since 2010
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
 
-        {/* RIGHT — Image with organic wave separator + frost blend */}
-        <div className="relative min-h-[50vh] md:min-h-full overflow-hidden">
-          {/* The wave-clipped image */}
-          <div
-            className="absolute inset-0 w-[120%] -left-[10%] md:w-[115%] md:-left-[8%] h-full"
-            style={{
-              clipPath: `path('M 80,0 C 180,80 20,200 100,320 C 180,420 30,540 90,650 C 150,740 50,830 80,920 L 2000,920 L 2000,0 Z')`,
-            }}
+        {/* ─── RIGHT: Image — organic blend ─── */}
+        <div className="relative min-h-[45vh] md:min-h-full overflow-hidden">
+          {/* Image container with scroll effect */}
+          <motion.div
+            style={{ y: imageParallax }}
+            className="absolute inset-0 w-[115%] -left-[8%] md:w-[110%] md:-left-[6%] lg:w-[108%] lg:-left-[5%] xl:w-[105%] xl:-left-[4%] h-[115%] -top-[7.5%]"
           >
-            <img
-              src={IMAGES.hero}
-              alt=""
-              className="w-full h-full object-cover"
-              fetchPriority="high"
-              loading="eager"
-              decoding="async"
+            <div
+              className="w-full h-full"
+              style={{
+                clipPath: `path('M 60,0 C 160,60 40,160 100,280 C 160,400 20,520 80,680 C 130,820 40,900 60,1000 L 2000,1000 L 2000,0 Z')`,
+              }}
+            >
+              <img
+                src={IMAGES.hero}
+                alt=""
+                className="w-full h-full object-cover scale-105"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                width="1400"
+                height="1600"
+              />
+            </div>
+
+            {/* Gradient overlay for organic blend */}
+            <div className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `linear-gradient(
+                  to right,
+                  var(--color-frost-white) 0%,
+                  rgba(250, 249, 247, 0.92) 8%,
+                  rgba(250, 249, 247, 0.3) 22%,
+                  transparent 35%
+                )`,
+              }}
             />
+          </motion.div>
+
+          {/* Crystal highlight reflection */}
+          <div className="absolute top-[15%] right-[8%] w-[30%] h-[20%] pointer-events-none opacity-40">
+            <div className="w-full h-full bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-full blur-[60px]" />
           </div>
 
-          {/* Frost overlay — softens the wave edge using Crystal Frost material */}
-          <div className="frost-overlay" />
+          {/* Bottom fade to section */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-frost-white to-transparent pointer-events-none" />
         </div>
       </section>
 
       {/* Features Bento */}
-      <section className="mb-10">
+      <section className="mb-16 md:mb-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {FEATURES.map((f, i) => (
             <motion.div
               key={f.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="porcelain-card p-6 text-center"
             >
-              <div className="w-12 h-12 rounded-xl bg-diamond-blue/10 flex items-center justify-center mx-auto mb-3">
+              <div className="w-12 h-12 rounded-xl bg-diamond-blue/8 flex items-center justify-center mx-auto mb-3">
                 {f.icon === 'coffee' && (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17 8h1a4 4 0 1 1 0 8h-1" /><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8Z" /><line x1="6" y1="2" x2="6" y2="4" /><line x1="10" y1="2" x2="10" y2="4" /><line x1="14" y1="2" x2="14" y2="4" />
@@ -110,7 +199,7 @@ export default function HomePage() {
       </section>
 
       {/* About Preview */}
-      <section className="mb-10 ambient-warm rounded-[24px] p-5 md:p-7">
+      <section className="mb-16 md:mb-20 ambient-warm rounded-[24px] p-5 md:p-7">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="img-frame overflow-hidden">
             <img src={IMAGES.interior} alt="Diamond Cafe interior" className="w-full h-full object-cover min-h-[280px]" decoding="async" loading="lazy" />
@@ -136,7 +225,7 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="mb-10">
+      <section className="mb-16 md:mb-20">
         <div className="text-center mb-8">
           <p className="font-label text-caption text-diamond-blue mb-2">Gallery</p>
           <h2 className="font-display text-heading text-rich-charcoal">Around the Cafe</h2>
@@ -162,7 +251,7 @@ export default function HomePage() {
       </section>
 
       {/* Visit CTA */}
-      <section className="mb-10">
+      <section className="mb-16 md:mb-20">
         <div className="glass-card p-8 md:p-12 text-center">
           <h2 className="font-display text-heading text-rich-charcoal mb-2">Visit Us</h2>
           <p className="text-muted-charcoal text-sm mb-1">{SITE.address}</p>
