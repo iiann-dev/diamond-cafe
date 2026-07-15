@@ -1,23 +1,56 @@
+import { useRef, useState, useEffect } from 'react';
 import { SITE, HOURS } from '../data';
 
 const dirsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(SITE.address)}`;
 
-function MapCard() {
+function LazyMap() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <a
-      href={dirsUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="container-frame overflow-hidden block group min-h-[200px] md:min-h-full"
-    >
-      <div className="w-full h-full min-h-[200px] md:min-h-[300px] bg-[#FDE8E6] flex flex-col items-center justify-center gap-3 p-8 text-center hover:bg-[#F5D0CA] transition-colors">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E05A4E" strokeWidth="1.5" strokeLinecap="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
-        </svg>
-        <span className="text-[#E05A4E] font-label-caps text-xs uppercase tracking-widest">{SITE.address}</span>
-        <span className="text-[#F2766A] font-label-caps text-xs uppercase tracking-widest underline group-hover:no-underline">Open in Google Maps</span>
-      </div>
-    </a>
+    <div ref={ref} className="container-frame overflow-hidden min-h-[200px] md:min-h-full">
+      {loaded ? (
+        <iframe
+          src={SITE.mapEmbed}
+          width="100%"
+          height="100%"
+          className="min-h-[200px] md:min-h-full"
+          style={{ border: 0 }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Diamond Cafe location"
+        />
+      ) : (
+        <a
+          href={dirsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-full min-h-[200px] md:min-h-[300px] bg-[#FDE8E6] flex flex-col items-center justify-center gap-3 p-8 text-center hover:bg-[#F5D0CA] transition-colors block group"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E05A4E" strokeWidth="1.5" strokeLinecap="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
+          </svg>
+          <span className="text-[#E05A4E] font-label-caps text-xs uppercase tracking-widest">{SITE.address}</span>
+          <span className="text-[#F2766A] font-label-caps text-xs uppercase tracking-widest underline group-hover:no-underline">Open in Google Maps</span>
+        </a>
+      )}
+    </div>
   );
 }
 
@@ -69,7 +102,7 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <MapCard />
+        <LazyMap />
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
