@@ -24,9 +24,11 @@ export default function AboutPage() {
         </h1>
         <div className="w-12 h-[2px] bg-diamond-blue/20 mx-auto mb-8" />
         <p className="text-muted-charcoal text-body-lg md:text-[18px] leading-relaxed max-w-xl mx-auto text-pretty">
-          A neighborhood cafe where every cup tells a story and every guest becomes family.
-          Tucked into the heart of Noe Valley, Diamond Cafe is a place where warmth meets
-          craftsmanship — and where the day always starts with a fresh pour.
+          Nestled in the heart of Noe Valley, Diamond Cafe is a minority-owned family treasure.
+          With Mike and Gaby at the helm — bringing over two decades of culinary expertise —
+          we serve crepes, breakfast favorites, and the kind of warmth that turns first-time
+          visitors into regulars. Since opening our doors in 2014, your support has been our
+          backbone. Here's to celebrating 10 incredible years together.
         </p>
       </motion.section>
 
