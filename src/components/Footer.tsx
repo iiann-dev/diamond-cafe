@@ -18,7 +18,7 @@ export default function Footer() {
               decoding="async"
             />
             <p className="text-muted-charcoal text-body leading-relaxed max-w-xs">
-              A family-run cafe in Noe Valley since 2010. Fresh coffee, homemade food, and warm smiles every day.
+              A family-run cafe in Noe Valley since 2014. Fresh coffee, homemade food, and warm smiles every day.
             </p>
           </div>
 

@@ -85,7 +85,7 @@ export const IMAGES = {
 
 export const SITE = {
   name: 'Diamond Cafe',
-  tagline: 'Noe Valley since 2010',
+  tagline: 'Noe Valley since 2014',
   description: "Diamond Cafe is a small, family-owned cafe located in the Noe Valley neighborhood and serving the surrounding area. We are dedicated to providing our customers with a warm and welcoming atmosphere where they can enjoy delicious food and beverages. Our menu features a variety of freshly brewed coffees, teas, and specialty drinks, as well as a selection of homemade pastries and sandwiches. Whether you're looking for a quick pick-me-up or a relaxing place to meet with friends, Diamond Cafe is the perfect spot. We take pride in using high-quality ingredients and providing exceptional customer service. Come visit us and experience the cozy charm of our cafe.",
   hours: '7:00 am — 3:00 pm',
   days: 'Open Daily',
@@ -94,7 +94,7 @@ export const SITE = {
   email: 'diamondcafelunches@gmail.com',
   phone: '(415) 655-3674',
   mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.5!2d-122.434!3d37.759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7f7f5f5f5f5f%3A0x5f5f5f5f5f5f5f5f!2s751+Diamond+St%2C+San+Francisco%2C+CA+94114!5e0!3m2!1sen!2sus!4v1',
-  founded: 2010,
+  founded: 2014,
 };
 
 export const HOURS: DayHours[] = [
@@ -115,7 +115,7 @@ export const FEATURES = [
     icon: 'pastry',
   },
   {
-    title: 'Family-Run Since 2010',
+    title: 'Family-Run Since 2014',
     desc: 'We treat every customer like part of the Diamond family.',
     icon: 'heart',
   },

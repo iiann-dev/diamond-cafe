@@ -87,7 +87,7 @@ export default function AboutPage() {
           <span className="w-6 h-px bg-diamond-blue/10" />
         </div>
         <p className="text-muted-charcoal text-body-sm mt-2 opacity-60">
-          Since 2010
+          Since 2014
         </p>
       </motion.section>
 
@@ -196,7 +196,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          CLOSING — Since 2010 + Visit
+          CLOSING — Since 2014 + Visit
           Warm invitation with subtle depth
           ═══════════════════════════════════════════════════ */}
       <motion.section
@@ -215,7 +215,7 @@ export default function AboutPage() {
             ✦
           </span>
           <h2 className="font-display text-[34px] md:text-[42px] text-rich-charcoal leading-[1.1] mt-4 mb-3">
-            Family-Run <span className="text-diamond-blue italic">Since 2010</span>
+            Family-Run <span className="text-diamond-blue italic">Since 2014</span>
           </h2>
           <p className="text-muted-charcoal text-body-lg leading-relaxed max-w-md mx-auto mb-8 text-pretty">
             What started as a dream between two siblings has grown into the heart of the neighborhood.

@@ -191,7 +191,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <div className="w-px h-8 bg-gradient-to-b from-diamond-blue/20 to-transparent" />
                 <span className="text-[10px] font-label text-faint-charcoal tracking-[0.12em] uppercase">
-                  Since 2010
+                  Since 2014
                 </span>
               </div>
             </motion.div>
