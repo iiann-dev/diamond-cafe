@@ -1,47 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  /* ─── Golden Hour palette — Diamond Cafe ───
-     Burnt terra cotta + Eucalyptus green + Honey gold
-     Warm, cheerful, unique — inspired by Noe Valley afternoon light */
-  --color-primary: #C75B39;
-  --color-primary-hover: #B04A2A;
-  --color-primary-container: #FDE8DE;
-  --color-primary-fixed-dim: #D86D4A;
-  --color-secondary: #4A8B7B;
-  --color-secondary-container: #E5F0EC;
-  --color-secondary-hover: #3D7A6A;
-  --color-tertiary: #E8A954;
-  --color-tertiary-container: #FEF3D6;
+  /* ─── Playful Charming Palette — Diamond Cafe ───
+     Coral + Mint + Gold — warm, fresh, sunny, charming */
+
+  --color-primary: #F2766A;
+  --color-primary-hover: #E05A4E;
+  --color-primary-container: #FDE8E6;
+  --color-primary-fixed-dim: #FF8A7E;
+  --color-secondary: #5EC4B4;
+  --color-secondary-container: #E0F5F2;
+  --color-secondary-hover: #4AB3A2;
+  --color-tertiary: #F4B942;
+  --color-tertiary-container: #FEF0D6;
   --color-surface: #FFFFFF;
-  --color-surface-container: #FFFBFA;
-  --color-surface-container-low: #FFFDFC;
-  --color-surface-container-high: #FFF5EE;
-  --color-surface-container-highest: #FFEDE4;
+  --color-surface-container: #FFF5F0;
+  --color-surface-container-low: #FFFAF7;
+  --color-surface-container-high: #FFEDE6;
+  --color-surface-container-highest: #FFE5DC;
   --color-surface-dim: #F5EDE8;
   --color-surface-bright: #FFFFFF;
   --color-surface-onyx: #FFFFFF;
-  --color-background: #FFFBFA;
-  --color-on-surface: #2E2420;
-  --color-on-background: #2E2420;
-  --color-text-primary: #2E2420;
-  --color-text-secondary: #7D716A;
-  --color-on-surface-variant: #7D716A;
-  --color-muted-stone: #9C8E86;
-  --color-text-warm-white: #2E2420;
+  --color-background: #FFF9F5;
+  --color-on-surface: #2D2B3A;
+  --color-on-background: #2D2B3A;
+  --color-text-primary: #2D2B3A;
+  --color-text-secondary: #8B7E81;
+  --color-on-surface-variant: #8B7E81;
+  --color-muted-stone: #A39396;
+  --color-text-warm-white: #2D2B3A;
   --color-on-primary: #FFFFFF;
-  --color-on-primary-container: #431E00;
-  --color-outline: #C5B8B0;
-  --color-outline-variant: #E8DED6;
+  --color-on-primary-container: #441E1A;
+  --color-outline: #D4C5C2;
+  --color-outline-variant: #EBE0DC;
   --color-error: #DC2626;
   --color-error-container: #FEE2E2;
-  --color-border-subtle: rgba(46, 36, 32, 0.08);
-  --color-surface-tint: #C75B39;
-  --color-inverse-primary: #FBBF24;
-  --color-inverse-surface: #2E2420;
+  --color-border-subtle: rgba(45, 43, 58, 0.08);
+  --color-surface-tint: #F2766A;
+  --color-inverse-primary: #FFB3A8;
+  --color-inverse-surface: #2D2B3A;
   --color-inverse-on-surface: #F5EDE8;
-  --color-order: #16A34A;
-  --color-order-hover: #15803D;
+  --color-order: #F2766A;
+  --color-order-hover: #E05A4E;
 
   --font-display-lg: "Playfair Display", serif;
   --font-headline-md: "Playfair Display", serif;
@@ -90,18 +90,15 @@ html, body, :root, #root {
 }
 
 body {
-  background-color: #FFFBFA;
-  background-image:
-    linear-gradient(rgba(255, 251, 250, 0.97), rgba(255, 251, 250, 0.97)),
-    url('https://www.transparenttextures.com/patterns/crossword.png');
-  color: #2E2420;
+  background-color: #FFF9F5;
+  color: #2D2B3A;
   font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .container-frame {
-  border: 1px solid rgba(46, 36, 32, 0.08);
+  border: 1px solid rgba(45, 43, 58, 0.08);
   border-radius: 16px;
   background-color: #FFFFFF;
   position: relative;
@@ -126,7 +123,7 @@ body {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: #C75B39;
+  background-color: #F2766A;
   transition: width 0.3s ease;
 }
 .nav-hover-line:hover::after,
@@ -138,17 +135,17 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFFBFA;
+  background: #FFF9F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E8DED6;
+  background: #EBE0DC;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5B8B0;
+  background: #D4C5C2;
 }
 
 ::selection {
-  background-color: #C75B39;
+  background-color: #F2766A;
   color: #FFFFFF;
 }
