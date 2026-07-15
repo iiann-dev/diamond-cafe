@@ -6,7 +6,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 pt-8">
         <div className="img-frame">
-          <img src={IMAGES.team} alt="Diamond Cafe team" className="w-full h-full object-cover min-h-[140px]" decoding="async" />
+          <img src={IMAGES.team} alt="Diamond Cafe team" className="w-full h-full object-cover min-h-[70px]" decoding="async" />
         </div>
         <div className="porcelain-card p-8 md:p-12 flex flex-col justify-center">
           <p className="font-label text-caption text-diamond-blue mb-2">About</p>
@@ -53,7 +53,7 @@ export default function AboutPage() {
           </p>
         </div>
         <div className="img-frame">
-          <img src={IMAGES.coffee} alt="Pour over coffee" className="w-full h-full object-cover min-h-[140px]" decoding="async" loading="lazy" />
+          <img src={IMAGES.coffee} alt="Pour over coffee" className="w-full h-full object-cover min-h-[70px]" decoding="async" loading="lazy" />
         </div>
       </section>
     </div>
