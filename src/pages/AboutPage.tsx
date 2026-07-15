@@ -7,44 +7,25 @@ export default function AboutPage() {
   return (
     <div>
       {/* ═══════════════════════════════════════════════════
-          HERO — Editorial split: barista / story
+          HERO — Editorial text-only
           ═══════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-20 pt-10">
-        {/* Image — immersive, authentic cafe life */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease }}
-          className="md:col-span-7 overflow-hidden rounded-[20px] md:rounded-[24px]"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=360&h=440&fit=crop&q=60"
-            alt="Barista preparing coffee at Diamond Cafe"
-            className="w-full h-[45vh] md:h-full object-cover"
-            fetchPriority="high"
-            loading="eager"
-            decoding="async"
-          />
-        </motion.div>
-
-        {/* Text — generous, editorial */}
-        <motion.div
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease }}
-          className="md:col-span-5 flex flex-col justify-center px-5 md:px-6 lg:px-10"
-        >
-          <p className="font-label text-caption text-diamond-blue mb-3 tracking-[0.15em]">
-            About
-          </p>
-          <h1 className="font-display text-display-mobile md:text-[52px] lg:text-[60px] text-rich-charcoal leading-[1.05] mb-6">
-            Our <span className="text-diamond-blue italic">Story</span>
-          </h1>
-          <p className="text-muted-charcoal text-body leading-relaxed max-w-md">
-            {SITE.description}
-          </p>
-        </motion.div>
-      </section>
+      <motion.section
+        initial={{ opacity: 0, y: 36 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease }}
+        className="mb-20 pt-16 md:pt-24 text-center max-w-3xl mx-auto px-5 md:px-8"
+      >
+        <p className="font-label text-caption text-diamond-blue mb-4 tracking-[0.15em]">
+          About
+        </p>
+        <h1 className="font-display text-display-mobile md:text-[56px] lg:text-[68px] text-rich-charcoal leading-[1.05] mb-6">
+          Our <span className="text-diamond-blue italic">Story</span>
+        </h1>
+        <div className="w-12 h-[2px] bg-diamond-blue/20 mx-auto mb-6" />
+        <p className="text-muted-charcoal text-body-lg md:text-[18px] leading-relaxed max-w-2xl mx-auto">
+          {SITE.description}
+        </p>
+      </motion.section>
 
       {/* ═══════════════════════════════════════════════════
           EDITORIAL MOMENT — Quote / Philosophy
