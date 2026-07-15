@@ -1,16 +1,31 @@
-import { motion } from 'motion/react';
 import { SITE, HOURS } from '../data';
+
+const dirsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(SITE.address)}`;
+
+function MapCard() {
+  return (
+    <a
+      href={dirsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="container-frame overflow-hidden block group min-h-[200px] md:min-h-full"
+    >
+      <div className="w-full h-full min-h-[200px] md:min-h-[300px] bg-[#FDE8E6] flex flex-col items-center justify-center gap-3 p-8 text-center hover:bg-[#F5D0CA] transition-colors">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E05A4E" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
+        </svg>
+        <span className="text-[#E05A4E] font-label-caps text-xs uppercase tracking-widest">{SITE.address}</span>
+        <span className="text-[#F2766A] font-label-caps text-xs uppercase tracking-widest underline group-hover:no-underline">Open in Google Maps</span>
+      </div>
+    </a>
+  );
+}
 
 export default function ContactPage() {
   return (
     <div>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 pt-8">
-        <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="container-frame p-8 md:p-12 flex flex-col justify-center"
-        >
+        <div className="container-frame p-8 md:p-12 flex flex-col justify-center">
           <p className="font-label-caps text-[#F2766A] uppercase tracking-[0.12em] mb-2">Contact</p>
           <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-[#2D2B3A] mb-6">
             Find <span className="text-[#F2766A]">Us</span>
@@ -44,34 +59,21 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="container-frame overflow-hidden"
-        >
-          <iframe
-            src={SITE.mapEmbed}
-            width="100%"
-            height="100%"
-            className="min-h-[380px]"
-            style={{ border: 0 }}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Diamond Cafe location"
-          />
-        </motion.div>
+          <a
+            href={dirsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#F2766A] hover:bg-[#E05A4E] text-white px-6 py-3 rounded-lg font-label-caps text-xs uppercase tracking-wider transition-all duration-300 text-center hover:shadow-lg"
+          >
+            Get Directions
+          </a>
+        </div>
+
+        <MapCard />
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="container-frame p-8"
-        >
+        <div className="container-frame p-8">
           <h2 className="font-display-lg text-headline-md text-[#2D2B3A] mb-6">Hours</h2>
           <div className="space-y-3">
             {HOURS.map((h) => (
@@ -85,14 +87,8 @@ export default function ContactPage() {
             <p className="text-[#E05A4E] font-label-caps uppercase text-xs tracking-widest mb-1">Neighborhood</p>
             <p className="text-[#2D2B3A] text-sm">{SITE.neighborhood}</p>
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="container-frame p-8"
-        >
+        </div>
+        <div className="container-frame p-8">
           <h2 className="font-display-lg text-headline-md text-[#2D2B3A] mb-6">Send a Message</h2>
           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
             <div>
@@ -107,11 +103,11 @@ export default function ContactPage() {
               <label className="block text-[#8B7E81] text-xs font-label-caps uppercase tracking-widest mb-2">Message</label>
               <textarea rows={4} className="w-full bg-[#FFF9F5] border border-[rgba(45,43,58,0.08)] rounded-lg px-4 py-3 text-[#2D2B3A] text-sm focus:outline-none focus:border-[#F2766A] focus:ring-2 focus:ring-[#F2766A]/20 transition-all resize-none" placeholder="How can we help?" />
             </div>
-            <button type="submit" className="bg-[#F2766A] hover:bg-[#E05A4E] text-white px-8 py-3 rounded-lg font-label-caps uppercase tracking-wider hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer text-sm w-full md:w-auto">
+            <button type="submit" className="bg-[#F2766A] hover:bg-[#E05A4E] text-white px-8 py-3 rounded-lg font-label-caps uppercase tracking-wider hover:shadow-lg active:translate-y-0 transition-all duration-300 cursor-pointer text-sm w-full md:w-auto">
               Send Message
             </button>
           </form>
-        </motion.div>
+        </div>
       </section>
     </div>
   );

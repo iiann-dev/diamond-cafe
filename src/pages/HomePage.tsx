@@ -122,15 +122,9 @@ export default function HomePage() {
       {/* About Preview */}
       <section className="mb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="container-frame overflow-hidden"
-          >
-            <img src={IMAGES.interior} alt="Diamond Cafe interior" className="w-full h-full object-cover min-h-[380px]" decoding="async" loading="lazy" />
-          </motion.div>
+          <div className="container-frame overflow-hidden">
+            <img src={IMAGES.interior} alt="Diamond Cafe interior" className="w-full h-full object-cover min-h-[280px]" decoding="async" loading="lazy" />
+          </div>
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -159,16 +153,12 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {IMAGES.gallery.slice(0, 4).map((img, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
               className="container-frame overflow-hidden"
             >
               <img src={img.thumb} alt={img.alt} className="w-full h-48 object-cover" loading="lazy" decoding="async" />
-            </motion.div>
+            </div>
           ))}
         </div>
         <div className="text-center mt-6">
@@ -183,12 +173,7 @@ export default function HomePage() {
 
       {/* Visit CTA */}
       <section className="mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="container-frame p-8 md:p-12 text-center"
-        >
+        <div className="container-frame p-8 md:p-12 text-center">
           <h2 className="font-display-lg text-headline-md text-[#2D2B3A] mb-2">Visit Us</h2>
           <p className="text-[#8B7E81] text-sm mb-1">{SITE.address}</p>
           <p className="text-[#F2766A] font-label-caps uppercase tracking-widest mb-6">Open Daily 7:00 am — 3:00 pm</p>
@@ -211,7 +196,7 @@ export default function HomePage() {
               Get Directions
             </button>
           </div>
-        </motion.div>
+        </div>
       </section>
     </div>
   );
