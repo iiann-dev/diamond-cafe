@@ -54,7 +54,7 @@ export const MENU_ITEMS: MenuItem[] = [
 
 // ─── REAL ASSETS FROM DIAMONDCAFESF.COM ───
 export const LOGOS = {
-  square: 'https://diamondcafesf.com/hs-fs/hubfs/Diamond%20Cafe%20Logo%202024.png?width=135&height=135&name=Diamond%20Cafe%20Logo%202024.png',
+  square: '/images/logo.png',
   wide: 'https://diamondcafesf.com/hs-fs/hubfs/Diamond%20Wide%20Logo.png?width=2377&height=269&name=Diamond%20Wide%20Logo.png',
 } as const;
 
