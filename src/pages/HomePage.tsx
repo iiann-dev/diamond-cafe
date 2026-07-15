@@ -121,7 +121,7 @@ export default function HomePage() {
             TABLET & DESKTOP HERO (≥ 768px)
             Composition: split — text left / image right
             ═══════════════════════════════════════════════ */}
-        <div className="hidden md:block min-h-[90vh] grid grid-cols-2">
+        <div className="hidden md:grid min-h-[90vh] grid-cols-2">
           {/* ─── Ambient glow (desktop-tuned) ─── */}
           <div className="absolute -top-1/2 -left-1/4 w-[120%] h-[100%] pointer-events-none z-0">
             <div className="absolute top-[20%] left-[15%] w-[60%] h-[50%] rounded-full bg-diamond-blue/4 blur-[120px]" />
