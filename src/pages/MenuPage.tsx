@@ -23,23 +23,6 @@ export default function MenuPage() {
         </h1>
       </div>
 
-      {/* Full menu image from diamondcafesf.com */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="container-frame overflow-hidden mb-8"
-      >
-        <a href="https://diamondcafesf.com/hubfs/Diamond%20Cafe%20Menu%20PRICELESS.png" target="_blank" rel="noopener noreferrer" className="block">
-          <img
-            src="https://diamondcafesf.com/hubfs/Diamond%20Cafe%20Menu%20PRICELESS.png"
-            alt="Diamond Cafe full menu"
-            className="w-full h-auto object-contain"
-            loading="eager"
-            decoding="async"
-          />
-        </a>
-      </motion.div>
-
       {/* Category Pills */}
       <div className="flex flex-wrap gap-2 justify-center mb-10">
         <button

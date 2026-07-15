@@ -7,26 +7,6 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hiring Banner */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-[#FDE8E6] border border-[#F5C5C0] rounded-container p-4 md:p-5 mb-8 text-center"
-      >
-        <h2 className="font-label-caps text-[#E05A4E] uppercase text-sm tracking-widest mb-1">
-          We Are Hiring a Line Cook — Estamos Contratando Cocinero
-        </h2>
-        <p className="text-[#8B7E81] text-sm">
-          Send us an email or visit us to express your interest. &middot; Mándanos un correo o visítanos si estás interesado.
-        </p>
-        <a
-          href="mailto:diamondcafelunches@gmail.com"
-          className="inline-block mt-2 text-[#F2766A] font-label-caps text-xs uppercase tracking-widest hover:underline"
-        >
-          Contact
-        </a>
-      </motion.div>
-
       {/* ─── HERO: organic split ─── */}
       <section className="relative min-h-[85vh] grid grid-cols-1 md:grid-cols-2 mb-10 overflow-hidden rounded-container">
         {/* LEFT — Text */}
