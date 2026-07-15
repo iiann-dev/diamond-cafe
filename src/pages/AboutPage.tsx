@@ -18,7 +18,7 @@ export default function AboutPage() {
           className="md:col-span-7 overflow-hidden rounded-[20px] md:rounded-[24px]"
         >
           <img
-            src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=900&h=1100&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=360&h=440&fit=crop&q=60"
             alt="Barista preparing coffee at Diamond Cafe"
             className="w-full h-[45vh] md:h-full object-cover"
             fetchPriority="high"
@@ -157,7 +157,7 @@ export default function AboutPage() {
           </div>
           <div className="order-1 md:order-2 overflow-hidden rounded-[20px]">
             <img
-              src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=700&h=500&fit=crop&q=70"
+              src="https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?w=700&h=500&fit=crop&q=80"
               alt="Fresh coffee beans"
               className="w-full h-[300px] md:h-[360px] object-cover"
               loading="lazy"
