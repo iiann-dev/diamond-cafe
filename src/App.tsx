@@ -25,7 +25,7 @@ function Layout() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-background text-on-surface flex flex-col font-body-md overflow-x-hidden">
+    <div className="min-h-screen bg-[var(--color-frost-white)] text-[var(--color-rich-charcoal)] flex flex-col overflow-x-hidden">
       <Nav />
       <ScrollToTop />
       <main className="flex-1 pt-20 pb-section-padding px-margin-mobile md:px-gutter">
@@ -34,7 +34,7 @@ function Layout() {
               key={location.pathname}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <Suspense fallback={<div className="h-screen" />}>
                 <Outlet />

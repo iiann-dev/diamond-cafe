@@ -16,7 +16,7 @@ export default function Nav() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-md border-b border-[rgba(47,55,66,0.06)]">
+    <header className="fixed top-0 w-full z-50 bg-[var(--color-surface-glass)] backdrop-blur-md border-b border-[var(--color-crystal-edge)]">
       <div className="max-w-container-max mx-auto flex justify-between items-center px-gutter py-4">
         <motion.div
           onClick={() => handleNavClick('/')}
@@ -38,7 +38,7 @@ export default function Nav() {
             <button
               key={item.tab}
               onClick={() => handleNavClick(item.tab === 'home' ? '/' : `/${item.tab}`)}
-              className={`font-body-md text-sm text-[#2F3742]/80 relative nav-hover-line ${
+              className={`nav-link ${
                 currentPath === item.tab ? 'active' : ''
               }`}
             >
@@ -49,7 +49,7 @@ export default function Nav() {
             href={ORDER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#7FB7F4] hover:bg-[#5A94D6] text-white px-5 py-2.5 rounded-lg font-label-caps text-xs uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+            className="btn-primary"
           >
             Order Online
           </a>
@@ -57,7 +57,7 @@ export default function Nav() {
 
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 text-[#7FB7F4] border border-[rgba(47,55,66,0.08)] rounded-lg active:scale-95 transition-transform cursor-pointer"
+          className="md:hidden p-2 text-[var(--color-diamond-blue)] border border-[var(--color-crystal-edge-medium)] rounded-lg active:scale-95 transition-transform cursor-pointer"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             {isMobileMenuOpen ? (
@@ -72,7 +72,7 @@ export default function Nav() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-white/98 backdrop-blur-lg border-t border-[rgba(47,55,66,0.06)]"
+            className="md:hidden bg-[var(--color-surface)] border-t border-[var(--color-crystal-edge)] backdrop-blur-lg"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -83,8 +83,8 @@ export default function Nav() {
                 <button
                   key={item.tab}
                   onClick={() => handleNavClick(item.tab === 'home' ? '/' : `/${item.tab}`)}
-                  className={`w-full text-left font-display-lg text-display-lg-mobile py-3 border-b border-[rgba(47,55,66,0.06)] cursor-pointer ${
-                    currentPath === item.tab ? 'text-[#7FB7F4]' : 'text-[#6C757E]'
+                  className={`w-full text-left font-display text-heading-lg py-3 border-b border-[var(--color-crystal-edge)] cursor-pointer ${
+                    currentPath === item.tab ? 'text-[var(--color-diamond-blue)]' : 'text-[var(--color-muted-charcoal)]'
                   }`}
                 >
                   {item.label}
@@ -94,7 +94,7 @@ export default function Nav() {
                 href={ORDER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center bg-[#7FB7F4] hover:bg-[#5A94D6] text-white px-5 py-3 rounded-lg font-label-caps text-xs uppercase tracking-widest transition-colors"
+                className="btn-primary w-full"
               >
                 Order Online
               </a>

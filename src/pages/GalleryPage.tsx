@@ -8,9 +8,9 @@ export default function GalleryPage() {
   return (
     <div>
       <div className="text-center mb-10 pt-8">
-        <p className="font-label-caps text-[#7FB7F4] uppercase tracking-[0.12em] mb-2">Gallery</p>
-        <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-[#2F3742]">
-          Around the <span className="text-[#7FB7F4]">Cafe</span>
+        <p className="font-label text-caption text-diamond-blue mb-2">Gallery</p>
+        <h1 className="font-display text-display-mobile md:text-display text-rich-charcoal">
+          Around the <span className="text-diamond-blue">Cafe</span>
         </h1>
       </div>
 
@@ -23,7 +23,7 @@ export default function GalleryPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
             onClick={() => setLightbox(i)}
-            className={`container-frame overflow-hidden cursor-pointer text-left ${
+            className={`img-frame cursor-pointer text-left ${
               img.span === 'tall' ? 'row-span-2' : ''
             } ${img.span === 'wide' ? 'col-span-2' : ''} ${
               img.span === 'big' ? 'col-span-2 row-span-2' : ''
@@ -41,7 +41,7 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
-            className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4 cursor-pointer"
+            className="fixed inset-0 z-[100] bg-deep-midnight-blue/85 flex items-center justify-center p-4 cursor-pointer"
           >
             <button onClick={(e) => { e.stopPropagation(); setLightbox(null); }} className="absolute top-6 right-6 text-white/70 hover:text-white z-10 cursor-pointer">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
@@ -53,15 +53,15 @@ export default function GalleryPage() {
               exit={{ scale: 0.9, opacity: 0 }}
               src={IMAGES.gallery[lightbox].src}
               alt={IMAGES.gallery[lightbox].alt}
-              className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+              className="max-w-[90vw] max-h-[85vh] object-contain rounded-xl"
               onClick={(e) => e.stopPropagation()}
               decoding="async"
             />
             <div className="absolute bottom-8 flex gap-3">
-              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === 0 ? IMAGES.gallery.length - 1 : lightbox - 1); }} className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors cursor-pointer">
+              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === 0 ? IMAGES.gallery.length - 1 : lightbox - 1); }} className="bg-white/10 hover:bg-white/25 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="15 18 9 12 15 6" /></svg>
               </button>
-              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === IMAGES.gallery.length - 1 ? 0 : lightbox + 1); }} className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors cursor-pointer">
+              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === IMAGES.gallery.length - 1 ? 0 : lightbox + 1); }} className="bg-white/10 hover:bg-white/25 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
               </button>
             </div>
