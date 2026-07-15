@@ -9,11 +9,11 @@ export default function AboutPage() {
           <img src={IMAGES.team} alt="Diamond Cafe team" className="w-full h-full object-cover min-h-[280px]" decoding="async" />
         </div>
         <div className="container-frame p-8 md:p-12 flex flex-col justify-center">
-          <p className="font-label-caps text-[#F2766A] uppercase tracking-[0.12em] mb-2">About</p>
-          <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-[#2D2B3A] mb-4">
-            Our <span className="text-[#F2766A]">Story</span>
+          <p className="font-label-caps text-[#7FB7F4] uppercase tracking-[0.12em] mb-2">About</p>
+          <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-[#2F3742] mb-4">
+            Our <span className="text-[#7FB7F4]">Story</span>
           </h1>
-          <p className="text-[#8B7E81] text-sm leading-relaxed">{SITE.description}</p>
+          <p className="text-[#6C757E] text-sm leading-relaxed">{SITE.description}</p>
         </div>
       </section>
 
@@ -28,15 +28,15 @@ export default function AboutPage() {
             key={v.title}
             className="container-frame p-6 text-center"
           >
-            <div className="w-12 h-12 rounded-xl bg-[#F2766A]/10 flex items-center justify-center mx-auto mb-3">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2766A" strokeWidth="1.5" strokeLinecap="round">
+            <div className="w-12 h-12 rounded-xl bg-[#7FB7F4]/10 flex items-center justify-center mx-auto mb-3">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7FB7F4" strokeWidth="1.5" strokeLinecap="round">
                 {i === 0 && <><path d="M12 2L2 7l10 5 10-5-10-5Z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></>}
                 {i === 1 && <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>}
                 {i === 2 && <><path d="M12 2L2 7l10 5 10-5-10-5Z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></>}
               </svg>
             </div>
-            <h3 className="font-display-lg text-[18px] text-[#2D2B3A] mb-1">{v.title}</h3>
-            <p className="text-[#8B7E81] text-sm leading-relaxed">{v.desc}</p>
+            <h3 className="font-display-lg text-[18px] text-[#2F3742] mb-1">{v.title}</h3>
+            <p className="text-[#6C757E] text-sm leading-relaxed">{v.desc}</p>
           </div>
         ))}
       </section>
@@ -44,11 +44,11 @@ export default function AboutPage() {
       {/* Family */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
         <div className="container-frame p-8 md:p-12 flex flex-col justify-center">
-          <h2 className="font-display-lg text-headline-md text-[#2D2B3A] mb-4">Family-Run Since 2010</h2>
-          <p className="text-[#8B7E81] text-sm leading-relaxed mb-3">
+          <h2 className="font-display-lg text-headline-md text-[#2F3742] mb-4">Family-Run Since 2010</h2>
+          <p className="text-[#6C757E] text-sm leading-relaxed mb-3">
             What started as a dream between two siblings has grown into the neighborhood gathering spot it is today.
           </p>
-          <p className="text-[#8B7E81] text-sm leading-relaxed">
+          <p className="text-[#6C757E] text-sm leading-relaxed">
             Every morning at 7 AM, the espresso machine hums to life and the aroma of freshly brewed coffee fills the block.
           </p>
         </div>

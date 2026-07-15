@@ -8,9 +8,9 @@ export default function GalleryPage() {
   return (
     <div>
       <div className="text-center mb-10 pt-8">
-        <p className="font-label-caps text-[#F2766A] uppercase tracking-[0.12em] mb-2">Gallery</p>
-        <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-[#2D2B3A]">
-          Around the <span className="text-[#F2766A]">Cafe</span>
+        <p className="font-label-caps text-[#7FB7F4] uppercase tracking-[0.12em] mb-2">Gallery</p>
+        <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-[#2F3742]">
+          Around the <span className="text-[#7FB7F4]">Cafe</span>
         </h1>
       </div>
 

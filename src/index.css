@@ -1,47 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  /* ─── Playful Charming Palette — Diamond Cafe ───
-     Coral + Mint + Gold — warm, fresh, sunny, charming */
+  /* ─── Diamond-inspired Palette — Diamond Cafe ───
+     Frost white · Diamond blue · Champagne accent
+     Clarity, warmth, refined neighborhood feel */
 
-  --color-primary: #F2766A;
-  --color-primary-hover: #E05A4E;
-  --color-primary-container: #FDE8E6;
-  --color-primary-fixed-dim: #FF8A7E;
-  --color-secondary: #5EC4B4;
-  --color-secondary-container: #E0F5F2;
-  --color-secondary-hover: #4AB3A2;
-  --color-tertiary: #F4B942;
-  --color-tertiary-container: #FEF0D6;
+  --color-primary: #7FB7F4;
+  --color-primary-hover: #5A94D6;
+  --color-primary-container: #EAF4FD;
+  --color-primary-fixed-dim: #B0D4F7;
+  --color-secondary: #D9C7A4;
+  --color-secondary-container: #F3F8FD;
+  --color-secondary-hover: #C8C2B8;
+  --color-tertiary: #D9C7A4;
+  --color-tertiary-container: #F3F8FD;
   --color-surface: #FFFFFF;
-  --color-surface-container: #FFF5F0;
-  --color-surface-container-low: #FFFAF7;
-  --color-surface-container-high: #FFEDE6;
-  --color-surface-container-highest: #FFE5DC;
-  --color-surface-dim: #F5EDE8;
-  --color-surface-bright: #FFFFFF;
-  --color-surface-onyx: #FFFFFF;
-  --color-background: #FFF9F5;
-  --color-on-surface: #2D2B3A;
-  --color-on-background: #2D2B3A;
-  --color-text-primary: #2D2B3A;
-  --color-text-secondary: #8B7E81;
-  --color-on-surface-variant: #8B7E81;
-  --color-muted-stone: #A39396;
-  --color-text-warm-white: #2D2B3A;
+  --color-surface-container: #FBFCFE;
+  --color-surface-container-low: #FBFCFE;
+  --color-surface-container-high: #F3F8FD;
+  --color-surface-container-highest: #EAF4FD;
+  --color-surface-dim: #EAF4FD;
+  --color-surface-bright: #FBFCFE;
+  --color-surface-onyx: #FBFCFE;
+  --color-background: #FBFCFE;
+  --color-on-surface: #2F3742;
+  --color-on-background: #2F3742;
+  --color-text-primary: #2F3742;
+  --color-text-secondary: #6C757E;
+  --color-on-surface-variant: #6C757E;
+  --color-muted-stone: #9CA3AF;
+  --color-text-warm-white: #2F3742;
   --color-on-primary: #FFFFFF;
-  --color-on-primary-container: #441E1A;
-  --color-outline: #D4C5C2;
-  --color-outline-variant: #EBE0DC;
+  --color-on-primary-container: #1A3A5C;
+  --color-outline: #D1D9E6;
+  --color-outline-variant: #E5EDF5;
   --color-error: #DC2626;
   --color-error-container: #FEE2E2;
-  --color-border-subtle: rgba(45, 43, 58, 0.08);
-  --color-surface-tint: #F2766A;
-  --color-inverse-primary: #FFB3A8;
-  --color-inverse-surface: #2D2B3A;
-  --color-inverse-on-surface: #F5EDE8;
-  --color-order: #F2766A;
-  --color-order-hover: #E05A4E;
+  --color-border-subtle: rgba(47, 55, 66, 0.08);
+  --color-surface-tint: #7FB7F4;
+  --color-inverse-primary: #B0D4F7;
+  --color-inverse-surface: #2F3742;
+  --color-inverse-on-surface: #FBFCFE;
+  --color-order: #7FB7F4;
+  --color-order-hover: #5A94D6;
 
   --font-display-lg: "Playfair Display", serif;
   --font-headline-md: "Playfair Display", serif;
@@ -90,8 +91,8 @@ html, body, :root, #root {
 }
 
 body {
-  background-color: #FFF9F5;
-  color: #2D2B3A;
+  background-color: #FBFCFE;
+  color: #2F3742;
   font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -101,7 +102,7 @@ body {
 section { content-visibility: auto; contain-intrinsic-size: 400px; }
 
 .container-frame {
-  border: 1px solid rgba(45, 43, 58, 0.08);
+  border: 1px solid rgba(47, 55, 66, 0.08);
   border-radius: 16px;
   background-color: #FFFFFF;
   position: relative;
@@ -126,7 +127,7 @@ section { content-visibility: auto; contain-intrinsic-size: 400px; }
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: #F2766A;
+  background-color: #7FB7F4;
   transition: width 0.3s ease;
 }
 .nav-hover-line:hover::after,
@@ -138,17 +139,17 @@ section { content-visibility: auto; contain-intrinsic-size: 400px; }
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFF9F5;
+  background: #FBFCFE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #EBE0DC;
+  background: #D1D9E6;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4C5C2;
+  background: #B0C4DE;
 }
 
 ::selection {
-  background-color: #F2766A;
+  background-color: #7FB7F4;
   color: #FFFFFF;
 }
