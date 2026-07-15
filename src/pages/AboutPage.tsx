@@ -12,9 +12,9 @@ export default function AboutPage() {
       <section className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-20 pt-10">
         {/* Image — immersive, authentic cafe life */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease }}
+          transition={{ duration: 0.9, ease }}
           className="md:col-span-7 overflow-hidden rounded-[20px] md:rounded-[24px]"
         >
           <img
@@ -29,10 +29,10 @@ export default function AboutPage() {
 
         {/* Text — generous, editorial */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15, ease }}
-          className="md:col-span-5 flex flex-col justify-center px-0 md:px-6 lg:px-10"
+          transition={{ duration: 0.8, delay: 0.2, ease }}
+          className="md:col-span-5 flex flex-col justify-center px-5 md:px-6 lg:px-10"
         >
           <p className="font-label text-caption text-diamond-blue mb-3 tracking-[0.15em]">
             About
@@ -50,11 +50,11 @@ export default function AboutPage() {
           EDITORIAL MOMENT — Quote / Philosophy
           ═══════════════════════════════════════════════════ */}
       <motion.section
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6, ease }}
-        className="mb-20 text-center max-w-2xl mx-auto px-4"
+        transition={{ duration: 0.8, ease }}
+        className="mb-20 text-center max-w-2xl mx-auto px-5"
       >
         <div className="mb-6 flex items-center justify-center gap-4">
           <span className="w-8 h-px bg-diamond-blue/20" />
@@ -75,13 +75,13 @@ export default function AboutPage() {
       <section className="mb-20">
         {/* Value 1 — Craftsmanship */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, delay: 0, ease }}
+          transition={{ duration: 0.8, delay: 0, ease }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
         >
-          <div className="order-2 md:order-1 flex flex-col justify-center px-0 md:pr-10">
+          <div className="order-2 md:order-1 flex flex-col justify-center px-5 md:pr-10">
             <div className="flex items-center gap-3 mb-4">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2L2 7l10 5 10-5-10-5Z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
@@ -106,10 +106,10 @@ export default function AboutPage() {
 
         {/* Value 2 — Community */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, delay: 0.12, ease }}
+          transition={{ duration: 0.8, delay: 0.18, ease }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
         >
           <div className="order-1 overflow-hidden rounded-[20px]">
@@ -121,7 +121,7 @@ export default function AboutPage() {
               decoding="async"
             />
           </div>
-          <div className="order-2 flex flex-col justify-center px-0 md:pl-10">
+          <div className="order-2 flex flex-col justify-center px-5 md:pl-10">
             <div className="flex items-center gap-3 mb-4">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
@@ -137,13 +137,13 @@ export default function AboutPage() {
 
         {/* Value 3 — Quality */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, delay: 0.24, ease }}
+          transition={{ duration: 0.8, delay: 0.36, ease }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          <div className="order-2 md:order-1 flex flex-col justify-center px-0 md:pr-10">
+          <div className="order-2 md:order-1 flex flex-col justify-center px-5 md:pr-10">
             <div className="flex items-center gap-3 mb-4">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2a4 4 0 0 0-4 4c0 2 2 4 4 4s4-2 4-4a4 4 0 0 0-4-4Z" /><path d="M4 10c0 4.4 3.6 8 8 8s8-3.6 8-8" /><path d="M12 18v4" /><path d="M8 22h8" />
@@ -171,10 +171,10 @@ export default function AboutPage() {
           EDITORIAL MOMENT — Since 2010 full-width
           ═══════════════════════════════════════════════════ */}
       <motion.section
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6, ease }}
+        transition={{ duration: 0.8, ease }}
         className="mb-20 relative overflow-hidden rounded-[24px] bg-gradient-to-br from-diamond-blue/3 to-frost-white p-10 md:p-16"
       >
         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-diamond-blue/5 blur-[80px] pointer-events-none" />
@@ -201,11 +201,11 @@ export default function AboutPage() {
           CTA — Handcrafted invitation
           ═══════════════════════════════════════════════════ */}
       <motion.section
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6, ease }}
-        className="mb-20 text-center max-w-lg mx-auto"
+        transition={{ duration: 0.8, ease }}
+        className="mb-20 text-center max-w-lg mx-auto px-5"
       >
         <p className="font-label text-caption text-diamond-blue mb-3 tracking-[0.15em]">
           Visit Us

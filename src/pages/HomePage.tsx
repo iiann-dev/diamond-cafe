@@ -11,7 +11,6 @@ export default function HomePage() {
     offset: ['start start', 'end start'],
   });
   const imageParallax = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
-  const fadeOut = useTransform(scrollYProgress, [0, 0.6], [1, 0.4]);
 
   return (
     <div>
@@ -119,21 +118,17 @@ export default function HomePage() {
 
         {/* ═══════════════════════════════════════════════
             TABLET & DESKTOP HERO (≥ 768px)
-            Composition: split — text left / image right
+            Overlap layout — image bleeds into text territory
             ═══════════════════════════════════════════════ */}
-        <div className="hidden md:grid min-h-[90vh] grid-cols-2">
-          {/* ─── Ambient glow (desktop-tuned) ─── */}
-          <div className="absolute -top-1/2 -left-1/4 w-[120%] h-[100%] pointer-events-none z-0">
+        <div className="hidden md:block relative min-h-[90vh]">
+          {/* ─── Ambient glow ─── */}
+          <div className="absolute inset-0 pointer-events-none z-0">
             <div className="absolute top-[20%] left-[15%] w-[60%] h-[50%] rounded-full bg-diamond-blue/4 blur-[120px]" />
             <div className="absolute top-[40%] right-[10%] w-[40%] h-[60%] rounded-full bg-soft-champagne/30 blur-[100px]" />
           </div>
 
           {/* LEFT — Content */}
-          <motion.div
-            style={{ opacity: fadeOut }}
-            className="relative z-10 flex flex-col justify-center px-12 lg:px-16 xl:px-20 py-0"
-          >
-            {/* Eyebrow */}
+          <div className="relative z-20 w-1/2 h-full flex flex-col justify-center px-12 lg:px-16 xl:px-20 py-24">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -143,7 +138,6 @@ export default function HomePage() {
               {SITE.neighborhood}
             </motion.p>
 
-            {/* Heading — editorial, refined emphasis */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -157,7 +151,6 @@ export default function HomePage() {
               </span>
             </motion.h1>
 
-            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -167,7 +160,6 @@ export default function HomePage() {
               Fresh coffee, homemade food, and the warmest welcome in Noe Valley.
             </motion.p>
 
-            {/* CTA Group */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -190,7 +182,6 @@ export default function HomePage() {
               </button>
             </motion.div>
 
-            {/* Subtle ambient detail — crystal reflection */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -204,42 +195,34 @@ export default function HomePage() {
                 </span>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* RIGHT — Image with organic blend */}
-          <div className="relative min-h-full overflow-hidden">
+          {/* RIGHT — Image bleeds into left territory */}
+          <div className="absolute inset-y-0 right-0 w-[58%] lg:w-[56%] xl:w-[55%] overflow-hidden">
             <motion.div
               style={{ y: imageParallax }}
-              className="absolute inset-0 w-[110%] -left-[6%] lg:w-[108%] lg:-left-[5%] xl:w-[105%] xl:-left-[4%] h-[115%] -top-[7.5%]"
+              className="absolute inset-0 w-[115%] lg:w-[112%] xl:w-[110%] h-[115%] -top-[7.5%]"
             >
-              <div
-                className="w-full h-full"
-                style={{
-                  clipPath: `path('M 60,0 C 160,60 40,160 100,280 C 160,400 20,520 80,680 C 130,820 40,900 60,1000 L 2000,1000 L 2000,0 Z')`,
-                }}
-              >
-                <img
-                  src={IMAGES.hero}
-                  alt=""
-                  className="w-full h-full object-cover scale-105"
-                  fetchPriority="high"
-                  loading="eager"
-                  decoding="async"
-                  width="1400"
-                  height="1600"
-                />
-              </div>
+              <img
+                src={IMAGES.hero}
+                alt=""
+                className="w-full h-full object-cover scale-105"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                width="1400"
+                height="1600"
+              />
 
-              {/* Gradient overlay for organic blend */}
+              {/* Gradient bridge — image dissolves into text side */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background: `linear-gradient(
                     to right,
                     var(--color-frost-white) 0%,
-                    rgba(250, 249, 247, 0.92) 8%,
-                    rgba(250, 249, 247, 0.3) 22%,
-                    transparent 35%
+                    rgba(250, 249, 247, 0.85) 10%,
+                    transparent 28%
                   )`,
                 }}
               />
@@ -250,7 +233,7 @@ export default function HomePage() {
               <div className="w-full h-full bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-full blur-[60px]" />
             </div>
 
-            {/* Bottom fade to section */}
+            {/* Bottom fade */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-frost-white to-transparent pointer-events-none" />
           </div>
         </div>
