@@ -137,7 +137,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8, delay: 0.18, ease }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 md:mb-20 max-w-5xl mx-auto px-5"
         >
-          <div className="order-2 md:order-2 flex flex-col justify-center">
+          <div className="order-1 md:order-2 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-4">
               <span className="font-label text-[11px] text-diamond-blue/40 tracking-[0.15em]">02</span>
               <span className="w-8 h-px bg-diamond-blue/15" />
@@ -151,7 +151,7 @@ export default function AboutPage() {
               and newcomers alike.
             </p>
           </div>
-          <div className="order-1 md:order-1 overflow-hidden rounded-[20px] shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)]">
+          <div className="order-2 md:order-1 overflow-hidden rounded-[20px] shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)]">
             <img
               src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&h=520&fit=crop&q=70"
               alt="Warm cafe interior atmosphere"
