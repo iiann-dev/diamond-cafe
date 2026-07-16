@@ -5,7 +5,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="flex flex-col">
       {/* ═══════════════════════════════════════════════════
           CHAPTER 1 — Our Story
           Calm, centered editorial introduction
@@ -14,7 +14,7 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 36 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease }}
-        className="mb-24 pt-16 md:pt-28 text-center max-w-3xl mx-auto px-5 md:px-8"
+        className="mb-24 pt-16 md:pt-28 text-center max-w-3xl mx-auto px-5 md:px-8 order-1 md:order-1"
       >
         <p className="font-label text-caption text-diamond-blue mb-4 tracking-[0.15em]">
           About Diamond Cafe
@@ -41,7 +41,7 @@ export default function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.9, ease }}
-        className="mb-24 px-5 md:px-0"
+        className="mb-24 px-5 md:px-0 hidden md:block"
       >
         <div className="max-w-5xl mx-auto">
           <div className="overflow-hidden rounded-[24px] shadow-[0_8px_40px_-8px_rgba(0,0,0,0.08)]">
@@ -161,6 +161,33 @@ export default function AboutPage() {
             />
           </div>
         </motion.div>
+
+        {/* Cafe photo — mobile only, after Community First */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.9, ease }}
+          className="mb-16 px-5 md:hidden"
+        >
+          <div className="max-w-5xl mx-auto">
+            <div className="overflow-hidden rounded-[24px] shadow-[0_8px_40px_-8px_rgba(0,0,0,0.08)]">
+              <img
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&h=550&fit=crop&q=80"
+                alt="Warm cafe atmosphere at Diamond Cafe"
+                className="w-full h-[300px] object-cover"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div className="mt-4 text-center">
+              <span className="inline-block font-label text-[11px] text-faint-charcoal/50 tracking-[0.12em] uppercase">
+                — Morning light on Diamond Street —
+              </span>
+            </div>
+          </div>
+        </motion.section>
 
         {/* Value 3 — Quality: Text Left / Image Right */}
         <motion.div
