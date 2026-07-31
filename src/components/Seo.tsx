@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import { useSiteData } from '../context/SiteDataContext'
+import { urlFor } from '../lib/sanity'
 
 const SITE_URL = 'https://diamond-cafe-one.vercel.app'
 const DEFAULT_TITLE = 'Diamond Cafe — Noe Valley, SF'
@@ -6,6 +8,7 @@ const DEFAULT_DESC =
   'Diamond Cafe is a family-owned cafe in Noe Valley, San Francisco. Fresh coffee, homemade crepes, breakfast favorites, and warm vibes since 2014.'
 
 interface SeoProps {
+  page?: string
   title?: string
   description?: string
   path?: string
@@ -24,12 +27,19 @@ function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
   el.setAttribute('content', content)
 }
 
-export default function Seo({ title, description, path = '/', image, type = 'website', jsonLd }: SeoProps) {
+export default function Seo({ page, title, description, path = '/', image, type = 'website', jsonLd }: SeoProps) {
+  const { seoSettings } = useSiteData()
+  const cms = page ? seoSettings.find((s) => (s as { page?: string }).page === page) : undefined
+  const cmsTitle = (cms as { title?: string } | undefined)?.title
+  const cmsDesc = (cms as { description?: string } | undefined)?.description
+  const cmsImage = (cms as { ogImage?: unknown } | undefined)?.ogImage
+
   useEffect(() => {
-    const fullTitle = title ? `${title} | Diamond Cafe` : DEFAULT_TITLE
-    const desc = description || DEFAULT_DESC
+    // CMS wins (used verbatim) → then props (with suffix) → then hardcoded defaults
+    const fullTitle = cmsTitle || (title ? `${title} | Diamond Cafe` : DEFAULT_TITLE)
+    const desc = cmsDesc || description || DEFAULT_DESC
     const url = `${SITE_URL}${path === '/' ? '/' : path}`
-    const img = image || `${SITE_URL}/images/logo.png`
+    const img = cmsImage ? urlFor(cmsImage).width(1200).url() : image || `${SITE_URL}/images/logo.png`
 
     document.title = fullTitle
     upsertMeta('name', 'description', desc)
@@ -73,7 +83,7 @@ export default function Seo({ title, description, path = '/', image, type = 'web
       const el = document.getElementById('seo-jsonld')
       if (el) el.remove()
     }
-  }, [title, description, path, image, type, jsonLd])
+  }, [title, description, path, image, type, jsonLd, cmsTitle, cmsDesc, cmsImage])
 
   return null
 }

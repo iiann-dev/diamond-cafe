@@ -29,3 +29,4 @@ export const galleryQuery = `*[_type == "galleryImage"] | order(order asc)`
 export const aboutQuery = `*[_type == "aboutContent"][0]`
 export const valuesQuery = `*[_type == "value"] | order(order asc)`
 export const hoursQuery = `*[_type == "hoursRow"] | order(order asc)`
+export const seoSettingsQuery = `*[_type == "seoSettings"]`

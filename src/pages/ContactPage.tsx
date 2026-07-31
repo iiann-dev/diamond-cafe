@@ -70,6 +70,7 @@ export default function ContactPage() {
   return (
     <div>
       <Seo
+        page="contact"
         title="Contact & Hours"
         description="Find Diamond Cafe at 751 Diamond Street, Noe Valley, San Francisco. Open daily 7:00 am — 3:00 pm. Call (415) 655-3674 or get directions."
         path="/contact"
@@ -140,25 +141,111 @@ export default function ContactPage() {
         </div>
         <div className="porcelain-card p-8">
           <h2 className="font-display text-heading text-rich-charcoal mb-6">Send a Message</h2>
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <div>
-              <label className="block text-muted-charcoal text-caption font-label mb-2">Name</label>
-              <input type="text" className="w-full bg-surface border border-border-light rounded-lg px-4 py-3 text-rich-charcoal text-body focus:outline-none focus:border-diamond-blue focus:ring-2 focus:ring-crystal-edge-medium transition-all" placeholder="Your name" />
-            </div>
-            <div>
-              <label className="block text-muted-charcoal text-caption font-label mb-2">Email</label>
-              <input type="email" className="w-full bg-surface border border-border-light rounded-lg px-4 py-3 text-rich-charcoal text-body focus:outline-none focus:border-diamond-blue focus:ring-2 focus:ring-crystal-edge-medium transition-all" placeholder="your@email.com" />
-            </div>
-            <div>
-              <label className="block text-muted-charcoal text-caption font-label mb-2">Message</label>
-              <textarea rows={4} className="w-full bg-surface border border-border-light rounded-lg px-4 py-3 text-rich-charcoal text-body focus:outline-none focus:border-diamond-blue focus:ring-2 focus:ring-crystal-edge-medium transition-all resize-none" placeholder="How can we help?" />
-            </div>
-            <button type="submit" className="btn-primary w-full md:w-auto">
-              Send Message
-            </button>
-          </form>
+          <ContactForm />
         </div>
       </section>
     </div>
+  );
+}
+
+function ContactForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setStatus('error');
+      setErrorMsg('Please fill in all fields.');
+      return;
+    }
+
+    setStatus('sending');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.ok) {
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setStatus('error');
+        setErrorMsg(data?.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setStatus('error');
+      setErrorMsg('Network error. Please try again.');
+    }
+  }
+
+  const inputCls =
+    'w-full bg-surface border border-border-light rounded-lg px-4 py-3 text-rich-charcoal text-body focus:outline-none focus:border-diamond-blue focus:ring-2 focus:ring-crystal-edge-medium transition-all disabled:opacity-60';
+
+  return (
+    <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+      <div>
+        <label className="block text-muted-charcoal text-caption font-label mb-2" htmlFor="cf-name">Name</label>
+        <input
+          id="cf-name"
+          type="text"
+          className={inputCls}
+          placeholder="Your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          disabled={status === 'sending'}
+        />
+      </div>
+      <div>
+        <label className="block text-muted-charcoal text-caption font-label mb-2" htmlFor="cf-email">Email</label>
+        <input
+          id="cf-email"
+          type="email"
+          className={inputCls}
+          placeholder="your@email.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          disabled={status === 'sending'}
+        />
+      </div>
+      <div>
+        <label className="block text-muted-charcoal text-caption font-label mb-2" htmlFor="cf-message">Message</label>
+        <textarea
+          id="cf-message"
+          rows={4}
+          className={`${inputCls} resize-none`}
+          placeholder="How can we help?"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          disabled={status === 'sending'}
+        />
+      </div>
+
+      {status === 'success' && (
+        <p className="text-emerald-600 text-body font-semibold" role="status">
+          ✅ Message sent! We'll get back to you soon.
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="text-red-600 text-body font-semibold" role="alert">
+          ⚠️ {errorMsg}
+        </p>
+      )}
+
+      <button type="submit" className="btn-primary w-full md:w-auto" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : 'Send Message'}
+      </button>
+    </form>
   );
 }

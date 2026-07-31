@@ -206,6 +206,50 @@ async function main() {
     order: i,
   }))
 
+  // ── 10. SEO settings (one per page) ─────────────────────
+  const seoDocs = [
+    {
+      _type: 'seoSettings',
+      _id: 'seo-home',
+      page: 'home',
+      title: 'Diamond Cafe — Noe Valley, SF',
+      description:
+        'Diamond Cafe is a family-owned cafe in Noe Valley, San Francisco. Fresh coffee, homemade crepes, breakfast favorites, and warm vibes since 2014.',
+    },
+    {
+      _type: 'seoSettings',
+      _id: 'seo-menu',
+      page: 'menu',
+      title: 'Menu | Diamond Cafe',
+      description:
+        'Browse the Diamond Cafe menu — fresh crepes, breakfast favorites, bagels, sandwiches, scramblers, eggs, and salads made fresh daily in Noe Valley, SF.',
+    },
+    {
+      _type: 'seoSettings',
+      _id: 'seo-gallery',
+      page: 'gallery',
+      title: 'Gallery | Diamond Cafe',
+      description:
+        'Photos of Diamond Cafe — the cozy interior, fresh coffee, homemade pastries, and warm neighborhood atmosphere in Noe Valley, San Francisco.',
+    },
+    {
+      _type: 'seoSettings',
+      _id: 'seo-about',
+      page: 'about',
+      title: 'About Us | Diamond Cafe',
+      description:
+        'The story of Diamond Cafe — a minority-owned, family-run neighborhood cafe in Noe Valley, San Francisco since 2014. Fresh food, warm hospitality, community first.',
+    },
+    {
+      _type: 'seoSettings',
+      _id: 'seo-contact',
+      page: 'contact',
+      title: 'Contact & Hours | Diamond Cafe',
+      description:
+        'Find Diamond Cafe at 751 Diamond Street, Noe Valley, San Francisco. Open daily 7:00 am — 3:00 pm. Call (415) 655-3674 or get directions.',
+    },
+  ]
+
   // Build the mutation list. createOrReplace keeps it idempotent.
   const docs = [
     siteInfoDoc,
@@ -217,6 +261,7 @@ async function main() {
     aboutDoc,
     ...valueDocs,
     ...hoursDocs,
+    ...seoDocs,
   ]
 
   console.log(`Seeding ${docs.length} docs...`)

@@ -39,6 +39,7 @@ export default function HomePage() {
   return (
     <div>
       <Seo
+        page="home"
         path="/"
         description={siteInfo?.description || undefined}
         jsonLd={buildRestaurantJsonLd({ siteInfo, menuItems, categories })}

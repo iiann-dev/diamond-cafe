@@ -41,6 +41,7 @@ export default function MenuPage() {
   return (
     <div>
       <Seo
+        page="menu"
         title="Menu"
         description="Browse the Diamond Cafe menu — fresh crepes, breakfast favorites, bagels, sandwiches, scramblers, eggs, and salads made fresh daily in Noe Valley, SF."
         path="/menu"

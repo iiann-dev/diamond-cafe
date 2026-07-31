@@ -22,6 +22,7 @@ export default function GalleryPage() {
   return (
     <div>
       <Seo
+        page="gallery"
         title="Gallery"
         description="Photos of Diamond Cafe — the cozy interior, fresh coffee, homemade pastries, and warm neighborhood atmosphere in Noe Valley, San Francisco."
         path="/gallery"

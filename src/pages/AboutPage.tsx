@@ -53,6 +53,7 @@ export default function AboutPage() {
   return (
     <div>
       <Seo
+        page="about"
         title="About Us"
         description="The story of Diamond Cafe — a minority-owned, family-run neighborhood cafe in Noe Valley, San Francisco since 2014. Fresh food, warm hospitality, community first."
         path="/about"

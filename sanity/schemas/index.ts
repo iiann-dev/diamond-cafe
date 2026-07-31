@@ -7,6 +7,7 @@ import galleryImage from './galleryImage'
 import aboutContent from './aboutContent'
 import value from './value'
 import hoursRow from './hoursRow'
+import seoSettings from './seoSettings'
 
 export const schemaTypes = [
   siteInfo,
@@ -18,4 +19,5 @@ export const schemaTypes = [
   aboutContent,
   value,
   hoursRow,
+  seoSettings,
 ]

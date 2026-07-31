@@ -11,6 +11,7 @@ import {
   aboutQuery,
   valuesQuery,
   hoursQuery,
+  seoSettingsQuery,
 } from '../lib/sanity'
 
 export interface SiteData {
@@ -23,6 +24,7 @@ export interface SiteData {
   about: SanityDocument | null
   values: SanityDocument[]
   hours: SanityDocument[]
+  seoSettings: SanityDocument[]
   loading: boolean
 }
 
@@ -36,6 +38,7 @@ const SiteDataContext = createContext<SiteData>({
   about: null,
   values: [],
   hours: [],
+  seoSettings: [],
   loading: true,
 })
 
@@ -50,6 +53,7 @@ export function SiteDataProvider({ children }: { children: ReactNode }) {
     about: null,
     values: [],
     hours: [],
+    seoSettings: [],
     loading: true,
   })
 
@@ -58,7 +62,7 @@ export function SiteDataProvider({ children }: { children: ReactNode }) {
 
     async function fetchData() {
       try {
-        const [siteInfo, hero, features, categories, menuItems, gallery, about, values, hours] =
+        const [siteInfo, hero, features, categories, menuItems, gallery, about, values, hours, seoSettings] =
           await Promise.all([
             client.fetch(siteInfoQuery),
             client.fetch(heroQuery),
@@ -69,6 +73,7 @@ export function SiteDataProvider({ children }: { children: ReactNode }) {
             client.fetch(aboutQuery),
             client.fetch(valuesQuery),
             client.fetch(hoursQuery),
+            client.fetch(seoSettingsQuery),
           ])
         if (!cancelled) {
           setData({
@@ -81,6 +86,7 @@ export function SiteDataProvider({ children }: { children: ReactNode }) {
             about: about ?? null,
             values: values ?? [],
             hours: hours ?? [],
+            seoSettings: seoSettings ?? [],
             loading: false,
           })
         }
