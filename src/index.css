@@ -468,3 +468,34 @@ section { content-visibility: auto; contain-intrinsic-size: 400px; }
   background-color: var(--color-diamond-blue);
   color: white;
 }
+
+/* ═══════════════════════════════════════════════════
+   SANITY STUDIO (full-page fix — scoped to /studio route)
+   ═══════════════════════════════════════════════════ */
+
+/* 1. Studio root must stretch to full viewport */
+.sanity-studio-root {
+  height: 100vh;
+  width: 100%;
+}
+
+/* 2. Neutralize global `section { content-visibility: auto }`
+      which breaks Sanity Studio's internal layout rendering */
+.sanity-studio-root section {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+
+/* 3. Sanity Studio uses its own dark theme; make sure the
+      app's light background doesn't bleed through */
+.sanity-studio-root,
+.sanity-studio-root body,
+.sanity-studio-root #root {
+  background: #101014;
+}
+
+/* 4. Studio manages its own internal scroll — kill app-level
+      smooth-scroll / overflow rules for this route only */
+.sanity-studio-root {
+  overflow: hidden;
+}

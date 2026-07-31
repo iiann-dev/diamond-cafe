@@ -8,6 +8,7 @@ export default defineConfig({
   title: 'Diamond Cafe CMS',
   projectId: 'd7y9du0u',
   dataset: 'production',
+  basePath: '/studio',
   plugins: [structureTool(), visionTool()],
   schema: { types: schemaTypes },
 })
