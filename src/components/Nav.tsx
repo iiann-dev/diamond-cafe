@@ -2,10 +2,13 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { NAV_ITEMS, LOGOS, ORDER_URL } from '../data';
+import { useSiteData } from '../context/SiteDataContext';
+import { urlFor } from '../lib/sanity';
 
 export default function Nav() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { siteInfo } = useSiteData();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const currentPath = location.pathname === '/' ? 'home' : location.pathname.slice(1);
@@ -14,6 +17,9 @@ export default function Nav() {
     navigate(path);
     setIsMobileMenuOpen(false);
   };
+
+  const squareLogo = siteInfo?.logos?.square ? urlFor(siteInfo.logos.square).width(96).url() : LOGOS.square;
+  const orderUrl = siteInfo?.orderUrl || ORDER_URL;
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[var(--color-surface-glass)] backdrop-blur-md border-b border-[var(--color-crystal-edge)]">
@@ -25,7 +31,7 @@ export default function Nav() {
           whileTap={{ scale: 0.97 }}
         >
           <img
-            src={LOGOS.square}
+            src={squareLogo}
             alt="Diamond Cafe"
             className="h-12 w-12 object-contain"
             loading="eager"
@@ -46,7 +52,7 @@ export default function Nav() {
             </button>
           ))}
           <a
-            href={ORDER_URL}
+            href={orderUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
@@ -91,7 +97,7 @@ export default function Nav() {
                 </button>
               ))}
               <a
-                href={ORDER_URL}
+                href={orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary w-full"

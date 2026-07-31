@@ -1,62 +1,79 @@
 import { useRef, useState, useEffect } from 'react';
 import { SITE, HOURS } from '../data';
-
-const dirsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(SITE.address)}`;
-
-function LazyMap() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setLoaded(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '200px' }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="img-frame min-h-[200px] md:min-h-full">
-      {loaded ? (
-        <iframe
-          src={SITE.mapEmbed}
-          width="100%"
-          height="100%"
-          className="min-h-[200px] md:min-h-full"
-          style={{ border: 0 }}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Diamond Cafe location"
-        />
-      ) : (
-        <a
-          href={dirsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full h-full min-h-[200px] md:min-h-[300px] bg-diamond-mist flex flex-col items-center justify-center gap-3 p-8 text-center hover:bg-soft-ice transition-colors block group"
-        >
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
-          </svg>
-          <span className="text-diamond-blue font-label text-caption mb-1">{SITE.address}</span>
-          <span className="text-diamond-blue font-label text-caption underline group-hover:no-underline">Open in Google Maps</span>
-        </a>
-      )}
-    </div>
-  );
-}
+import { useSiteData } from '../context/SiteDataContext';
+import Seo from '../components/Seo';
 
 export default function ContactPage() {
+  const { siteInfo, hours } = useSiteData();
+
+  // ── CMS-first resolution ────────────────────────────────
+  const address = siteInfo?.address || SITE.address;
+  const phone = siteInfo?.phone || SITE.phone;
+  const email = siteInfo?.email || SITE.email;
+  const neighborhood = siteInfo?.neighborhood || SITE.neighborhood;
+  const mapEmbed = siteInfo?.mapEmbed || SITE.mapEmbed;
+  const hoursList = hours.length > 0 ? hours : HOURS;
+
+  const dirsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
+
+  function LazyMap() {
+    const ref = useRef<HTMLDivElement>(null);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setLoaded(true);
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '200px' }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, []);
+
+    return (
+      <div ref={ref} className="img-frame min-h-[200px] md:min-h-full">
+        {loaded ? (
+          <iframe
+            src={mapEmbed}
+            width="100%"
+            height="100%"
+            className="min-h-[200px] md:min-h-full"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Diamond Cafe location"
+          />
+        ) : (
+          <a
+            href={dirsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full h-full min-h-[200px] md:min-h-[300px] bg-diamond-mist flex flex-col items-center justify-center gap-3 p-8 text-center hover:bg-soft-ice transition-colors block group"
+          >
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
+            </svg>
+            <span className="text-diamond-blue font-label text-caption mb-1">{address}</span>
+            <span className="text-diamond-blue font-label text-caption underline group-hover:no-underline">Open in Google Maps</span>
+          </a>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div>
+      <Seo
+        title="Contact & Hours"
+        description="Find Diamond Cafe at 751 Diamond Street, Noe Valley, San Francisco. Open daily 7:00 am — 3:00 pm. Call (415) 655-3674 or get directions."
+        path="/contact"
+      />
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 pt-8">
         <div className="porcelain-card p-8 md:p-12 flex flex-col justify-center">
           <p className="font-label text-caption text-diamond-blue mb-2">Contact</p>
@@ -70,7 +87,7 @@ export default function ContactPage() {
               </svg>
               <div>
                 <p className="text-rich-charcoal text-body font-semibold">Address</p>
-                <p className="text-muted-charcoal text-body">{SITE.address}</p>
+                <p className="text-muted-charcoal text-body">{address}</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -79,7 +96,7 @@ export default function ContactPage() {
               </svg>
               <div>
                 <p className="text-rich-charcoal text-body font-semibold">Phone</p>
-                <p className="text-muted-charcoal text-body">{SITE.phone}</p>
+                <p className="text-muted-charcoal text-body">{phone}</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -88,7 +105,7 @@ export default function ContactPage() {
               </svg>
               <div>
                 <p className="text-rich-charcoal text-body font-semibold">Email</p>
-                <p className="text-muted-charcoal text-body">{SITE.email}</p>
+                <p className="text-muted-charcoal text-body">{email}</p>
               </div>
             </div>
           </div>
@@ -109,8 +126,8 @@ export default function ContactPage() {
         <div className="glass-card p-8">
           <h2 className="font-display text-heading text-rich-charcoal mb-6">Hours</h2>
           <div className="space-y-3">
-            {HOURS.map((h) => (
-              <div key={h.day} className="flex justify-between items-center py-2 border-b border-border-faint last:border-0">
+            {hoursList.map((h) => (
+              <div key={(h as { _id?: string })._id ?? h.day} className="flex justify-between items-center py-2 border-b border-border-faint last:border-0">
                 <span className="text-muted-charcoal text-body">{h.day}</span>
                 <span className="text-rich-charcoal text-body font-semibold">{h.hours}</span>
               </div>
@@ -118,7 +135,7 @@ export default function ContactPage() {
           </div>
           <div className="mt-6 p-4 bg-crystal-edge rounded-lg">
             <p className="text-diamond-blue font-label text-caption mb-1">Neighborhood</p>
-            <p className="text-rich-charcoal text-body">{SITE.neighborhood}</p>
+            <p className="text-rich-charcoal text-body">{neighborhood}</p>
           </div>
         </div>
         <div className="porcelain-card p-8">

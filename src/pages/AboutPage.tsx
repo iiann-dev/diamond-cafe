@@ -1,11 +1,62 @@
 import { motion } from 'motion/react';
 import { SITE } from '../data';
+import { useSiteData } from '../context/SiteDataContext';
+import { urlFor } from '../lib/sanity';
+import Seo from '../components/Seo';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function AboutPage() {
+  const { about, values, siteInfo } = useSiteData();
+
+  // ── CMS-first resolution ────────────────────────────────
+  const eyebrow = about?.eyebrow || 'About Diamond Cafe';
+  const headlineTop = about?.headlineTop || 'Our';
+  const headlineAccent = about?.headlineAccent || 'Story';
+  const story = about?.story ||
+    'Nestled in the heart of Noe Valley, Diamond Cafe is a minority-owned family treasure. With Mike and Gaby at the helm — bringing over two decades of culinary expertise — we serve crepes, breakfast favorites, and the kind of warmth that turns first-time visitors into regulars. Since opening our doors in 2014, your support has been our backbone. Here\'s to celebrating 10 incredible years together.';
+  const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&h=550&fit=crop&q=80';
+  const heroImageCaption = about?.heroImageCaption || '— Morning light on Diamond Street —';
+  const philosophyLabel = about?.philosophyLabel || 'Our Philosophy';
+  const philosophyQuote = about?.philosophyQuote ||
+    '"A neighborhood cafe should feel like an extension of your living room — warm, familiar, and always welcoming."';
+  const philosophyAuthor = about?.philosophyAuthor || 'The Diamond Family';
+  const closingTitleTop = about?.closingTitleTop || 'Family-Run';
+  const closingTitleAccent = about?.closingTitleAccent || `Since ${SITE.founded}`;
+  const closingText = about?.closingText ||
+    'What started as a dream between two siblings has grown into the heart of the neighborhood. Stop by and taste the difference that fifteen years of care makes.';
+  const address = siteInfo?.address || SITE.address;
+  const hoursLabel = siteInfo?.hoursLabel || SITE.days;
+  const hoursRange = siteInfo?.hoursRange || SITE.hours;
+
+  const valueList = values.length > 0 ? values : [
+    {
+      _id: 'v1', number: '01', titleTop: 'Crafted with', titleAccent: 'Care',
+      body: 'From the espresso pull to the pastry finish, every detail matters. We source locally and make everything from scratch. No shortcuts, no compromises — just honest food made with intention.',
+      image: { url: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&h=520&fit=crop&q=70' },
+      imageAlt: 'Latte art being poured',
+    },
+    {
+      _id: 'v2', number: '02', titleTop: 'Community', titleAccent: 'First',
+      body: 'Diamond Cafe is your living room away from home. A place to gather, connect, and feel welcome. Every face that walks through our door becomes part of the family — regulars and newcomers alike.',
+      image: { url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&h=520&fit=crop&q=70' },
+      imageAlt: 'Warm cafe interior atmosphere',
+    },
+    {
+      _id: 'v3', number: '03', titleTop: 'Quality', titleAccent: 'Ingredients',
+      body: 'We believe great food starts with great ingredients. Locally sourced, thoughtfully prepared, and served with pride — every plate tells a story of care from farm to table.',
+      image: { url: 'https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?w=700&h=520&fit=crop&q=80' },
+      imageAlt: 'Fresh coffee beans',
+    },
+  ];
+
   return (
     <div>
+      <Seo
+        title="About Us"
+        description="The story of Diamond Cafe — a minority-owned, family-run neighborhood cafe in Noe Valley, San Francisco since 2014. Fresh food, warm hospitality, community first."
+        path="/about"
+      />
       {/* ═══════════════════════════════════════════════════
           CHAPTER 1 — Our Story
           Calm, centered editorial introduction
@@ -17,18 +68,14 @@ export default function AboutPage() {
         className="mb-24 pt-16 md:pt-28 text-center max-w-3xl mx-auto px-5 md:px-8"
       >
         <p className="font-label text-caption text-diamond-blue mb-4 tracking-[0.15em]">
-          About Diamond Cafe
+          {eyebrow}
         </p>
         <h1 className="font-display text-display-mobile md:text-[56px] lg:text-[68px] text-rich-charcoal leading-[1.05] mb-6">
-          Our <span className="text-diamond-blue italic">Story</span>
+          {headlineTop} <span className="text-diamond-blue italic">{headlineAccent}</span>
         </h1>
         <div className="w-12 h-[2px] bg-diamond-blue/20 mx-auto mb-8" />
         <p className="text-muted-charcoal text-body-lg md:text-[18px] leading-relaxed max-w-xl mx-auto text-pretty">
-          Nestled in the heart of Noe Valley, Diamond Cafe is a minority-owned family treasure.
-          With Mike and Gaby at the helm — bringing over two decades of culinary expertise —
-          we serve crepes, breakfast favorites, and the kind of warmth that turns first-time
-          visitors into regulars. Since opening our doors in 2014, your support has been our
-          backbone. Here's to celebrating 10 incredible years together.
+          {story}
         </p>
       </motion.section>
 
@@ -46,7 +93,7 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto">
           <div className="overflow-hidden rounded-[24px] shadow-[0_8px_40px_-8px_rgba(0,0,0,0.08)]">
             <img
-              src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&h=550&fit=crop&q=80"
+              src={heroImage}
               alt="Warm cafe atmosphere at Diamond Cafe"
               className="w-full h-[300px] md:h-[500px] object-cover"
               fetchPriority="high"
@@ -56,7 +103,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-4 text-center">
             <span className="inline-block font-label text-[11px] text-faint-charcoal/50 tracking-[0.12em] uppercase">
-              — Morning light on Diamond Street —
+              {heroImageCaption}
             </span>
           </div>
         </div>
@@ -75,19 +122,19 @@ export default function AboutPage() {
       >
         <div className="mb-8 flex items-center justify-center gap-4">
           <span className="w-10 h-px bg-diamond-blue/15" />
-          <span className="font-label text-caption text-diamond-blue tracking-[0.15em]">Our Philosophy</span>
+          <span className="font-label text-caption text-diamond-blue tracking-[0.15em]">{philosophyLabel}</span>
           <span className="w-10 h-px bg-diamond-blue/15" />
         </div>
         <blockquote className="font-display text-[28px] md:text-[40px] lg:text-[44px] text-rich-charcoal leading-[1.15] mb-8 text-pretty">
-          "A neighborhood cafe should feel like an extension of your living room — warm, familiar, and always welcoming."
+          {philosophyQuote}
         </blockquote>
         <div className="flex items-center justify-center gap-3">
           <span className="w-6 h-px bg-diamond-blue/10" />
-          <span className="font-label text-caption text-diamond-blue tracking-[0.15em]">The Diamond Family</span>
+          <span className="font-label text-caption text-diamond-blue tracking-[0.15em]">{philosophyAuthor}</span>
           <span className="w-6 h-px bg-diamond-blue/10" />
         </div>
         <p className="text-muted-charcoal text-body-sm mt-2 opacity-60">
-          Since 2014
+          Since {siteInfo?.founded || SITE.founded}
         </p>
       </motion.section>
 
@@ -96,103 +143,42 @@ export default function AboutPage() {
           Alternating rhythm — image left/text right & vice versa
           ═══════════════════════════════════════════════════ */}
       <section className="mb-24">
-        {/* Value 1 — Craftsmanship: Text Left / Image Right */}
-        <motion.div
-          initial={{ opacity: 0, y: 36 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0, ease }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 md:mb-20 max-w-5xl mx-auto px-5"
-        >
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-label text-[11px] text-diamond-blue/40 tracking-[0.15em]">01</span>
-              <span className="w-8 h-px bg-diamond-blue/15" />
-            </div>
-            <h2 className="font-display text-[32px] md:text-[38px] text-rich-charcoal leading-[1.1] mb-4">
-              Crafted with <span className="text-diamond-blue italic">Care</span>
-            </h2>
-            <p className="text-muted-charcoal text-body leading-relaxed max-w-md text-pretty">
-              From the espresso pull to the pastry finish, every detail matters. We source locally
-              and make everything from scratch. No shortcuts, no compromises — just honest food
-              made with intention.
-            </p>
-          </div>
-          <div className="overflow-hidden rounded-[20px] shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)]">
-            <img
-              src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&h=520&fit=crop&q=70"
-              alt="Latte art being poured"
-              className="w-full h-[320px] md:h-[400px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </motion.div>
-
-        {/* Value 2 — Community: Image Left / Text Right */}
-        <motion.div
-          initial={{ opacity: 0, y: 36 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0.18, ease }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 md:mb-20 max-w-5xl mx-auto px-5"
-        >
-          <div className="order-1 md:order-2 flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-label text-[11px] text-diamond-blue/40 tracking-[0.15em]">02</span>
-              <span className="w-8 h-px bg-diamond-blue/15" />
-            </div>
-            <h2 className="font-display text-[32px] md:text-[38px] text-rich-charcoal leading-[1.1] mb-4">
-              Community <span className="text-diamond-blue italic">First</span>
-            </h2>
-            <p className="text-muted-charcoal text-body leading-relaxed max-w-md text-pretty">
-              Diamond Cafe is your living room away from home. A place to gather, connect, and feel
-              welcome. Every face that walks through our door becomes part of the family — regulars
-              and newcomers alike.
-            </p>
-          </div>
-          <div className="order-2 md:order-1 overflow-hidden rounded-[20px] shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)]">
-            <img
-              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&h=520&fit=crop&q=70"
-              alt="Warm cafe interior atmosphere"
-              className="w-full h-[320px] md:h-[400px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </motion.div>
-
-        {/* Value 3 — Quality: Text Left / Image Right */}
-        <motion.div
-          initial={{ opacity: 0, y: 36 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0.36, ease }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto px-5"
-        >
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-label text-[11px] text-diamond-blue/40 tracking-[0.15em]">03</span>
-              <span className="w-8 h-px bg-diamond-blue/15" />
-            </div>
-            <h2 className="font-display text-[32px] md:text-[38px] text-rich-charcoal leading-[1.1] mb-4">
-              Quality <span className="text-diamond-blue italic">Ingredients</span>
-            </h2>
-            <p className="text-muted-charcoal text-body leading-relaxed max-w-md text-pretty">
-              We believe great food starts with great ingredients. Locally sourced, thoughtfully
-              prepared, and served with pride — every plate tells a story of care from farm to table.
-            </p>
-          </div>
-          <div className="overflow-hidden rounded-[20px] shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)]">
-            <img
-              src="https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?w=700&h=520&fit=crop&q=80"
-              alt="Fresh coffee beans"
-              className="w-full h-[320px] md:h-[400px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </motion.div>
+        {valueList.map((v, i) => {
+          const isEven = i % 2 === 1;
+          const imgSrc = v.image?.asset ? urlFor(v.image).width(700).url() : (v.image?.url || '');
+          return (
+            <motion.div
+              key={v._id || i}
+              initial={{ opacity: 0, y: 36 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8, delay: 0, ease }}
+              className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 md:mb-20 max-w-5xl mx-auto px-5 ${i === valueList.length - 1 ? 'mb-0' : ''}`}
+            >
+              <div className={`${isEven ? 'order-1 md:order-2' : ''} flex flex-col justify-center`}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="font-label text-[11px] text-diamond-blue/40 tracking-[0.15em]">{v.number}</span>
+                  <span className="w-8 h-px bg-diamond-blue/15" />
+                </div>
+                <h2 className="font-display text-[32px] md:text-[38px] text-rich-charcoal leading-[1.1] mb-4">
+                  {v.titleTop} <span className="text-diamond-blue italic">{v.titleAccent}</span>
+                </h2>
+                <p className="text-muted-charcoal text-body leading-relaxed max-w-md text-pretty">
+                  {v.body}
+                </p>
+              </div>
+              <div className={`${isEven ? 'order-2 md:order-1' : ''} overflow-hidden rounded-[20px] shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)]`}>
+                <img
+                  src={imgSrc}
+                  alt={v.imageAlt || ''}
+                  className="w-full h-[320px] md:h-[400px] object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </motion.div>
+          );
+        })}
       </section>
 
       {/* ═══════════════════════════════════════════════════
@@ -215,11 +201,10 @@ export default function AboutPage() {
             ✦
           </span>
           <h2 className="font-display text-[34px] md:text-[42px] text-rich-charcoal leading-[1.1] mt-4 mb-3">
-            Family-Run <span className="text-diamond-blue italic">Since 2014</span>
+            {closingTitleTop} <span className="text-diamond-blue italic">{closingTitleAccent}</span>
           </h2>
           <p className="text-muted-charcoal text-body-lg leading-relaxed max-w-md mx-auto mb-8 text-pretty">
-            What started as a dream between two siblings has grown into the heart of the neighborhood.
-            Stop by and taste the difference that fifteen years of care makes.
+            {closingText}
           </p>
 
           <div className="w-px h-8 bg-diamond-blue/15 mx-auto mb-6" />
@@ -228,13 +213,13 @@ export default function AboutPage() {
             Visit Us
           </p>
           <p className="font-display text-heading text-rich-charcoal mb-2">
-            {SITE.address}
+            {address}
           </p>
           <p className="text-muted-charcoal text-body-sm mb-1">
-            Open Daily
+            {hoursLabel}
           </p>
           <p className="text-muted-charcoal text-body-sm">
-            7:00 am — 3:00 pm
+            {hoursRange}
           </p>
         </div>
       </motion.section>

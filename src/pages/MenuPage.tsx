@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { MENU_ITEMS, MENU_CATEGORIES, ORDER_URL } from '../data';
+import { useSiteData } from '../context/SiteDataContext';
+import Seo from '../components/Seo';
+import type { SanityDocument } from '@sanity/client';
 
 const CATEGORY_DISPLAY: Record<string, string> = {
   crepes: 'Crepes', breakfast: 'Breakfast', bagels: 'Bagels',
@@ -8,14 +11,40 @@ const CATEGORY_DISPLAY: Record<string, string> = {
 };
 
 export default function MenuPage() {
+  const { siteInfo, categories, menuItems } = useSiteData();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const filteredItems = activeCategory
-    ? MENU_ITEMS.filter((i) => i.category === activeCategory)
+  // ── CMS-first resolution ────────────────────────────────
+  const cmsCategories = categories.length > 0
+    ? categories.map((c) => ({ slug: c.slug?.current ?? c.name.toLowerCase(), name: c.name }))
+    : MENU_CATEGORIES.map((c) => ({ slug: c, name: CATEGORY_DISPLAY[c] ?? c }));
+
+  const cmsItems = menuItems.length > 0
+    ? (menuItems as SanityDocument[]).map((i) => {
+        const cat = i.category as { slug?: { current?: string } } | string | undefined
+        return {
+          id: i._id ?? Math.random().toString(36),
+          name: String(i.name ?? ''),
+          category: cat && typeof cat === 'object' ? cat.slug?.current ?? '' : '',
+          description: String(i.description ?? ''),
+          popular: !!i.popular,
+        }
+      })
     : MENU_ITEMS;
+
+  const filteredItems = activeCategory
+    ? cmsItems.filter((i) => i.category === activeCategory)
+    : cmsItems;
+
+  const orderUrl = siteInfo?.orderUrl || ORDER_URL;
 
   return (
     <div>
+      <Seo
+        title="Menu"
+        description="Browse the Diamond Cafe menu — fresh crepes, breakfast favorites, bagels, sandwiches, scramblers, eggs, and salads made fresh daily in Noe Valley, SF."
+        path="/menu"
+      />
       <div className="text-center mb-10 pt-8">
         <p className="font-label text-caption text-diamond-blue mb-2">Our Menu</p>
         <h1 className="font-display text-display-mobile md:text-display text-rich-charcoal">
@@ -31,13 +60,13 @@ export default function MenuPage() {
         >
           All
         </button>
-        {MENU_CATEGORIES.map((cat) => (
+        {cmsCategories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
-            className={`crystal-chip ${activeCategory === cat ? 'active' : ''}`}
+            key={cat.slug}
+            onClick={() => setActiveCategory(activeCategory === cat.slug ? null : cat.slug)}
+            className={`crystal-chip ${activeCategory === cat.slug ? 'active' : ''}`}
           >
-            {CATEGORY_DISPLAY[cat]}
+            {cat.name}
           </button>
         ))}
       </div>
@@ -69,7 +98,7 @@ export default function MenuPage() {
       {/* Order CTA */}
       <div className="text-center mt-10">
         <a
-          href={ORDER_URL}
+          href={orderUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary"

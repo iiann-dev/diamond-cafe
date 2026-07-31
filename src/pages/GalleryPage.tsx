@@ -1,12 +1,31 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { IMAGES } from '../data';
+import { useSiteData } from '../context/SiteDataContext';
+import { urlFor } from '../lib/sanity';
+import Seo from '../components/Seo';
 
 export default function GalleryPage() {
+  const { gallery } = useSiteData();
   const [lightbox, setLightbox] = useState<number | null>(null);
+
+  // ── CMS-first resolution ────────────────────────────────
+  const images = gallery.length > 0
+    ? gallery.map((g) => ({
+        src: g.image ? urlFor(g.image).width(1200).url() : '',
+        thumb: g.image ? urlFor(g.image).width(400).url() : '',
+        alt: g.alt || g.title || '',
+        span: g.span === 'normal' ? undefined : g.span,
+      }))
+    : IMAGES.gallery;
 
   return (
     <div>
+      <Seo
+        title="Gallery"
+        description="Photos of Diamond Cafe — the cozy interior, fresh coffee, homemade pastries, and warm neighborhood atmosphere in Noe Valley, San Francisco."
+        path="/gallery"
+      />
       <div className="text-center mb-10 pt-8">
         <p className="font-label text-caption text-diamond-blue mb-2">Gallery</p>
         <h1 className="font-display text-display-mobile md:text-display text-rich-charcoal">
@@ -15,7 +34,7 @@ export default function GalleryPage() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {IMAGES.gallery.map((img, i) => (
+        {images.map((img, i) => (
           <motion.button
             key={i}
             initial={{ opacity: 0, y: 16 }}
@@ -51,17 +70,17 @@ export default function GalleryPage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              src={IMAGES.gallery[lightbox].src}
-              alt={IMAGES.gallery[lightbox].alt}
+              src={images[lightbox].src}
+              alt={images[lightbox].alt}
               className="max-w-[90vw] max-h-[85vh] object-contain rounded-xl"
               onClick={(e) => e.stopPropagation()}
               decoding="async"
             />
             <div className="absolute bottom-8 flex gap-3">
-              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === 0 ? IMAGES.gallery.length - 1 : lightbox - 1); }} className="bg-white/10 hover:bg-white/25 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 cursor-pointer">
+              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === 0 ? images.length - 1 : lightbox - 1); }} className="bg-white/10 hover:bg-white/25 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="15 18 9 12 15 6" /></svg>
               </button>
-              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === IMAGES.gallery.length - 1 ? 0 : lightbox + 1); }} className="bg-white/10 hover:bg-white/25 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 cursor-pointer">
+              <button onClick={(e) => { e.stopPropagation(); setLightbox(lightbox === images.length - 1 ? 0 : lightbox + 1); }} className="bg-white/10 hover:bg-white/25 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
               </button>
             </div>

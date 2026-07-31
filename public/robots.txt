@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /studio
+
+Sitemap: https://diamond-cafe-one.vercel.app/sitemap.xml

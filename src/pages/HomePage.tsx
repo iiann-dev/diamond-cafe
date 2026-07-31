@@ -2,18 +2,47 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { SITE, FEATURES, IMAGES, ORDER_URL } from '../data';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
+import { useSiteData } from '../context/SiteDataContext';
+import { urlFor, type SanityImageSource } from '../lib/sanity';
+import Seo from '../components/Seo';
+import { buildRestaurantJsonLd } from '../lib/seo';
 
 export default function HomePage() {
   const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
+  const { siteInfo, hero, features, gallery, menuItems, categories } = useSiteData();
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start'],
   });
   const imageParallax = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
+  // ── CMS-first resolution ────────────────────────────────
+  const heroImage = hero?.image ? urlFor(hero.image).width(1400).url() : IMAGES.hero;
+  const eyebrow = hero?.eyebrow || siteInfo?.neighborhood || SITE.neighborhood;
+  const headlineTop = hero?.headlineTop || 'Diamond';
+  const headlineAccent = hero?.headlineAccent || 'Cafe';
+  const subheadline = hero?.subheadline || 'Fresh coffee, homemade food, and the warmest welcome in Noe Valley.';
+  const orderUrl = siteInfo?.orderUrl || ORDER_URL;
+  const sinceBadge = hero?.sinceBadge || `Since ${siteInfo?.founded || SITE.founded}`;
+
+  const featureList = features.length > 0 ? features : FEATURES;
+  const description = siteInfo?.description || SITE.description;
+  const address = siteInfo?.address || SITE.address;
+  const hoursLabel = siteInfo?.hoursLabel || SITE.days;
+  const hoursRange = siteInfo?.hoursRange || SITE.hours;
+
+  const galleryPreview = gallery.length > 0
+    ? gallery.slice(0, 4)
+    : IMAGES.gallery.slice(0, 4);
+
   return (
     <div>
+      <Seo
+        path="/"
+        description={siteInfo?.description || undefined}
+        jsonLd={buildRestaurantJsonLd({ siteInfo, menuItems, categories })}
+      />
       {/* ═══════════════════════════════════════════════════
           HERO — Desktop: cinematic split w/ organic blend
           Mobile:  image-first vertical storytelling
@@ -42,7 +71,7 @@ export default function HomePage() {
             style={{ borderRadius: '24px', height: '40vh', minHeight: '280px' }}
           >
             <img
-              src={IMAGES.hero}
+              src={heroImage}
               alt=""
               className="w-full h-full object-cover"
               fetchPriority="high"
@@ -64,7 +93,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="font-label text-caption text-diamond-blue mb-4 tracking-[0.15em]"
             >
-              {SITE.neighborhood}
+              {eyebrow}
             </motion.p>
 
             {/* Heading — editorial, natural wrap */}
@@ -74,9 +103,9 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-display-mobile text-rich-charcoal leading-[1.08] mb-5"
             >
-              Diamond{' '}
+              {headlineTop}{' '}
               <span className="relative inline-block">
-                <span className="text-diamond-blue italic">Cafe</span>
+                <span className="text-diamond-blue italic">{headlineAccent}</span>
                 <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] bg-gradient-to-r from-diamond-blue/60 via-diamond-blue/30 to-transparent rounded-full" />
               </span>
             </motion.h1>
@@ -88,7 +117,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="text-muted-charcoal text-body leading-relaxed mb-10 max-w-sm"
             >
-              Fresh coffee, homemade food, and the warmest welcome in Noe Valley.
+              {subheadline}
             </motion.p>
 
             {/* CTAs — stacked vertical, premium touch targets */}
@@ -99,18 +128,18 @@ export default function HomePage() {
               className="flex flex-col gap-3 pb-2"
             >
               <a
-                href={ORDER_URL}
+                href={orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-hero-primary w-full justify-center py-[18px]"
               >
-                Order Online
+                {hero?.primaryCtaLabel || 'Order Online'}
               </a>
               <button
-                onClick={() => navigate('/menu')}
+                onClick={() => navigate(hero?.secondaryCtaTarget || '/menu')}
                 className="btn-hero-secondary w-full justify-center py-[18px]"
               >
-                View Menu
+                {hero?.secondaryCtaLabel || 'View Menu'}
               </button>
             </motion.div>
           </div>
@@ -135,7 +164,7 @@ export default function HomePage() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="font-label text-caption text-diamond-blue mb-4 tracking-[0.15em]"
             >
-              {SITE.neighborhood}
+              {eyebrow}
             </motion.p>
 
             <motion.h1
@@ -144,9 +173,9 @@ export default function HomePage() {
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-display lg:text-[64px] xl:text-[72px] text-rich-charcoal leading-[1.05] mb-6 max-w-xl"
             >
-              Diamond{' '}
+              {headlineTop}{' '}
               <span className="relative inline-block">
-                <span className="text-diamond-blue italic">Cafe</span>
+                <span className="text-diamond-blue italic">{headlineAccent}</span>
                 <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-diamond-blue/60 via-diamond-blue/30 to-transparent rounded-full" />
               </span>
             </motion.h1>
@@ -157,7 +186,7 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-muted-charcoal text-body-lg leading-relaxed max-w-lg mb-10"
             >
-              Fresh coffee, homemade food, and the warmest welcome in Noe Valley.
+              {subheadline}
             </motion.p>
 
             <motion.div
@@ -167,18 +196,18 @@ export default function HomePage() {
               className="flex flex-wrap gap-4"
             >
               <a
-                href={ORDER_URL}
+                href={orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-hero-primary"
               >
-                <span className="relative z-10">Order Online</span>
+                <span className="relative z-10">{hero?.primaryCtaLabel || 'Order Online'}</span>
               </a>
               <button
-                onClick={() => navigate('/menu')}
+                onClick={() => navigate(hero?.secondaryCtaTarget || '/menu')}
                 className="btn-hero-secondary"
               >
-                View Menu
+                {hero?.secondaryCtaLabel || 'View Menu'}
               </button>
             </motion.div>
 
@@ -191,7 +220,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <div className="w-px h-8 bg-gradient-to-b from-diamond-blue/20 to-transparent" />
                 <span className="text-[10px] font-label text-faint-charcoal tracking-[0.12em] uppercase">
-                  Since 2014
+                  {sinceBadge}
                 </span>
               </div>
             </motion.div>
@@ -204,7 +233,7 @@ export default function HomePage() {
               className="absolute inset-0 w-[115%] lg:w-[112%] xl:w-[110%] h-[115%] -top-[7.5%]"
             >
               <img
-                src={IMAGES.hero}
+                src={heroImage}
                 alt=""
                 className="w-full h-full object-cover scale-105"
                 fetchPriority="high"
@@ -242,9 +271,9 @@ export default function HomePage() {
       {/* Features Bento */}
       <section className="mb-16 md:mb-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {FEATURES.map((f, i) => (
+          {featureList.map((f, i) => (
             <motion.div
-              key={f.title}
+              key={f.title || i}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
@@ -272,9 +301,18 @@ export default function HomePage() {
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
                   </svg>
                 )}
+                {f.icon === 'star' && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                )}
+                {f.icon === 'leaf' && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" /></svg>
+                )}
+                {f.icon === 'users' && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                )}
               </div>
               <h3 className="font-display text-heading-sm text-rich-charcoal mb-1">{f.title}</h3>
-              <p className="text-muted-charcoal text-sm leading-relaxed">{f.desc}</p>
+              <p className="text-muted-charcoal text-sm leading-relaxed">{(f as { description?: string }).description ?? (f as { desc?: string }).desc}</p>
             </motion.div>
           ))}
         </div>
@@ -295,7 +333,7 @@ export default function HomePage() {
           >
             <p className="font-label text-caption text-diamond-blue mb-3">Our Story</p>
             <h2 className="font-display text-heading text-rich-charcoal mb-4">A Neighborhood Gem</h2>
-            <p className="text-muted-charcoal text-sm leading-relaxed mb-6">{SITE.description}</p>
+            <p className="text-muted-charcoal text-sm leading-relaxed mb-6">{description}</p>
             <button
               onClick={() => navigate('/about')}
               className="self-start text-diamond-blue font-label text-caption hover:underline cursor-pointer"
@@ -313,14 +351,23 @@ export default function HomePage() {
           <h2 className="font-display text-heading text-rich-charcoal">Around the Cafe</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {IMAGES.gallery.slice(0, 4).map((img, i) => (
-            <div
-              key={i}
-              className="img-frame overflow-hidden"
-            >
-              <img src={img.thumb} alt={img.alt} className="w-full h-48 object-cover" loading="lazy" decoding="async" />
-            </div>
-          ))}
+          {galleryPreview.map((img, i) => {
+            const g = img as { _id?: string; image?: unknown; thumb?: string; alt?: string }
+            return (
+              <div
+                key={g._id ?? i}
+                className="img-frame overflow-hidden"
+              >
+                <img
+                  src={g.image ? urlFor(g.image as SanityImageSource).width(600).url() : g.thumb}
+                  alt={g.alt || ''}
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            )
+          })}
         </div>
         <div className="text-center mt-6">
           <button
@@ -336,14 +383,14 @@ export default function HomePage() {
       <section className="mb-16 md:mb-20">
         <div className="glass-card p-8 md:p-12 text-center">
           <h2 className="font-display text-heading text-rich-charcoal mb-2">Visit Us</h2>
-          <p className="text-muted-charcoal text-sm mb-1">{SITE.address}</p>
-          <p className="text-diamond-blue font-label text-caption mb-6">Open Daily 7:00 am — 3:00 pm</p>
+          <p className="text-muted-charcoal text-sm mb-1">{address}</p>
+          <p className="text-diamond-blue font-label text-caption mb-6">{hoursLabel} {hoursRange}</p>
           <p className="text-muted-charcoal text-sm mb-6">
             Come stop by for a cup of <strong className="text-rich-charcoal">Big Mike Blend</strong> or enjoy one of our delicious breakfast meals!
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a
-              href={ORDER_URL}
+              href={orderUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
