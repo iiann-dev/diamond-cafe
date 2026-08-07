@@ -169,8 +169,8 @@ async function main() {
       titleTop: 'Crafted with',
       titleAccent: 'Care',
       body: 'From the espresso pull to the pastry finish, every detail matters. We source locally and make everything from scratch. No shortcuts, no compromises — just honest food made with intention.',
-      image: await imageField('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&h=520&fit=crop&q=70', 'value-1.jpg'),
-      imageAlt: 'Latte art being poured',
+      image: await imageField('/images/dc/IMG_1545.jpg', 'value-1.jpg'),
+      imageAlt: 'Coffee being poured at the counter',
       order: 0,
     },
     {
@@ -180,8 +180,8 @@ async function main() {
       titleTop: 'Community',
       titleAccent: 'First',
       body: 'Diamond Cafe is your living room away from home. A place to gather, connect, and feel welcome. Every face that walks through our door becomes part of the family — regulars and newcomers alike.',
-      image: await imageField('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&h=520&fit=crop&q=70', 'value-2.jpg'),
-      imageAlt: 'Warm cafe interior atmosphere',
+      image: await imageField('/images/dc/IMG_1489.jpg', 'value-2.jpg'),
+      imageAlt: 'Patio seating out front',
       order: 1,
     },
     {
@@ -191,8 +191,8 @@ async function main() {
       titleTop: 'Quality',
       titleAccent: 'Ingredients',
       body: 'We believe great food starts with great ingredients. Locally sourced, thoughtfully prepared, and served with pride — every plate tells a story of care from farm to table.',
-      image: await imageField('https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?w=700&h=520&fit=crop&q=80', 'value-3.jpg'),
-      imageAlt: 'Fresh coffee beans',
+      image: await imageField('/images/dc/IMG_1607.jpg', 'value-3.jpg'),
+      imageAlt: 'Fresh breakfast plate',
       order: 2,
     },
   ]

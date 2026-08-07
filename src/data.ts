@@ -66,20 +66,19 @@ export const SOCIALS = {
 export const ORDER_URL = 'https://www.toasttab.com/diamondcafe';
 
 export const IMAGES = {
-  hero: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&h=1600&fit=crop&q=80',
-  interior: 'https://diamondcafesf.com/hs-fs/hubfs/IMG_1523.jpg?width=800&height=600&name=IMG_1523.jpg',
-  food: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&h=800&fit=crop&q=80',
-  team: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=800&fit=crop&q=60',
-  coffee: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=800&fit=crop&q=60',
+  hero: '/images/dc/IMG_1521.jpg',
+  interior: '/images/dc/IMG_1523.jpg',
+  food: '/images/dc/IMG_1607.jpg',
+  team: '/images/dc/IMG_1589.jpg',
+  coffee: '/images/dc/IMG_1545.jpg',
   gallery: [
-    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1545.jpg?width=1200&length=1200&name=IMG_1545.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1545.jpg?width=400&length=400&name=IMG_1545.jpg', alt: 'Diamond Cafe interior' },
-    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1489.jpg?width=1200&length=1200&name=IMG_1489.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1489.jpg?width=400&length=400&name=IMG_1489.jpg', alt: 'Cafe counter', span: 'tall' as const },
-    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1578.jpg?width=1200&length=1200&name=IMG_1578.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1578.jpg?width=400&length=400&name=IMG_1578.jpg', alt: 'Coffee and pastries', span: 'wide' as const },
-    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1589.jpg?width=1200&length=1200&name=IMG_1589.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1589.jpg?width=400&length=400&name=IMG_1589.jpg', alt: 'Cafe ambiance' },
-    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1607.jpg?width=1200&length=1200&name=IMG_1607.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1607.jpg?width=400&length=400&name=IMG_1607.jpg', alt: 'Food plating', span: 'big' as const },
-    { src: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1521.jpg?width=1200&length=1200&name=IMG_1521.jpg', thumb: 'https://46309543.fs1.hubspotusercontent-na1.net/hub/46309543/hubfs/IMG_1521.jpg?width=400&length=400&name=IMG_1521.jpg', alt: 'Happy customers' },
-    { src: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&h=200&fit=crop&q=60', alt: 'Iced coffee' },
-    { src: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=600&fit=crop&q=80', thumb: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=200&h=200&fit=crop&q=60', alt: 'Pour over coffee' },
+    { src: '/images/dc/IMG_1545.jpg', thumb: '/images/dc/IMG_1545.jpg', alt: 'Hand-crafted coffee at the counter' },
+    { src: '/images/dc/IMG_1489.jpg', thumb: '/images/dc/IMG_1489.jpg', alt: 'Cafe patio seating', span: 'tall' as const },
+    { src: '/images/dc/IMG_1578.jpg', thumb: '/images/dc/IMG_1578.jpg', alt: 'Freshly baked bagels', span: 'wide' as const },
+    { src: '/images/dc/IMG_1589.jpg', thumb: '/images/dc/IMG_1589.jpg', alt: 'Menu boards and service counter' },
+    { src: '/images/dc/IMG_1607.jpg', thumb: '/images/dc/IMG_1607.jpg', alt: 'Breakfast plate', span: 'big' as const },
+    { src: '/images/dc/IMG_1521.jpg', thumb: '/images/dc/IMG_1521.jpg', alt: 'Cozy cafe lounge' },
+    { src: '/images/dc/IMG_1523.jpg', thumb: '/images/dc/IMG_1523.jpg', alt: 'Diamond Cafe storefront' },
   ] as GalleryImage[],
 };
 
