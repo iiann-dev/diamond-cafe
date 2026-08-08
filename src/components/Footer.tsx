@@ -47,9 +47,6 @@ export default function Footer() {
               loading="lazy"
               decoding="async"
             />
-            <p className="text-muted-charcoal text-body leading-relaxed max-w-xs">
-              {siteInfo?.description || 'A family-run cafe in Noe Valley since 2014. Fresh coffee, homemade food, and warm smiles every day.'}
-            </p>
           </div>
 
           {/* Nav */}
