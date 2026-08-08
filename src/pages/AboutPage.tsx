@@ -15,7 +15,7 @@ export default function AboutPage() {
   const headlineAccent = about?.headlineAccent || 'Story';
   const story = about?.story ||
     'Nestled in the heart of Noe Valley, Diamond Cafe is a minority-owned family treasure. With Mike and Gaby at the helm — bringing over two decades of culinary expertise — we serve crepes, breakfast favorites, and the kind of warmth that turns first-time visitors into regulars. Since opening our doors in 2014, your support has been our backbone. Here\'s to celebrating 10 incredible years together.';
-  const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : '/images/dc/IMG_1523.jpg';
+  const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : '/images/dc/IMG_1523.webp';
   const heroImageCaption = about?.heroImageCaption || '— Morning light on Diamond Street —';
   const philosophyLabel = about?.philosophyLabel || 'Our Philosophy';
   const philosophyQuote = about?.philosophyQuote ||
@@ -33,19 +33,19 @@ export default function AboutPage() {
     {
       _id: 'v1', number: '01', titleTop: 'Crafted with', titleAccent: 'Care',
       body: 'From the espresso pull to the pastry finish, every detail matters. We source locally and make everything from scratch. No shortcuts, no compromises — just honest food made with intention.',
-      image: { url: '/images/dc/IMG_1545.jpg' },
+      image: { url: '/images/dc/IMG_1545.webp' },
             imageAlt: 'Coffee being poured at the counter',
     },
     {
       _id: 'v2', number: '02', titleTop: 'Community', titleAccent: 'First',
       body: 'Diamond Cafe is your living room away from home. A place to gather, connect, and feel welcome. Every face that walks through our door becomes part of the family — regulars and newcomers alike.',
-      image: { url: '/images/dc/IMG_1489.jpg' },
+      image: { url: '/images/dc/IMG_1489.webp' },
             imageAlt: 'Patio seating out front',
     },
     {
       _id: 'v3', number: '03', titleTop: 'Quality', titleAccent: 'Ingredients',
       body: 'We believe great food starts with great ingredients. Locally sourced, thoughtfully prepared, and served with pride — every plate tells a story of care from farm to table.',
-      image: { url: '/images/dc/IMG_1607.jpg' },
+      image: { url: '/images/dc/IMG_1607.webp' },
             imageAlt: 'Fresh breakfast plate',
     },
   ];

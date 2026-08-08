@@ -66,19 +66,19 @@ export const SOCIALS = {
 export const ORDER_URL = 'https://www.toasttab.com/diamondcafe';
 
 export const IMAGES = {
-  hero: '/images/dc/IMG_1521.jpg',
-  interior: '/images/dc/IMG_1523.jpg',
-  food: '/images/dc/IMG_1607.jpg',
-  team: '/images/dc/IMG_1589.jpg',
-  coffee: '/images/dc/IMG_1545.jpg',
+  hero: '/images/dc/IMG_1521.webp',
+  interior: '/images/dc/IMG_1523.webp',
+  food: '/images/dc/IMG_1607.webp',
+  team: '/images/dc/IMG_1589.webp',
+  coffee: '/images/dc/IMG_1545.webp',
   gallery: [
-    { src: '/images/dc/IMG_1545.jpg', thumb: '/images/dc/IMG_1545.jpg', alt: 'Hand-crafted coffee at the counter' },
-    { src: '/images/dc/IMG_1489.jpg', thumb: '/images/dc/IMG_1489.jpg', alt: 'Cafe patio seating', span: 'tall' as const },
-    { src: '/images/dc/IMG_1578.jpg', thumb: '/images/dc/IMG_1578.jpg', alt: 'Freshly baked bagels', span: 'wide' as const },
-    { src: '/images/dc/IMG_1589.jpg', thumb: '/images/dc/IMG_1589.jpg', alt: 'Menu boards and service counter' },
-    { src: '/images/dc/IMG_1607.jpg', thumb: '/images/dc/IMG_1607.jpg', alt: 'Breakfast plate', span: 'big' as const },
-    { src: '/images/dc/IMG_1521.jpg', thumb: '/images/dc/IMG_1521.jpg', alt: 'Cozy cafe lounge' },
-    { src: '/images/dc/IMG_1523.jpg', thumb: '/images/dc/IMG_1523.jpg', alt: 'Diamond Cafe storefront' },
+    { src: '/images/dc/IMG_1545.webp', thumb: '/images/dc/IMG_1545.webp', alt: 'Hand-crafted coffee at the counter' },
+    { src: '/images/dc/IMG_1489.webp', thumb: '/images/dc/IMG_1489.webp', alt: 'Cafe patio seating', span: 'tall' as const },
+    { src: '/images/dc/IMG_1578.webp', thumb: '/images/dc/IMG_1578.webp', alt: 'Freshly baked bagels', span: 'wide' as const },
+    { src: '/images/dc/IMG_1589.webp', thumb: '/images/dc/IMG_1589.webp', alt: 'Menu boards and service counter' },
+    { src: '/images/dc/IMG_1607.webp', thumb: '/images/dc/IMG_1607.webp', alt: 'Breakfast plate', span: 'big' as const },
+    { src: '/images/dc/IMG_1521.webp', thumb: '/images/dc/IMG_1521.webp', alt: 'Cozy cafe lounge' },
+    { src: '/images/dc/IMG_1523.webp', thumb: '/images/dc/IMG_1523.webp', alt: 'Diamond Cafe storefront' },
   ] as GalleryImage[],
 };
 
