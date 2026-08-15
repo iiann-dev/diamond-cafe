@@ -1,38 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <defs>
-    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2E8B8B"/>
-      <stop offset="50%" stop-color="#1A5C5C"/>
-      <stop offset="100%" stop-color="#0D3D3D"/>
-    </linearGradient>
-    <linearGradient id="facetLight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#5FD0D0" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#2E8B8B" stop-opacity="0.2"/>
-    </linearGradient>
-    <linearGradient id="steamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#F5F0E0" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#D4C8A8" stop-opacity="0.2"/>
-    </linearGradient>
-  </defs>
-  <!-- Faceted diamond gem -->
-  <g transform="translate(16, 14) scale(0.9)">
-    <!-- Diamond outline -->
-    <polygon points="0,-12 10,0 0,12 -10,0" fill="url(#diamondGrad)" stroke="#1A5C5C" stroke-width="1"/>
-    <!-- Top facet -->
-    <polygon points="0,-12 5,-2 0,2 -5,-2" fill="url(#facetLight)"/>
-    <!-- Right facet -->
-    <polygon points="10,0 5,-2 0,2 5,6" fill="#1A5C5C"/>
-    <!-- Bottom facet -->
-    <polygon points="0,12 5,2 0,-2 -5,2" fill="#0D3D3D"/>
-    <!-- Left facet -->
-    <polygon points="-10,0 -5,-2 0,2 -5,6" fill="#2E8B8B" opacity="0.7"/>
-    <!-- Center highlight -->
-    <polygon points="0,-2 2,0 0,2 -2,0" fill="#5FD0D0" opacity="0.5"/>
-    <!-- Steam rising from top -->
-    <g transform="translate(0, -14)">
-      <path d="M-2 0 Q-3 -3 -2 -6 Q-1 -9 0 -9" fill="none" stroke="url(#steamGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
-      <path d="M0 0 Q1 -3 0 -6 Q-1 -9 0 -9" fill="none" stroke="url(#steamGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-      <path d="M2 0 Q3 -3 2 -6 Q1 -9 0 -9" fill="none" stroke="url(#steamGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
-    </g>
-  </g>
+  <rect width="32" height="32" fill="#faf9f7"/>
+  <image href="favicon-32.png" width="32" height="32"/>
 </svg>

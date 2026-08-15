@@ -228,46 +228,46 @@ export default function HomePage() {
           </div>
 
           {/* RIGHT — Image bleeds into left territory */}
-          <div className="absolute inset-y-0 right-0 w-[58%] lg:w-[56%] xl:w-[55%] overflow-hidden">
-            <motion.div
-              style={{ y: imageParallax }}
-              className="absolute inset-0 w-[115%] lg:w-[112%] xl:w-[110%] h-[115%] -top-[7.5%]"
-            >
-              <img
-                src={heroImage}
-                alt=""
-                className="w-full h-full object-cover scale-105"
-                fetchPriority="high"
-                loading="eager"
-                decoding="async"
-                width="1400"
-                height="1600"
-              />
+                    <div className="absolute inset-y-0 right-0 w-[58%] lg:w-[56%] xl:w-[55%] overflow-hidden rounded-[32px] lg:rounded-[40px] xl:rounded-[48px] border border-diamond-blue/10 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)]">
+                      <motion.div
+                        style={{ y: imageParallax }}
+                        className="absolute inset-0 w-[115%] lg:w-[112%] xl:w-[110%] h-[115%] -top-[7.5%]"
+                      >
+                        <img
+                          src={heroImage}
+                          alt=""
+                          className="w-full h-full object-cover scale-105"
+                          fetchPriority="high"
+                          loading="eager"
+                          decoding="async"
+                          width="1400"
+                          height="1600"
+                        />
 
-              {/* Gradient bridge — image dissolves into text side */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: `linear-gradient(
-                    to right,
-                    var(--color-frost-white) 0%,
-                    rgba(250, 249, 247, 0.85) 10%,
-                    transparent 28%
-                  )`,
-                }}
-              />
-            </motion.div>
+                        {/* Gradient bridge — image dissolves into text side */}
+                        <div
+                          className="absolute inset-0 pointer-events-none"
+                          style={{
+                            background: `linear-gradient(
+                              to right,
+                              var(--color-frost-white) 0%,
+                              rgba(250, 249, 247, 0.85) 10%,
+                              transparent 28%
+                            )`,
+                          }}
+                        />
+                      </motion.div>
 
-            {/* Crystal highlight reflection */}
-            <div className="absolute top-[15%] right-[8%] w-[30%] h-[20%] pointer-events-none opacity-40">
-              <div className="w-full h-full bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-full blur-[60px]" />
-            </div>
+                      {/* Crystal highlight reflection */}
+                      <div className="absolute top-[15%] right-[8%] w-[30%] h-[20%] pointer-events-none opacity-40">
+                        <div className="w-full h-full bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-full blur-[60px]" />
+                      </div>
 
-            {/* Bottom fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-frost-white to-transparent pointer-events-none" />
-          </div>
-        </div>
-      </section>
+                      {/* Bottom fade */}
+                      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-frost-white to-transparent pointer-events-none" />
+                    </div>
+                  </div>
+                </section>
 
       {/* Features Bento */}
       <section className="mb-16 md:mb-20">
