@@ -18,21 +18,21 @@ export function buildRestaurantJsonLd({ siteInfo, menuItems, categories }: Resta
   const orderUrl = siteInfo?.orderUrl || 'https://www.toasttab.com/diamondcafe'
 
   const [openTime, closeTime] = hoursRange
-    .replace(/\./g, '')
-    .replace(/\s*(am|pm)\s*/gi, (m: string) => m.trim().toUpperCase())
-    .split('—')
-    .map((t: string) => t.trim())
+      .replace(/\s*(am|pm)\s*/gi, (m: string) => m.trim().toUpperCase())
+      .split(/[—–]|\bto\b/i)
+      .map((t: string) => t.trim())
 
-  const to24 = (t: string) => {
-    const match = t.match(/(\d+):(\d+)\s*(AM|PM)/i)
-    if (!match) return null
-    let h = parseInt(match[1], 10)
-    const m = match[2]
-    const ap = match[3].toUpperCase()
-    if (ap === 'PM' && h !== 12) h += 12
-    if (ap === 'AM' && h === 12) h = 0
-    return `${String(h).padStart(2, '0')}:${m}:00`
-  }
+    const to24 = (t?: string) => {
+      if (!t) return null
+      const match = t.match(/(\d+):(\d+)\s*(AM|PM)/i)
+      if (!match) return null
+      let h = parseInt(match[1], 10)
+      const m = match[2]
+      const ap = match[3].toUpperCase()
+      if (ap === 'PM' && h !== 12) h += 12
+      if (ap === 'AM' && h === 12) h = 0
+      return `${String(h).padStart(2, '0')}:${m}:00`
+    }
 
   const open = to24(openTime)
   const close = to24(closeTime)
