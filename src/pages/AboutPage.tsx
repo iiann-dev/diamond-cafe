@@ -143,19 +143,19 @@ export default function AboutPage() {
           CHAPTER 4 — Core Values
           Alternating rhythm — image left/text right & vice versa
           ═══════════════════════════════════════════════════ */}
-      <section className="mb-10 md:mb-14">
-        {valueList.map((v, i) => {
-          const isEven = i % 2 === 1;
-          const imgSrc = v.image?.asset ? urlFor(v.image).width(700).url() : (v.image?.url || '');
-          return (
-            <motion.div
-              key={v._id || i}
-              initial={{ opacity: 0, y: 36 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, delay: 0, ease }}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 md:mb-16 max-w-5xl mx-auto px-5 ${i === valueList.length - 1 ? 'mb-0' : ''}`}
-            >
+      <section className="mb-8 md:mb-10">
+              {valueList.map((v, i) => {
+                const isEven = i % 2 === 1;
+                const imgSrc = v.image?.asset ? urlFor(v.image).width(700).url() : (v.image?.url || '');
+                return (
+                  <motion.div
+                    key={v._id || i}
+                    initial={{ opacity: 0, y: 36 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.8, delay: 0, ease }}
+                    className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 md:mb-12 max-w-5xl mx-auto px-5 ${i === valueList.length - 1 ? 'mb-0' : ''}`}
+                  >
               <div className={`${isEven ? 'order-1 md:order-2' : ''} flex flex-col justify-center`}>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="font-label text-[11px] text-diamond-blue/40 tracking-[0.15em]">{v.number}</span>
@@ -191,7 +191,7 @@ export default function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.9, ease }}
-        className="mb-16 relative overflow-hidden rounded-[24px] bg-gradient-to-br from-diamond-blue/[0.04] via-frost-white to-soft-champagne/20 max-w-5xl mx-auto px-5 md:px-0"
+                className="mb-10 relative overflow-hidden rounded-[24px] bg-gradient-to-br from-diamond-blue/[0.04] via-frost-white to-soft-champagne/20 max-w-5xl mx-auto px-5 md:px-0"
         style={{ padding: 'clamp(2.5rem, 5vw, 4rem)' }}
       >
         <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-diamond-blue/[0.04] blur-[100px] pointer-events-none" />
