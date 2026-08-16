@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 130" fill="none">
   <defs>
-    <linearGradient id="dc-wide-gem" x1="60" y1="20" x2="60" y2="100" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#D97706" />
-      <stop offset="100%" stop-color="#78350F" />
+    <linearGradient id="dc-wide-blue" x1="60" y1="20" x2="60" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
     </linearGradient>
   </defs>
   <!-- Diamond Icon -->
-  <polygon points="60,20 100,60 60,100 20,60" fill="url(#dc-wide-gem)" stroke="#FDE68A" stroke-width="3" stroke-linejoin="round" />
-  <polygon points="60,20 80,60 60,90 40,60" fill="#FDE68A" opacity="0.4" />
-  <path d="M60,48 C66,48 70,53 70,60 C70,68 60,75 60,75 C60,75 50,68 50,60 C50,53 54,48 60,48 Z" fill="#FFFBEB" />
+  <polygon points="65,20 110,65 65,110 20,65" fill="url(#dc-wide-blue)" stroke="#BAE6FD" stroke-width="3" stroke-linejoin="round" />
+  <polygon points="65,20 88,65 65,98 42,65" fill="#BAE6FD" opacity="0.4" />
+  <path d="M65,52 C71,52 75,57 75,65 C75,73 65,80 65,80 C65,80 55,73 55,65 C55,57 59,52 65,52 Z" fill="#F0F9FF" />
   
   <!-- Brand Typography -->
-  <text x="125" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" fill="#1C1917" letter-spacing="3">DIAMOND CAFE</text>
-  <text x="128" y="92" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#B45309" letter-spacing="4">NOE VALLEY • EST. 2014</text>
+  <text x="135" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="800" fill="#0C4A6E" letter-spacing="3">DIAMOND CAFE</text>
+  <text x="138" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0284C7" letter-spacing="4">NOE VALLEY • EST. 2014</text>
 </svg>

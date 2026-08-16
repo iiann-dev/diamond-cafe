@@ -1,29 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <defs>
-    <linearGradient id="dc-gem" x1="256" y1="64" x2="256" y2="448" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#D97706" />
-      <stop offset="50%" stop-color="#B45309" />
-      <stop offset="100%" stop-color="#78350F" />
+    <linearGradient id="dc-blue-gem" x1="256" y1="64" x2="256" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="40%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
     </linearGradient>
-    <linearGradient id="dc-glow" x1="256" y1="120" x2="256" y2="392" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.2" />
+    <linearGradient id="dc-blue-glow" x1="256" y1="120" x2="256" y2="392" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E0F2FE" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.3" />
     </linearGradient>
   </defs>
   <!-- Background Badge -->
-  <rect width="512" height="512" rx="128" fill="#1C1917" />
+  <rect width="512" height="512" rx="128" fill="#0B132B" />
   
   <!-- Outer Diamond Facet -->
-  <polygon points="256,72 432,240 256,440 80,240" fill="url(#dc-gem)" stroke="#FDE68A" stroke-width="8" stroke-linejoin="round" />
+  <polygon points="256,68 436,236 256,444 76,236" fill="url(#dc-blue-gem)" stroke="#BAE6FD" stroke-width="8" stroke-linejoin="round" />
   
   <!-- Inner Diamond Facets -->
-  <polygon points="256,72 344,240 256,380 168,240" fill="url(#dc-glow)" />
-  <polygon points="256,72 256,380" stroke="#FFFBEB" stroke-width="4" stroke-linecap="round" />
-  <polygon points="80,240 432,240" stroke="#FFFBEB" stroke-width="4" opacity="0.75" />
-  <polygon points="168,240 256,72 344,240" fill="#FEF3C7" opacity="0.4" />
-  <polygon points="168,240 256,380 344,240" fill="#78350F" opacity="0.5" />
+  <polygon points="256,68 348,236 256,384 164,236" fill="url(#dc-blue-glow)" />
+  <polygon points="256,68 256,384" stroke="#F0F9FF" stroke-width="4" stroke-linecap="round" />
+  <polygon points="76,236 436,236" stroke="#F0F9FF" stroke-width="4" opacity="0.8" />
+  <polygon points="164,236 256,68 348,236" fill="#E0F2FE" opacity="0.45" />
+  <polygon points="164,236 256,384 348,236" fill="#0369A1" opacity="0.6" />
   
-  <!-- Stylized Coffee Bean / Cup Motif in Center -->
-  <path d="M256,190 C280,190 296,210 296,236 C296,268 256,294 256,294 C256,294 216,268 216,236 C216,210 232,190 256,190 Z" fill="#FFFBEB" />
-  <path d="M256,204 C250,220 262,240 256,260" stroke="#B45309" stroke-width="3" stroke-linecap="round" />
+  <!-- Coffee Motif / Center Star Sparkle -->
+  <path d="M256,180 C282,180 300,202 300,230 C300,265 256,295 256,295 C256,295 212,265 212,230 C212,202 230,180 256,180 Z" fill="#F0F9FF" />
+  <path d="M256,196 C250,214 262,236 256,258" stroke="#0284C7" stroke-width="3.5" stroke-linecap="round" />
 </svg>

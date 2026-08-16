@@ -38,15 +38,19 @@ export default function Footer() {
     <footer className="border-t border-border-light bg-surface">
       <div className="max-w-container-max mx-auto px-gutter py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo */}
-          <div className="md:col-span-1">
+          {/* Logo & Brand Info */}
+          <div className="md:col-span-1 space-y-3">
             <img
               src={wideLogo}
               alt={`${name} logo`}
-              className="h-8 w-auto object-contain mb-4"
+              className="h-12 w-auto object-contain mb-2"
               loading="lazy"
               decoding="async"
             />
+            <h3 className="font-serif text-xl font-bold text-deep-navy">{name}</h3>
+            <p className="text-muted-charcoal text-sm leading-relaxed">
+              Noe Valley morning staple on Diamond Street. Fresh espresso, warm savory crepes, and wholesome breakfast plates served daily.
+            </p>
           </div>
 
           {/* Nav */}

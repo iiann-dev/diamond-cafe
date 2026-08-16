@@ -86,7 +86,7 @@ export const SITE = {
   name: 'Diamond Cafe',
   tagline: 'Noe Valley morning staple since 2014',
   description: "Independent neighborhood spot serving fresh espresso, scratch-made crepes, and warm breakfast plates on Diamond Street. We open early every morning with good coffee, friendly counter service, and a relaxed room to sit down or grab something to go.",
-  hours: '7:00 am — 3:00 pm',
+  hours: '7:00 am to 3:00 pm',
   days: 'Open Daily',
   address: '751 Diamond Street, San Francisco, CA 94114',
   neighborhood: 'Noe Valley, San Francisco',
@@ -97,30 +97,30 @@ export const SITE = {
 };
 
 export const HOURS: DayHours[] = [
-  { day: 'Monday — Friday', hours: '7:00 am — 3:00 pm' },
-  { day: 'Saturday', hours: '7:00 am — 3:00 pm' },
-  { day: 'Sunday', hours: '7:00 am — 3:00 pm' },
+  { day: 'Monday to Friday', hours: '7:00 am to 3:00 pm' },
+  { day: 'Saturday', hours: '7:00 am to 3:00 pm' },
+  { day: 'Sunday', hours: '7:00 am to 3:00 pm' },
 ];
 
 export const FEATURES = [
   {
-    title: 'House-Roasted Coffee',
-    desc: 'Our Big Mike Blend is roasted in small batches for bold, smooth flavor in every cup.',
+    title: 'Small Batch Coffee',
+    desc: 'Carefully brewed espresso and house blends roasted for balanced everyday drinking.',
     icon: 'coffee',
   },
   {
-    title: 'Made Fresh Daily',
-    desc: 'Everything from our pastry case is scratch-made each morning. Always fresh, always good.',
+    title: 'Baked Every Morning',
+    desc: 'Fresh morning pastries and savory breakfast goods made from scratch before doors open.',
     icon: 'pastry',
   },
   {
-    title: 'Family-Run Since 2014',
-    desc: 'We treat every customer like part of the Diamond family.',
+    title: 'Neighborhood Roots',
+    desc: 'Local team serving familiar faces and welcoming anyone stopping by for a warm meal.',
     icon: 'heart',
   },
   {
-    title: 'Noe Valley Soul',
-    desc: 'Proud to be your neighborhood living room for over a decade.',
+    title: 'Noe Valley Living',
+    desc: 'A quiet, comfortable corner on Diamond Street to sit with your morning cup.',
     icon: 'map',
   },
 ];
