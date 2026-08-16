@@ -1,29 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <defs>
-    <linearGradient id="dc-blue-gem" x1="256" y1="64" x2="256" y2="448" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8" />
-      <stop offset="40%" stop-color="#0284C7" />
-      <stop offset="100%" stop-color="#0369A1" />
-    </linearGradient>
-    <linearGradient id="dc-blue-glow" x1="256" y1="120" x2="256" y2="392" gradientUnits="userSpaceOnUse">
+    <!-- Facet Gradients for Crystal Glass Realism -->
+    <linearGradient id="table-facet" x1="256" y1="90" x2="256" y2="175" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#E0F2FE" stop-opacity="0.95" />
-      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.7" />
     </linearGradient>
+    
+    <linearGradient id="crown-light" x1="160" y1="90" x2="256" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.6" />
+    </linearGradient>
+
+    <linearGradient id="crown-dark" x1="352" y1="90" x2="256" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0369A1" stop-opacity="0.7" />
+    </linearGradient>
+
+    <linearGradient id="pavilion-left" x1="60" y1="175" x2="256" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.75" />
+      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0C4A6E" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="pavilion-right" x1="452" y1="175" x2="256" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#0369A1" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#075985" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="center-reflect" x1="256" y1="175" x2="256" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F0F9FF" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#38BDF8" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.8" />
+    </linearGradient>
+    
+    <!-- Glow filter for sparkling crystal depth -->
+    <filter id="crystal-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
   </defs>
-  <!-- Background Badge -->
-  <rect width="512" height="512" rx="128" fill="#0B132B" />
-  
-  <!-- Outer Diamond Facet -->
-  <polygon points="256,68 436,236 256,444 76,236" fill="url(#dc-blue-gem)" stroke="#BAE6FD" stroke-width="8" stroke-linejoin="round" />
-  
-  <!-- Inner Diamond Facets -->
-  <polygon points="256,68 348,236 256,384 164,236" fill="url(#dc-blue-glow)" />
-  <polygon points="256,68 256,384" stroke="#F0F9FF" stroke-width="4" stroke-linecap="round" />
-  <polygon points="76,236 436,236" stroke="#F0F9FF" stroke-width="4" opacity="0.8" />
-  <polygon points="164,236 256,68 348,236" fill="#E0F2FE" opacity="0.45" />
-  <polygon points="164,236 256,384 348,236" fill="#0369A1" opacity="0.6" />
-  
-  <!-- Coffee Motif / Center Star Sparkle -->
-  <path d="M256,180 C282,180 300,202 300,230 C300,265 256,295 256,295 C256,295 212,265 212,230 C212,202 230,180 256,180 Z" fill="#F0F9FF" />
-  <path d="M256,196 C250,214 262,236 256,258" stroke="#0284C7" stroke-width="3.5" stroke-linecap="round" />
+
+  <g filter="url(#crystal-glow)">
+    <!-- Pavilion (Bottom facets pointing down to culet) -->
+    <polygon points="60,175 160,175 256,430" fill="url(#pavilion-left)" />
+    <polygon points="160,175 256,175 256,430" fill="url(#center-reflect)" />
+    <polygon points="256,175 352,175 256,430" fill="url(#center-reflect)" opacity="0.85" />
+    <polygon points="352,175 452,175 256,430" fill="url(#pavilion-right)" />
+
+    <!-- Crown Side Facets -->
+    <polygon points="60,175 125,90 160,175" fill="url(#crown-light)" />
+    <polygon points="125,90 160,175 256,90" fill="url(#table-facet)" opacity="0.8" />
+    <polygon points="160,175 256,175 256,90" fill="url(#crown-light)" />
+    <polygon points="256,175 352,175 256,90" fill="url(#crown-dark)" />
+    <polygon points="256,90 352,175 387,90" fill="url(#table-facet)" opacity="0.85" />
+    <polygon points="352,175 452,175 387,90" fill="url(#crown-dark)" />
+
+    <!-- Top Table Facet (Flat top of brilliant diamond) -->
+    <polygon points="125,90 387,90 352,175 160,175" fill="url(#table-facet)" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+
+    <!-- Crystalline Facet Cut Lines (Pure brilliant white refractions) -->
+    <g stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+      <line x1="125" y1="90" x2="387" y2="90" />
+      <line x1="60" y1="175" x2="452" y2="175" />
+      <line x1="125" y1="90" x2="60" y2="175" />
+      <line x1="387" y1="90" x2="452" y2="175" />
+      <line x1="160" y1="175" x2="125" y2="90" />
+      <line x1="352" y1="175" x2="387" y2="90" />
+      <line x1="256" y1="90" x2="160" y2="175" />
+      <line x1="256" y1="90" x2="352" y2="175" />
+      
+      <!-- Culet Rays -->
+      <line x1="60" y1="175" x2="256" y2="430" />
+      <line x1="160" y1="175" x2="256" y2="430" />
+      <line x1="256" y1="175" x2="256" y2="430" />
+      <line x1="352" y1="175" x2="256" y2="430" />
+      <line x1="452" y1="175" x2="256" y2="430" />
+    </g>
+
+    <!-- Sparkle Lens Flares (4-point crystal stars) -->
+    <!-- Top-left sparkle -->
+    <path d="M125,90 Q125,75 110,75 Q125,75 125,60 Q125,75 140,75 Q125,75 125,90 Z" fill="#FFFFFF" opacity="0.95" />
+    <!-- Center-right brilliance burst -->
+    <path d="M387,90 Q387,70 372,70 Q387,70 387,50 Q387,70 402,70 Q387,70 387,90 Z" fill="#E0F2FE" opacity="0.9" />
+    <!-- Culet tip glint -->
+    <path d="M256,430 Q256,418 244,418 Q256,418 256,406 Q256,418 268,418 Q256,418 256,430 Z" fill="#FFFFFF" opacity="0.85" />
+  </g>
 </svg>

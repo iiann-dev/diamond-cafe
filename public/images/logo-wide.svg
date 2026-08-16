@@ -1,16 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 130" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 140" fill="none">
   <defs>
-    <linearGradient id="dc-wide-blue" x1="60" y1="20" x2="60" y2="110" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8" />
-      <stop offset="100%" stop-color="#0284C7" />
+    <linearGradient id="w-table-facet" x1="60" y1="20" x2="60" y2="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E0F2FE" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.75" />
+    </linearGradient>
+    <linearGradient id="w-pavilion" x1="20" y1="45" x2="60" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0C4A6E" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="w-reflect" x1="60" y1="45" x2="60" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F0F9FF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.8" />
     </linearGradient>
   </defs>
-  <!-- Diamond Icon -->
-  <polygon points="65,20 110,65 65,110 20,65" fill="url(#dc-wide-blue)" stroke="#BAE6FD" stroke-width="3" stroke-linejoin="round" />
-  <polygon points="65,20 88,65 65,98 42,65" fill="#BAE6FD" opacity="0.4" />
-  <path d="M65,52 C71,52 75,57 75,65 C75,73 65,80 65,80 C65,80 55,73 55,65 C55,57 59,52 65,52 Z" fill="#F0F9FF" />
-  
-  <!-- Brand Typography -->
-  <text x="135" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="800" fill="#0C4A6E" letter-spacing="3">DIAMOND CAFE</text>
-  <text x="138" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0284C7" letter-spacing="4">NOE VALLEY • EST. 2014</text>
+
+  <!-- Crystalline Diamond Icon -->
+  <g>
+    <!-- Pavilion Base -->
+    <polygon points="20,45 45,45 60,120" fill="url(#w-pavilion)" />
+    <polygon points="45,45 60,45 60,120" fill="url(#w-reflect)" />
+    <polygon points="60,45 75,45 60,120" fill="url(#w-reflect)" opacity="0.85" />
+    <polygon points="75,45 100,45 60,120" fill="url(#w-pavilion)" opacity="0.9" />
+
+    <!-- Crown & Table -->
+    <polygon points="20,45 36,20 45,45" fill="url(#w-table-facet)" opacity="0.8" />
+    <polygon points="36,20 84,20 75,45 45,45" fill="url(#w-table-facet)" />
+    <polygon points="84,20 100,45 75,45" fill="url(#w-table-facet)" opacity="0.8" />
+
+    <!-- Facet Outlines & Brilliant Cut Lines -->
+    <g stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+      <line x1="36" y1="20" x2="84" y2="20" />
+      <line x1="20" y1="45" x2="100" y2="45" />
+      <line x1="36" y1="20" x2="20" y2="45" />
+      <line x1="84" y1="20" x2="100" y2="45" />
+      <line x1="45" y1="45" x2="36" y2="20" />
+      <line x1="75" y1="45" x2="84" y2="20" />
+      <line x1="20" y1="45" x2="60" y2="120" />
+      <line x1="45" y1="45" x2="60" y2="120" />
+      <line x1="60" y1="45" x2="60" y2="120" />
+      <line x1="75" y1="45" x2="60" y2="120" />
+      <line x1="100" y1="45" x2="60" y2="120" />
+    </g>
+
+    <!-- Sparkle Stars -->
+    <path d="M36,20 Q36,12 28,12 Q36,12 36,4 Q36,12 44,12 Q36,12 36,20 Z" fill="#FFFFFF" opacity="0.95" />
+    <path d="M84,20 Q84,12 76,12 Q84,12 84,4 Q84,12 92,12 Q84,12 84,20 Z" fill="#E0F2FE" opacity="0.9" />
+  </g>
+
+  <!-- Typography -->
+  <text x="135" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="800" fill="#0C4A6E" letter-spacing="3">DIAMOND CAFE</text>
+  <text x="138" y="108" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#0284C7" letter-spacing="4">NOE VALLEY • EST. 2014</text>
 </svg>
