@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" fill="none">
+  <defs>
+    <linearGradient id="dc-wide-gem" x1="60" y1="20" x2="60" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+  </defs>
+  <!-- Diamond Icon -->
+  <polygon points="60,20 100,60 60,100 20,60" fill="url(#dc-wide-gem)" stroke="#FDE68A" stroke-width="3" stroke-linejoin="round" />
+  <polygon points="60,20 80,60 60,90 40,60" fill="#FDE68A" opacity="0.4" />
+  <path d="M60,48 C66,48 70,53 70,60 C70,68 60,75 60,75 C60,75 50,68 50,60 C50,53 54,48 60,48 Z" fill="#FFFBEB" />
+  
+  <!-- Brand Typography -->
+  <text x="125" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" fill="#1C1917" letter-spacing="3">DIAMOND CAFE</text>
+  <text x="128" y="92" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#B45309" letter-spacing="4">NOE VALLEY • EST. 2014</text>
+</svg>

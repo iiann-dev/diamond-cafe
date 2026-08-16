@@ -52,10 +52,10 @@ export const MENU_ITEMS: MenuItem[] = [
   { id: 'sa5', name: 'Greek Salad', description: 'Romaine, cucumbers, tomatoes, kalamata olives, feta, red onions, oregano. Lemon-olive oil.', category: 'salads' },
 ];
 
-// ─── REAL ASSETS FROM DIAMONDCAFESF.COM ───
+// ─── LOCAL ASSETS & LOGOS ───
 export const LOGOS = {
   square: '/images/logo.png',
-  wide: 'https://diamondcafesf.com/hs-fs/hubfs/Diamond%20Wide%20Logo.png?width=2377&height=269&name=Diamond%20Wide%20Logo.png',
+  wide: '/images/logo-wide.png',
 } as const;
 
 export const SOCIALS = {
@@ -72,20 +72,20 @@ export const IMAGES = {
   team: '/images/dc/IMG_1589.webp',
   coffee: '/images/dc/IMG_1545.webp',
   gallery: [
-    { src: '/images/dc/IMG_1545.webp', thumb: '/images/dc/IMG_1545.webp', alt: 'Hand-crafted coffee at the counter' },
-    { src: '/images/dc/IMG_1489.webp', thumb: '/images/dc/IMG_1489.webp', alt: 'Cafe patio seating', span: 'tall' as const },
-    { src: '/images/dc/IMG_1578.webp', thumb: '/images/dc/IMG_1578.webp', alt: 'Freshly baked bagels', span: 'wide' as const },
-    { src: '/images/dc/IMG_1589.webp', thumb: '/images/dc/IMG_1589.webp', alt: 'Menu boards and service counter' },
-    { src: '/images/dc/IMG_1607.webp', thumb: '/images/dc/IMG_1607.webp', alt: 'Breakfast plate', span: 'big' as const },
-    { src: '/images/dc/IMG_1521.webp', thumb: '/images/dc/IMG_1521.webp', alt: 'Cozy cafe lounge' },
-    { src: '/images/dc/IMG_1523.webp', thumb: '/images/dc/IMG_1523.webp', alt: 'Diamond Cafe storefront' },
+    { src: '/images/dc/IMG_1545.webp', thumb: '/images/dc/IMG_1545.webp', alt: 'Fresh pour-over coffee' },
+    { src: '/images/dc/IMG_1489.webp', thumb: '/images/dc/IMG_1489.webp', alt: 'Sunny morning patio seating', span: 'tall' as const },
+    { src: '/images/dc/IMG_1578.webp', thumb: '/images/dc/IMG_1578.webp', alt: 'Freshly baked morning goods', span: 'wide' as const },
+    { src: '/images/dc/IMG_1589.webp', thumb: '/images/dc/IMG_1589.webp', alt: 'Kitchen and prep counter' },
+    { src: '/images/dc/IMG_1607.webp', thumb: '/images/dc/IMG_1607.webp', alt: 'Hearty brunch plate', span: 'big' as const },
+    { src: '/images/dc/IMG_1521.webp', thumb: '/images/dc/IMG_1521.webp', alt: 'Warm neighborhood cafe interior' },
+    { src: '/images/dc/IMG_1523.webp', thumb: '/images/dc/IMG_1523.webp', alt: 'Cozy corner tables' },
   ] as GalleryImage[],
 };
 
 export const SITE = {
   name: 'Diamond Cafe',
-  tagline: 'Noe Valley since 2014',
-  description: "Diamond Cafe is a small, family-owned cafe located in the Noe Valley neighborhood and serving the surrounding area. We are dedicated to providing our customers with a warm and welcoming atmosphere where they can enjoy delicious food and beverages. Our menu features a variety of freshly brewed coffees, teas, and specialty drinks, as well as a selection of homemade pastries and sandwiches. Whether you're looking for a quick pick-me-up or a relaxing place to meet with friends, Diamond Cafe is the perfect spot. We take pride in using high-quality ingredients and providing exceptional customer service. Come visit us and experience the cozy charm of our cafe.",
+  tagline: 'Noe Valley morning staple since 2014',
+  description: "Independent neighborhood spot serving fresh espresso, scratch-made crepes, and warm breakfast plates on Diamond Street. We open early every morning with good coffee, friendly counter service, and a relaxed room to sit down or grab something to go.",
   hours: '7:00 am — 3:00 pm',
   days: 'Open Daily',
   address: '751 Diamond Street, San Francisco, CA 94114',

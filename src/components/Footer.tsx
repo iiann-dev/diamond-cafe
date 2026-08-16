@@ -102,8 +102,11 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="border-t border-border-light mt-10 pt-8 text-center text-faint-charcoal text-caption font-label">
-          &copy; {new Date().getFullYear()} {name}. All rights reserved.
+        <div className="border-t border-border-light mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-faint-charcoal text-caption font-label">
+          <p>&copy; {new Date().getFullYear()} {name}. All rights reserved.</p>
+          <p className="text-xs text-muted-charcoal/80 text-center md:text-right">
+            Concept redesign created for portfolio purposes. Not affiliated with or endorsed by Diamond Cafe SF.
+          </p>
         </div>
       </div>
     </footer>
