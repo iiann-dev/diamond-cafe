@@ -14,17 +14,17 @@ export default function AboutPage() {
   const headlineTop = about?.headlineTop || 'Our';
   const headlineAccent = about?.headlineAccent || 'Story';
   const story = about?.story ||
-    'Nestled in the heart of Noe Valley, Diamond Cafe is a minority-owned family treasure. With Mike and Gaby at the helm — bringing over two decades of culinary expertise — we serve crepes, breakfast favorites, and the kind of warmth that turns first-time visitors into regulars. Since opening our doors in 2014, your support has been our backbone. Here\'s to celebrating 10 incredible years together.';
-  const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : '/images/dc/IMG_1523.webp';
-  const heroImageCaption = about?.heroImageCaption || '— Morning light on Diamond Street —';
-  const philosophyLabel = about?.philosophyLabel || 'Our Philosophy';
-  const philosophyQuote = about?.philosophyQuote ||
-    '"A neighborhood cafe should feel like an extension of your living room — warm, familiar, and always welcoming."';
-  const philosophyAuthor = about?.philosophyAuthor || 'The Diamond Family';
-  const closingTitleTop = about?.closingTitleTop || 'Family-Run';
-  const closingTitleAccent = about?.closingTitleAccent || `Since ${SITE.founded}`;
-  const closingText = about?.closingText ||
-    'What started as a dream between two siblings has grown into the heart of the neighborhood. Stop by and taste the difference that fifteen years of care makes.';
+      'A family-run spot in Noe Valley, open since 2014. We pour fresh espresso, make crepes from scratch, and treat everyone who walks in like a neighbor. Stop in for a slow morning or a quick bite on your way out.';
+    const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : '/images/dc/IMG_1523.webp';
+    const heroImageCaption = about?.heroImageCaption || 'Morning light on Diamond Street';
+    const philosophyLabel = about?.philosophyLabel || 'Our Philosophy';
+    const philosophyQuote = about?.philosophyQuote ||
+      '"A neighborhood cafe should feel like an extension of your living room."';
+    const philosophyAuthor = about?.philosophyAuthor || 'The Diamond Family';
+    const closingTitleTop = about?.closingTitleTop || 'Family-Run';
+    const closingTitleAccent = about?.closingTitleAccent || `Since ${SITE.founded}`;
+    const closingText = about?.closingText ||
+      'What started as a small family dream has become a daily stop for the neighborhood. Come in for a cup and stay for a meal.';
   const address = siteInfo?.address || SITE.address;
   const hoursLabel = siteInfo?.hoursLabel || SITE.days;
   const hoursRange = siteInfo?.hoursRange || SITE.hours;
