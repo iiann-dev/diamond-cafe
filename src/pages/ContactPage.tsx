@@ -3,6 +3,9 @@ import { SITE, HOURS } from '../data';
 import { useSiteData } from '../context/SiteDataContext';
 import Seo from '../components/Seo';
 
+// Hardcoded Google Maps embed URL with real place ID (faster, no Sanity round-trip)
+const MAP_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.6529342248955!2d-122.43614280000003!3d37.7512857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e0d926d00c3%3A0x2f3f5323903f0534!2sDiamond%20Cafe!5e0!3m2!1sen!2sid!4v1787402473881!5m2!1sen!2sid';
+
 export default function ContactPage() {
   const { siteInfo, hours } = useSiteData();
 
@@ -11,7 +14,6 @@ export default function ContactPage() {
   const phone = siteInfo?.phone || SITE.phone;
   const email = siteInfo?.email || SITE.email;
   const neighborhood = siteInfo?.neighborhood || SITE.neighborhood;
-  const mapEmbed = siteInfo?.mapEmbed || SITE.mapEmbed;
   const hoursList = hours.length > 0 ? hours : HOURS;
 
   const dirsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
@@ -20,7 +22,7 @@ export default function ContactPage() {
     return (
       <div className="img-frame min-h-[200px] md:min-h-full">
         <iframe
-          src={mapEmbed}
+          src={MAP_EMBED}
           width="100%"
           height="100%"
           className="min-h-[200px] md:min-h-full"
