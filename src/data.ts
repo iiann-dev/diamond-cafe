@@ -66,7 +66,7 @@ export const SOCIALS = {
 export const ORDER_URL = 'https://www.toasttab.com/diamondcafe';
 
 export const IMAGES = {
-  hero: '/images/dc/IMG_1521.webp',
+  hero: '/images/dc/IMG_1523.webp',
   interior: '/images/dc/IMG_1523.webp',
   food: '/images/dc/IMG_1607.webp',
   team: '/images/dc/IMG_1589.webp',
@@ -77,7 +77,6 @@ export const IMAGES = {
     { src: '/images/dc/IMG_1578.webp', thumb: '/images/dc/IMG_1578.webp', alt: 'Freshly baked morning goods', span: 'wide' as const },
     { src: '/images/dc/IMG_1589.webp', thumb: '/images/dc/IMG_1589.webp', alt: 'Kitchen and prep counter' },
     { src: '/images/dc/IMG_1607.webp', thumb: '/images/dc/IMG_1607.webp', alt: 'Hearty brunch plate', span: 'big' as const },
-    { src: '/images/dc/IMG_1521.webp', thumb: '/images/dc/IMG_1521.webp', alt: 'Warm neighborhood cafe interior' },
     { src: '/images/dc/IMG_1523.webp', thumb: '/images/dc/IMG_1523.webp', alt: 'Cozy corner tables' },
   ] as GalleryImage[],
 };

@@ -49,10 +49,10 @@ async function main() {
   const results: string[] = []
 
   // Home hero -> warm interior lounge
-  await client.patch('heroContent').set({
-    image: await imageField('/images/dc/IMG_1521.jpg', 'hero-interior.jpg'),
-  }).commit()
-  results.push('heroContent.image -> IMG_1521 (cozy lounge)')
+    await client.patch('heroContent').set({
+      image: await imageField('/images/dc/IMG_1523.jpg', 'hero-interior.jpg'),
+    });
+    results.push('heroContent.image -> IMG_1523 (cozy lounge)')
 
   // About hero — storefront exterior on Diamond St
   await client.patch('aboutContent').set({
