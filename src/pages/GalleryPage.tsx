@@ -12,8 +12,8 @@ export default function GalleryPage() {
   // ── CMS-first resolution ────────────────────────────────
   const images = gallery.length > 0
     ? gallery.map((g) => ({
-        src: g.image ? urlFor(g.image).width(1200).url() : '',
-        thumb: g.image ? urlFor(g.image).width(400).url() : '',
+        src: g.image ? urlFor(g.image).width(1200).quality(85).auto('format').url() : '',
+        thumb: g.image ? urlFor(g.image).width(400).quality(75).auto('format').url() : '',
         alt: g.alt || g.title || '',
         span: g.span === 'normal' ? undefined : g.span,
       }))

@@ -15,7 +15,7 @@ export default function AboutPage() {
   const headlineAccent = about?.headlineAccent || 'Story';
   const story = about?.story ||
       'A family-run spot in Noe Valley, open since 2014. We pour fresh espresso, make crepes from scratch, and treat everyone who walks in like a neighbor. Stop in for a slow morning or a quick bite on your way out.';
-  const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : '/images/dc/IMG_1523.webp';
+  const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1000).quality(80).auto('format').url() : '/images/dc/IMG_1523.webp';
   const heroImageCaption = about?.heroImageCaption || 'Morning light on Diamond Street';
   const philosophyLabel = about?.philosophyLabel || 'Our Philosophy';
   const philosophyQuote = about?.philosophyQuote ||

@@ -18,7 +18,7 @@ export default function HomePage() {
   const imageParallax = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
   // ── CMS-only resolution ──────────────────────────────────────
-  const heroImage = hero?.image ? urlFor(hero.image).width(1400).url() : '';
+    const heroImage = hero?.image ? urlFor(hero.image).width(1000).quality(80).auto('format').url() : '';
 
   // Preload hero image for faster LCP
   useEffect(() => {
@@ -378,12 +378,12 @@ export default function HomePage() {
                 className="img-frame overflow-hidden"
               >
                 <img
-                  src={g.image ? urlFor(g.image as SanityImageSource).width(600).url() : g.thumb}
-                  alt={g.alt || ''}
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
+                                  src={g.image ? urlFor(g.image as SanityImageSource).width(400).quality(75).auto('format').url() : g.thumb}
+                                  alt={g.alt || ''}
+                                  className="w-full h-48 object-cover"
+                                  loading="lazy"
+                                  decoding="async"
+                                />
               </div>
             )
           })}
