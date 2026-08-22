@@ -15,16 +15,16 @@ export default function AboutPage() {
   const headlineAccent = about?.headlineAccent || 'Story';
   const story = about?.story ||
       'A family-run spot in Noe Valley, open since 2014. We pour fresh espresso, make crepes from scratch, and treat everyone who walks in like a neighbor. Stop in for a slow morning or a quick bite on your way out.';
-    const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : '/images/dc/IMG_1523.webp';
-    const heroImageCaption = about?.heroImageCaption || 'Morning light on Diamond Street';
-    const philosophyLabel = about?.philosophyLabel || 'Our Philosophy';
-    const philosophyQuote = about?.philosophyQuote ||
-      '"A neighborhood cafe should feel like an extension of your living room."';
-    const philosophyAuthor = about?.philosophyAuthor || 'The Diamond Family';
-    const closingTitleTop = about?.closingTitleTop || 'Family-Run';
-    const closingTitleAccent = about?.closingTitleAccent || `Since ${SITE.founded}`;
-    const closingText = about?.closingText ||
-      'What started as a small family dream has become a daily stop for the neighborhood. Come in for a cup and stay for a meal.';
+  const heroImage = about?.heroImage ? urlFor(about.heroImage).width(1400).url() : '/images/dc/IMG_1523.webp';
+  const heroImageCaption = about?.heroImageCaption || 'Morning light on Diamond Street';
+  const philosophyLabel = about?.philosophyLabel || 'Our Philosophy';
+  const philosophyQuote = about?.philosophyQuote ||
+    '"A neighborhood cafe should feel like an extension of your living room."';
+  const philosophyAuthor = about?.philosophyAuthor || 'The Diamond Family';
+  const closingTitleTop = about?.closingTitleTop || 'Family-Run';
+  const closingTitleAccent = about?.closingTitleAccent || `Since ${SITE.founded}`;
+  const closingText = about?.closingText ||
+    'What started as a small family dream has become a daily stop for the neighborhood. Come in for a cup and stay for a meal.';
   const address = siteInfo?.address || SITE.address;
   const hoursLabel = siteInfo?.hoursLabel || SITE.days;
   const hoursRange = siteInfo?.hoursRange || SITE.hours;
@@ -98,7 +98,7 @@ export default function AboutPage() {
               alt="Warm cafe atmosphere at Diamond Cafe"
               className="w-full h-[300px] md:h-[500px] object-cover"
               fetchPriority="high"
-              loading="eager"
+              loading="lazy"
               decoding="async"
             />
           </div>

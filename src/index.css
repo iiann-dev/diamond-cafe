@@ -497,5 +497,58 @@ section { content-visibility: auto; contain-intrinsic-size: 400px; }
 /* 4. Studio manages its own internal scroll — kill app-level
       smooth-scroll / overflow rules for this route only */
 .sanity-studio-root {
-  overflow: hidden;
+  overflow: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FONT OPTIMIZATION — font-display: swap for faster FCP/LCP
+   ═══════════════════════════════════════════════════════════════════════ */
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/playfair-display-v35-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
+  src: url('/fonts/playfair-display-v35-latin-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  src: url('/fonts/playfair-display-v35-latin-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url('/fonts/playfair-display-v35-latin-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/nunito-v27-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  src: url('/fonts/nunito-v27-latin-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url('/fonts/nunito-v27-latin-700.woff2') format('woff2');
 }

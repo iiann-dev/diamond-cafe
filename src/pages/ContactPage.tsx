@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SITE, HOURS } from '../data';
 import { useSiteData } from '../context/SiteDataContext';
 import Seo from '../components/Seo';
@@ -16,29 +16,46 @@ export default function ContactPage() {
 
   const dirsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
 
-  function LazyMap() {
-    const ref = useRef<HTMLDivElement>(null);
-    const [loaded, setLoaded] = useState(false);
+  // Static map image URL (Google Maps Static API)
+  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${encodeURIComponent(address)}&zoom=15&size=600x400&maptype=roadmap&markers=color:red%7Clabel:D%7C${encodeURIComponent(address)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}`;
 
-    useEffect(() => {
-      const el = ref.current;
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setLoaded(true);
-            observer.disconnect();
-          }
-        },
-        { rootMargin: '200px' }
-      );
-      observer.observe(el);
-      return () => observer.disconnect();
-    }, []);
+  function StaticMapWithClick() {
+    const [showInteractive, setShowInteractive] = useState(false);
 
     return (
-      <div ref={ref} className="img-frame min-h-[200px] md:min-h-full">
-        {loaded ? (
+      <div className="img-frame min-h-[200px] md:min-h-full relative">
+        {!showInteractive ? (
+          <button
+            onClick={() => setShowInteractive(true)}
+            className="w-full h-full min-h-[200px] md:min-h-[300px] bg-diamond-mist flex flex-col items-center justify-center gap-3 p-8 text-center hover:bg-soft-ice transition-colors relative group"
+            aria-label="Load interactive Google Map"
+          >
+            {staticMapUrl && !staticMapUrl.includes('key=') ? (
+              // If no API key, show placeholder
+              <>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
+                </svg>
+                <span className="text-diamond-blue font-label text-caption mb-1">{address}</span>
+                <span className="text-diamond-blue font-label text-caption underline group-hover:no-underline">Click to load interactive map</span>
+              </>
+            ) : (
+              <>
+                <img
+                  src={staticMapUrl}
+                  alt="Diamond Cafe location"
+                  className="w-full h-full object-cover absolute inset-0"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center gap-3 relative z-10 pointer-events-none">
+                  <span className="text-white font-label text-caption mb-1 px-4 py-2 bg-diamond-blue/90 rounded-lg">{address}</span>
+                  <span className="text-white font-label text-caption px-4 py-2 bg-diamond-blue/90 rounded-lg">Click for interactive map</span>
+                </div>
+              </>
+            )}
+          </button>
+        ) : (
           <iframe
             src={mapEmbed}
             width="100%"
@@ -49,19 +66,6 @@ export default function ContactPage() {
             referrerPolicy="no-referrer-when-downgrade"
             title="Diamond Cafe location"
           />
-        ) : (
-          <a
-            href={dirsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full h-full min-h-[200px] md:min-h-[300px] bg-diamond-mist flex flex-col items-center justify-center gap-3 p-8 text-center hover:bg-soft-ice transition-colors block group"
-          >
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-diamond-blue)" strokeWidth="1.5" strokeLinecap="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
-            </svg>
-            <span className="text-diamond-blue font-label text-caption mb-1">{address}</span>
-            <span className="text-diamond-blue font-label text-caption underline group-hover:no-underline">Open in Google Maps</span>
-          </a>
         )}
       </div>
     );
@@ -120,7 +124,7 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <LazyMap />
+        <StaticMapWithClick />
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">

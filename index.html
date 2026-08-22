@@ -3,9 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Diamond Cafe — family-owned cafe in Noe Valley, San Francisco. Fresh coffee, homemade pastries, and warm vibes since 2010." />
+        <meta name="description" content="Diamond Cafe — family-owned cafe in Noe Valley, San Francisco. Fresh coffee, homemade pastries, and warm vibes since 2010." />
 
-    <!-- Open Graph -->
+        <!-- Resource Hints for faster cross-origin connections -->
+        <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://www.google.com" crossorigin />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.toasttab.com" />
+
+        <!-- Preload critical font files (font-display: swap in CSS) -->
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/nunito-v27-latin-regular.woff2" crossorigin />
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/nunito-v27-latin-600.woff2" crossorigin />
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display-v35-latin-regular.woff2" crossorigin />
+
+        <!-- Open Graph -->
     <meta property="og:title" content="Diamond Cafe — Noe Valley, SF" />
     <meta property="og:description" content="Family-owned cafe in Noe Valley, San Francisco. Fresh coffee, homemade crepes, and breakfast favorites since 2014." />
     <meta property="og:type" content="website" />
