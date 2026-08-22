@@ -17,8 +17,8 @@ export default function HomePage() {
   });
   const imageParallax = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
-  // ── CMS-first resolution ────────────────────────────────
-  const heroImage = hero?.image ? urlFor(hero.image).width(1400).url() : IMAGES.hero;
+  // ── CMS-only resolution ──────────────────────────────────────
+    const heroImage = hero?.image ? urlFor(hero.image).width(1400).url() : '';
   const eyebrow = hero?.eyebrow || siteInfo?.neighborhood || SITE.neighborhood;
   const headlineTop = hero?.headlineTop || 'Diamond';
   const headlineAccent = hero?.headlineAccent || 'Cafe';
