@@ -92,7 +92,7 @@ export const SITE = {
   neighborhood: 'Noe Valley, San Francisco',
   email: 'diamondcafelunches@gmail.com',
   phone: '(415) 655-3674',
-  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.5!2d-122.434!3d37.759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7f7f5f5f5f5f%3A0x5f5f5f5f5f5f5f5f!2s751+Diamond+St%2C+San+Francisco%2C+CA+94114!5e0!3m2!1sen!2sus!4v1',
+  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.652754589005!2d-122.43871772505373!3d37.75128991351392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e0d926d00c3%3A0x2f3f5323903f0534!2sDiamond%20Cafe!5e0!3m2!1sen!2sid!4v1787394982443!5m2!1sen!2sid',
   founded: 2014,
 };
 
