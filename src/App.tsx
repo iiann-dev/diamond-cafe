@@ -12,6 +12,22 @@ const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 const StudioPage = lazy(() => import('./pages/StudioPage'))
 
+// Preload all main page chunks on initial load (idle callback)
+if (typeof window !== 'undefined') {
+  const preloadPages = () => {
+    import('./pages/HomePage')
+    import('./pages/MenuPage')
+    import('./pages/GalleryPage')
+    import('./pages/AboutPage')
+    import('./pages/ContactPage')
+  }
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(preloadPages)
+  } else {
+    setTimeout(preloadPages, 200)
+  }
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation()
 
