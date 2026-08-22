@@ -21,19 +21,22 @@ export default function ContactPage() {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-      const el = ref.current;
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setLoaded(true);
-            observer.disconnect();
-          }
-        },
-        { rootMargin: '200px' }
-      );
-      observer.observe(el);
-      return () => observer.disconnect();
+      const loadMap = () => {
+        setLoaded(true);
+      };
+
+      // Load map when browser is idle (after initial paint)
+      const idleCallbackId = typeof window !== 'undefined' && 'requestIdleCallback' in window
+        ? window.requestIdleCallback(loadMap, { timeout: 2000 })
+        : setTimeout(loadMap, 2000);
+
+      return () => {
+        if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+          window.cancelIdleCallback(idleCallbackId);
+        } else {
+          clearTimeout(idleCallbackId);
+        }
+      };
     }, []);
 
     return (

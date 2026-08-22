@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { SITE, FEATURES, IMAGES, ORDER_URL } from '../data';
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useSiteData } from '../context/SiteDataContext';
 import { urlFor, type SanityImageSource } from '../lib/sanity';
 import Seo from '../components/Seo';
@@ -18,7 +18,25 @@ export default function HomePage() {
   const imageParallax = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
   // ── CMS-only resolution ──────────────────────────────────────
-    const heroImage = hero?.image ? urlFor(hero.image).width(1400).url() : '';
+  const heroImage = hero?.image ? urlFor(hero.image).width(1400).url() : '';
+
+  // Preload hero image for faster LCP
+  useEffect(() => {
+    if (heroImage) {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = heroImage;
+      link.fetchPriority = 'high';
+      document.head.appendChild(link);
+      return () => {
+        // Cleanup: remove preload link on unmount
+        const existing = document.querySelector(`link[rel="preload"][as="image"][href="${heroImage}"]`);
+        existing?.remove();
+      };
+    }
+  }, [heroImage]);
+
   const eyebrow = hero?.eyebrow || siteInfo?.neighborhood || SITE.neighborhood;
   const headlineTop = hero?.headlineTop || 'Diamond';
   const headlineAccent = hero?.headlineAccent || 'Cafe';
